@@ -8,8 +8,8 @@ private:
 	string name;
 	unsigned int HP, DMG;
 public:
-	Character(string characterName, int healthPoints, int damagePoints);
-	void setHP(int healthPoints);
+	Character(string characterName, int hitPoints, int damagePoints);
+	void setHP(int hitPoints);
 	void setDMG(int damagePoints);
 	int getHP();
 	int getDMG();
