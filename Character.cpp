@@ -1,9 +1,9 @@
 #include "Character.h"
 
-Character::Character(string characterName, int healthPoints, int damagePoints)
+Character::Character(string characterName, int hitPoints, int damagePoints)
 {
 	setName(characterName);
-	setHP(healthPoints);
+	setHP(hitPoints);
 	setDMG(damagePoints);
 }
 
@@ -17,11 +17,11 @@ string Character::getName()
 	return name;
 }
 
-void Character::setHP(int healthPoints)
+void Character::setHP(int hitPoints)
 {
-    if (healthPoints > 0)
+    if (hitPoints > 0)
     {
-        HP = healthPoints;
+        HP = hitPoints;
     }
     else
     {
