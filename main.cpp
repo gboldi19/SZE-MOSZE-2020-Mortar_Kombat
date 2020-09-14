@@ -1,24 +1,14 @@
 #include "Character.h"
-#include "Words.h"
 #include <iostream>
 
 using namespace std;
 
-int main() {
-	string inputString;
-	getline(cin, inputString);
-	Words inputVector = Words(inputString);
+int main(int argc, char** argv) {
 
-	if (inputVector.getWord(0) == "./a.out")
+	if (argc == 7)
     {
-		Character player1 = Character(
-			inputVector.getWord(1),
-			stoi(inputVector.getWord(2)),
-			stoi(inputVector.getWord(3)));
-		Character player2 = Character(
-			inputVector.getWord(4),
-			stoi(inputVector.getWord(5)),
-			stoi(inputVector.getWord(6)));
+		Character player1 = Character(argv[1],atoi(argv[2]),atoi(argv[3]));
+		Character player2 = Character(argv[4],atoi(argv[5]),atoi(argv[6]));
 
 		int count = 0;
 		while (player1.getHP() > 0 && player2.getHP() > 0)
@@ -53,7 +43,7 @@ int main() {
         }
     else
     {
-		cout << "Unknown mode!" << endl;
+		cout << "Incorrect number of arguments!" << endl;
 	}
 
 	return 0;
