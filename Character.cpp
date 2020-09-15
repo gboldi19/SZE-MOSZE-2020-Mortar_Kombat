@@ -1,18 +1,18 @@
 #include "Character.h"
 
-Character::Character(string characterName, int hitPoints, int damagePoints)
+Character::Character(std::string characterName, int hitPoints, int damagePoints)
 {
 	setName(characterName);
 	setHP(hitPoints);
 	setDMG(damagePoints);
 }
 
-void Character::setName(string characterName)
+void Character::setName(std::string characterName)
 {
 	name = characterName;
 }
 
-string Character::getName()
+std::string Character::getName()
 {
 	return name;
 }
