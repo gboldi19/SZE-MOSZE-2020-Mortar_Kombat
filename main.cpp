@@ -1,50 +1,48 @@
 #include "Character.h"
 #include <iostream>
 
-using namespace std;
-
 int main(int argc, char** argv) {
 
-	if (argc == 7)
+    if (argc == 7)
     {
-		Character player1 = Character(argv[1],atoi(argv[2]),atoi(argv[3]));
-		Character player2 = Character(argv[4],atoi(argv[5]),atoi(argv[6]));
+        Character player1 = Character(argv[1],std::atoi(argv[2]),std::atoi(argv[3]));
+        Character player2 = Character(argv[4],std::atoi(argv[5]),std::atoi(argv[6]));
 
-		int count = 0;
-		while (player1.getHP() > 0 && player2.getHP() > 0)
+        int count = 0;
+        while (player1.getHP() > 0 && player2.getHP() > 0)
         {
-			cout << player1.getName() << ": HP: " << player1.getHP() << ", DMG: " << player1.getDMG() << endl;
-			cout << player2.getName() << ": HP: " << player2.getHP() << ", DMG: " << player2.getDMG() << endl;
+            std::cout << player1.getName() << ": HP: " << player1.getHP() << ", DMG: " << player1.getDMG() << std::endl;
+            std::cout << player2.getName() << ": HP: " << player2.getHP() << ", DMG: " << player2.getDMG() << std::endl;
 
-			if (count % 2)
+            if (count % 2)
             {
-				cout << player2.getName() << " -> " << player1.getName() << endl;
-				player1.setHP(player1.getHP() - player2.getDMG());
-			}
+                std::cout << player2.getName() << " -> " << player1.getName() << std::endl;
+                player1.setHP(player1.getHP() - player2.getDMG());
+            }
             else
             {
-				cout << player1.getName() << " -> " << player2.getName() << endl;
-				player2.setHP(player2.getHP() - player1.getDMG());
-			}
-			count++;
-		}
+                std::cout << player1.getName() << " -> " << player2.getName() << std::endl;
+                player2.setHP(player2.getHP() - player1.getDMG());
+            }
+            count++;
+        }
 
-		cout << player1.getName() << ": HP: " << player1.getHP() << ", DMG: " << player1.getDMG() << endl;
-		cout << player2.getName() << ": HP: " << player2.getHP() << ", DMG: " << player2.getDMG() << endl;
+        std::cout << player1.getName() << ": HP: " << player1.getHP() << ", DMG: " << player1.getDMG() << std::endl;
+        std::cout << player2.getName() << ": HP: " << player2.getHP() << ", DMG: " << player2.getDMG() << std::endl;
 
-		if (player1.getHP() == 0)
+        if (player1.getHP() == 0)
         {
-			cout << player1.getName() << " died. " << player2.getName() << " wins." << endl;
-		}
+            std::cout << player1.getName() << " died. " << player2.getName() << " wins." << std::endl;
+        }
         else
         {
-            cout << player2.getName() << " died. " << player1.getName() << " wins." << endl;
+            std::cout << player2.getName() << " died. " << player1.getName() << " wins." << std::endl;
             }
         }
     else
     {
-		cout << "Incorrect number of arguments!" << endl;
-	}
+        std::cout << "Incorrect number of arguments!" << std::endl;
+    }
 
-	return 0;
+    return 0;
 }
