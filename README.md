@@ -22,4 +22,4 @@ Every other first words result in an error, and every additional words are not t
 The characters fight in turns back and forth repeatedly, starting with the first character.  
 By every attack, the attacked character's hit points reduce by the attacker character's damage points.  
 The simulation ends when one reaches 0 hit points.  
-The program announces the looser and winner, then stops.  
+The program announces the loser and winner, then stops.  
