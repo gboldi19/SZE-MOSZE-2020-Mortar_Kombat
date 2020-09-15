@@ -4,7 +4,9 @@ This program simulates a turn based fight between two characters.
 
 ## Input instructions
 ### ./a.out
-*Using the ./a.out command the user can create two characters with the following synthax:*  
+In order to be able to use the "a.out" command, you must compile all the files in the scope with ".cpp" extension first, which is generating the "a.out" file if no output name is specified.
+After compiling the user can refer to the executable from the current working directory with "./a.out" followed by the given arguments: <character_one_name> <character_one_HP> <character_one_DMG> <character_two_name> <character_two_HP> <character_two_DMG>.
+*The proper synthax is:*
 ./a.out <character_one_name> <character_one_HP> <character_one_DMG> <character_two_name> <character_two_HP> <character_two_DMG>  
 - <character_one_name>: name of the first character (no whitespaces allowed)  
 - <character_one_HP>: hit points of the first character (only integer numbers allowed)  
