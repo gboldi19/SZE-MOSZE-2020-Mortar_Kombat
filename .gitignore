@@ -1,0 +1,7 @@
+# Including header and c++ files
+!.cpp
+!.h
+
+# Excluding 
+*.out
+*.exe
