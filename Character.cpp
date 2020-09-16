@@ -1,37 +1,15 @@
 #include "Character.h"
 
-Character::Character(std::string characterName, int hitPoints, int damagePoints)
+Character::Character(string characterName, int healthPoints, int damagePoints)
 {
-	setName(characterName);
-	setHP(hitPoints);
-	setDMG(damagePoints);
+    name = characterName;
+	HP = healthPoints;
+	DMG = damagePoints;
 }
 
-void Character::setName(std::string characterName)
-{
-	name = characterName;
-}
-
-std::string Character::getName()
+string Character::getName()
 {
 	return name;
-}
-
-void Character::setHP(int hitPoints)
-{
-    if (hitPoints > 0)
-    {
-        HP = hitPoints;
-    }
-    else
-    {
-        HP = 0;
-    }
-}
-
-void Character::setDMG(int damagePoints)
-{
-	DMG = damagePoints;
 }
 
 int Character::getHP()
@@ -42,4 +20,16 @@ int Character::getHP()
 int Character::getDMG()
 {
 	return DMG;
+}
+
+void Character::gotHit(int damagePoints)
+{
+    if (int(HP - damagePoints) > 0)
+    {
+        HP = HP - damagePoints;
+    }
+    else
+    {
+        HP = 0;
+    }
 }

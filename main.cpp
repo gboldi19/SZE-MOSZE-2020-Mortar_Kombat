@@ -5,8 +5,8 @@ int main(int argc, char** argv) {
 
     if (argc == 7)
     {
-        Character player1 = Character(argv[1],std::atoi(argv[2]),std::atoi(argv[3]));
-        Character player2 = Character(argv[4],std::atoi(argv[5]),std::atoi(argv[6]));
+        Character player1 = Character(argv[1],atoi(argv[2]),atoi(argv[3]));
+        Character player2 = Character(argv[4],atoi(argv[5]),atoi(argv[6]));
 
         int count = 0;
         while (player1.getHP() > 0 && player2.getHP() > 0)
@@ -17,12 +17,12 @@ int main(int argc, char** argv) {
             if (count % 2)
             {
                 std::cout << player2.getName() << " -> " << player1.getName() << std::endl;
-                player1.setHP(player1.getHP() - player2.getDMG());
+                player1.gotHit(player2.getDMG());
             }
             else
             {
                 std::cout << player1.getName() << " -> " << player2.getName() << std::endl;
-                player2.setHP(player2.getHP() - player1.getDMG());
+                player2.gotHit(player1.getDMG());
             }
             count++;
         }
