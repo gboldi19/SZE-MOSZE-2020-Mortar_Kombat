@@ -1,28 +1,28 @@
 #include "Character.h"
 
-Character::Character(string characterName, int healthPoints, int damagePoints)
+Character::Character(const std::string characterName, const unsigned int healthPoints, const unsigned int damagePoints)
 {
     name = characterName;
 	HP = healthPoints;
 	DMG = damagePoints;
 }
 
-string Character::getName()
+const std::string Character::getName() const
 {
 	return name;
 }
 
-int Character::getHP()
+const unsigned int Character::getHP() const
 {
 	return HP;
 }
 
-int Character::getDMG()
+const unsigned int Character::getDMG() const
 {
 	return DMG;
 }
 
-void Character::gotHit(int damagePoints)
+void Character::gotHit(const unsigned int damagePoints)
 {
     if (int(HP - damagePoints) > 0)
     {
