@@ -3,9 +3,9 @@
 class Character
 {
 private:
-	std::string name;
+	const std::string name;
 	unsigned int HP;
-    unsigned int DMG;
+    const unsigned int DMG;
 public:
 	Character(const std::string characterName, const unsigned int healthPoints, const unsigned int damagePoints);
     const std::string getName() const;

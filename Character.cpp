@@ -1,10 +1,8 @@
 #include "Character.h"
 
-Character::Character(const std::string characterName, const unsigned int healthPoints, const unsigned int damagePoints)
+Character::Character(const std::string characterName, const unsigned int healthPoints, const unsigned int damagePoints) : name(characterName), DMG(damagePoints)
 {
-    name = characterName;
 	HP = healthPoints;
-	DMG = damagePoints;
 }
 
 const std::string Character::getName() const
