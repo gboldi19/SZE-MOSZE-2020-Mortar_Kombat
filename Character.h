@@ -1,4 +1,8 @@
 #include <string>
+#include <fstream>
+#include <stdlib.h>
+#include <stdio.h>
+#include <bits/stdc++.h> 
 
 class Character
 {
@@ -8,6 +12,7 @@ private:
     const unsigned int DMG;
 public:
 	Character(const std::string characterName, const unsigned int healthPoints, const unsigned int damagePoints);
+	static Character parseUnit(std::string fileName);
     const std::string getName() const;
 	const unsigned int getHP() const;
 	const unsigned int getDMG() const;
