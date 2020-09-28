@@ -8,10 +8,10 @@ int main (const int argc, const char* argv[])
 		Character player1 = Character::parseUnit(argv[1]);
 		Character player2 = Character::parseUnit(argv[2]);
 		
-		bool firstsTurn = true;
+		bool firstPlayersTurn = true;
 		while (player1.getHP() > 0 && player2.getHP() > 0)
 		{
-			if (firstsTurn)
+			if (firstPlayersTurn)
 			{
 				player2.gotHit(player1.getDMG());
 			}
@@ -19,7 +19,7 @@ int main (const int argc, const char* argv[])
 			{
 				player1.gotHit(player2.getDMG());
 			}
-			firstsTurn = !firstsTurn;
+			firstPlayersTurn = !firstPlayersTurn;
 		}
 
 
