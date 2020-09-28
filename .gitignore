@@ -6,5 +6,6 @@
 !*.json
 !*.yml
 !*.sh
+!*.csv
 
 !.gitignore
