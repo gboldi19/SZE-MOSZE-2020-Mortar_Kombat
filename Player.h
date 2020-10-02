@@ -3,8 +3,9 @@
 class Player : private Character
 {
 private:
-    float XP;
+	float XP;
+	void levelup(float levelupXP);
 public:
-    Player(const std::string characterName, const float healthPoints, const float damagePoints, const float experiencePoints);
-    void levelup();    
+	Player(const std::string characterName, const float healthPoints, const float damagePoints, const float experiencePoints);
+	void gainXP(float damagePoints);
 };
