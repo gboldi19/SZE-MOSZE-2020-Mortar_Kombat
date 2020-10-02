@@ -1,4 +1,5 @@
 #include "Character.h"
+#include <math.h>
 
 class Player : private Character
 {
