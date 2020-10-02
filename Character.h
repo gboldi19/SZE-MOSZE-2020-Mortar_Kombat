@@ -5,6 +5,7 @@ class Character
 {
 private:
 	const std::string name;
+protected:
 	float maxHP;
 	float HP;
 	float DMG;
