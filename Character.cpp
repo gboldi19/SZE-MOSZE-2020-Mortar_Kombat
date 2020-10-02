@@ -1,8 +1,10 @@
 #include "Character.h"
 
-Character::Character(const std::string characterName, const float healthPoints, const float damagePoints) : name(characterName), DMG(damagePoints)
+Character::Character(const std::string characterName, const float healthPoints, const float damagePoints) : name(characterName)
 {
-	HP = healthPoints;
+	maxHP = healthPoints;
+	HP = maxHP;
+	DMG = damagePoints;
 }
 
 Character Character::parseUnit(std::string fileName)

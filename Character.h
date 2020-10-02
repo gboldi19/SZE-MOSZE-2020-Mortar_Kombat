@@ -5,8 +5,9 @@ class Character
 {
 private:
 	const std::string name;
+	float maxHP;
 	float HP;
-	const float DMG;
+	float DMG;
 public:
 	Character(const std::string characterName, const float healthPoints, const float damagePoints);
 	static Character parseUnit(std::string fileName);
