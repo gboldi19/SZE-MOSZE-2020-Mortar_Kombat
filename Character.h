@@ -5,13 +5,13 @@ class Character
 {
 private:
 	const std::string name;
-	unsigned int HP;
-	const unsigned int DMG;
+	float HP;
+	const float DMG;
 public:
-	Character(const std::string characterName, const unsigned int healthPoints, const unsigned int damagePoints);
+	Character(const std::string characterName, const float healthPoints, const float damagePoints);
 	static Character parseUnit(std::string fileName);
 	const std::string getName() const;
-	const unsigned int getHP() const;
-	const unsigned int getDMG() const;
-	void gotHit(const unsigned int damagePoints);
+	const float getHP() const;
+	const float getDMG() const;
+	void gotHit(const float damagePoints);
 };
