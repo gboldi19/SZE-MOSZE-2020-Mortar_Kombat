@@ -1,6 +1,5 @@
 #!/bin/bash
 
-xIFS=$IFS
 IFS=$'\n'
 file='output.csv'
 
