@@ -3,5 +3,9 @@
 !*.cpp
 !*.h
 !*.md
+!*.json
+!*.yml
+!*.sh
+!*.csv
 
 !.gitignore

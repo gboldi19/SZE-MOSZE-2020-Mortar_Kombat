@@ -1,48 +1,50 @@
 #include "Character.h"
 #include <iostream>
 
-int main(const int argc, const char** argv) {
-
-    if (argc == 7)
+int main(const int argc, const char* argv[])
+{
+    if (argc != 3)
     {
-        Character player1 = Character(argv[1], std::stoul(argv[2]), std::stoul(argv[3]));
-        Character player2 = Character(argv[4], std::stoul(argv[5]), std::stoul(argv[6]));
-
-        bool firstsTurn = true;
-        while (player1.getHP() > 0 && player2.getHP() > 0)
+        std::cerr << "Error, exiting with: " << "Incorrect number of arguments!" << std::endl;
+        return 1;
+    }
+    else
+    {
+        try
         {
-            std::cout << player1.getName() << ": HP: " << player1.getHP() << ", DMG: " << player1.getDMG() << std::endl;
-            std::cout << player2.getName() << ": HP: " << player2.getHP() << ", DMG: " << player2.getDMG() << std::endl;
+            Character player1 = Character::parseUnit(argv[1]);
+            Character player2 = Character::parseUnit(argv[2]);
 
-            if (firstsTurn)
+            bool firstPlayersTurn = true;
+            while (player1.getHP() > 0 && player2.getHP() > 0)
             {
-                std::cout << player1.getName() << " -> " << player2.getName() << std::endl;
-                player2.gotHit(player1.getDMG());
+                if (firstPlayersTurn)
+                {
+                    player2.gotHit(player1);
+                }
+                else
+                {
+                    player1.gotHit(player2);
+                }
+                firstPlayersTurn = !firstPlayersTurn;
+            }
+
+
+            if (player1.getHP() == 0)
+            {
+                std::cout << player2.getName() << " wins. Remaining HP: " << player2.getHP() << std::endl;
             }
             else
             {
-                std::cout << player2.getName() << " -> " << player1.getName() << std::endl;
-                player1.gotHit(player2.getDMG());
+                std::cout << player1.getName() << " wins. Remaining HP: " << player1.getHP() << std::endl;
             }
-            firstsTurn = !firstsTurn;
+            return 0;
         }
-
-        std::cout << player1.getName() << ": HP: " << player1.getHP() << ", DMG: " << player1.getDMG() << std::endl;
-        std::cout << player2.getName() << ": HP: " << player2.getHP() << ", DMG: " << player2.getDMG() << std::endl;
-
-        if (player1.getHP() == 0)
-        {
-            std::cout << player1.getName() << " died. " << player2.getName() << " wins." << std::endl;
-        }
-        else
-        {
-            std::cout << player2.getName() << " died. " << player1.getName() << " wins." << std::endl;
-            }
-        }
-    else
-    {
-        std::cout << "Incorrect number of arguments!" << std::endl;
+        catch (const std::exception& e)
+	    {
+            std::cerr << "Error, exiting with: " << e.what() << std::endl;
+            return 1;
+	    }
     }
 
-    return 0;
 }
