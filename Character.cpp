@@ -7,10 +7,9 @@ Character::Character(const std::string characterName, const unsigned int healthP
 
 Character Character::parseUnit(std::string fileName)
 {
-	std::ifstream sourceFile(fileName);
-	if (sourceFile.good())
+	std::ifstream file(fileName);
+	if (file.good())
 	{
-		std::ifstream file(fileName);
 		std::string characterAttributes[3];
 		std::string line;
 

@@ -3,38 +3,45 @@
 
 int main(const int argc, const char* argv[])
 {
-	if (argc == 3)
+	try
 	{
-		Character player1 = Character::parseUnit(argv[1]);
-		Character player2 = Character::parseUnit(argv[2]);
-
-		bool firstPlayersTurn = true;
-		while (player1.getHP() > 0 && player2.getHP() > 0)
+		if (argc == 3)
 		{
-			if (firstPlayersTurn)
+			Character player1 = Character::parseUnit(argv[1]);
+			Character player2 = Character::parseUnit(argv[2]);
+
+			bool firstPlayersTurn = true;
+			while (player1.getHP() > 0 && player2.getHP() > 0)
 			{
-				player2.gotHit(player1);
+				if (firstPlayersTurn)
+				{
+					player2.gotHit(player1);
+				}
+				else
+				{
+					player1.gotHit(player2);
+				}
+				firstPlayersTurn = !firstPlayersTurn;
+			}
+
+
+			if (player1.getHP() == 0)
+			{
+				std::cout << player2.getName() << " wins. Remaining HP: " << player2.getHP() << std::endl;
 			}
 			else
 			{
-				player1.gotHit(player2);
+				std::cout << player1.getName() << " wins. Remaining HP: " << player1.getHP() << std::endl;
 			}
-			firstPlayersTurn = !firstPlayersTurn;
-		}
-
-
-		if (player1.getHP() == 0)
-		{
-			std::cout << player2.getName() << " wins. Remaining HP: " << player2.getHP() << std::endl;
 		}
 		else
 		{
-			std::cout << player1.getName() << " wins. Remaining HP: " << player1.getHP() << std::endl;
+			throw std::runtime_error("Incorrect number of arguments!");
 		}
 	}
-	else
-	{
-		throw std::runtime_error("Incorrect number of arguments!");
-	}
+	catch (const std::exception& e)
+    { 
+        std::cout << "Error, exiting with: " << e.what() << std::endl;
+    }
 	return 0;
 }
