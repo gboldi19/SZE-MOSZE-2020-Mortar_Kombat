@@ -11,6 +11,8 @@ jobs:
         run: g++ -std=c++17 -o a.out *.cpp
       - name: Regaining rights
         run: chmod a+x ./test.sh
+      - name: Preventing unwanted output append
+        run: rm -f output.csv
       - name: Calling program from shell
         run: ./test.sh
       - name: Checking differences
