@@ -1,3 +1,4 @@
+
 #include <string>
 #include <fstream>
 
@@ -13,5 +14,5 @@ public:
 	const std::string getName() const;
 	const unsigned int getHP() const;
 	const unsigned int getDMG() const;
-	void gotHit(const unsigned int damagePoints);
+	void gotHit(const Character attacker);
 };
