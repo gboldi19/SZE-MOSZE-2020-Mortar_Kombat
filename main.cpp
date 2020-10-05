@@ -40,8 +40,8 @@ int main(const int argc, const char* argv[])
 		}
 	}
 	catch (const std::exception& e)
-    { 
-        std::cout << "Error, exiting with: " << e.what() << std::endl;
-    }
+	{
+		std::cout << "Error, exiting with: " << e.what() << std::endl;
+	}
 	return 0;
 }
