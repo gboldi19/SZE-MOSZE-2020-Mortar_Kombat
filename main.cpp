@@ -38,10 +38,11 @@ int main(const int argc, const char* argv[])
 		{
 			throw std::runtime_error("Incorrect number of arguments!");
 		}
+		return 0;
 	}
 	catch (const std::exception& e)
 	{
-		std::cout << "Error, exiting with: " << e.what() << std::endl;
+		std::cerr << "Error, exiting with: " << e.what() << std::endl;
+		return 1;
 	}
-	return 0;
 }
