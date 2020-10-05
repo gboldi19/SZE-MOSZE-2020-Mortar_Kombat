@@ -50,11 +50,11 @@ const unsigned int Character::getDMG() const
 	return DMG;
 }
 
-void Character::gotHit(const Character* attacker)
+void Character::gotHit(const &Character attacker)
 {
-	if (int(HP - attacker->getDMG()) > 0)
+	if (int(HP - attacker.getDMG()) > 0)
 	{
-		HP = HP - attacker->getDMG();
+		HP = HP - attacker.getDMG();
 	}
 	else
 	{

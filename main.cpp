@@ -20,11 +20,11 @@ int main(const int argc, const char* argv[])
             {
                 if (firstPlayersTurn)
                 {
-                    player2.gotHit(&player1);
+                    player2.gotHit(player1);
                 }
                 else
                 {
-                    player1.gotHit(&player2);
+                    player1.gotHit(player2);
                 }
                 firstPlayersTurn = !firstPlayersTurn;
             }
