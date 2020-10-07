@@ -1,8 +1,10 @@
 #include "Character.h"
 
-Character::Character(const std::string characterName, const unsigned int healthPoints, const unsigned int damagePoints) : name(characterName), DMG(damagePoints)
+Character::Character(const std::string characterName, const float healthPoints, const float damagePoints) : name(characterName)
 {
-	HP = healthPoints;
+	maxHP = healthPoints;
+	HP = maxHP;
+	DMG = damagePoints;
 }
 
 Character Character::parseUnit(std::string fileName)
@@ -27,7 +29,7 @@ Character Character::parseUnit(std::string fileName)
 		std::getline(file, line);
 		characterAttributes[2] = line;
 
-		return Character(characterAttributes[0], stoul(characterAttributes[1]), stoul(characterAttributes[2]));
+		return Character(characterAttributes[0], stof(characterAttributes[1]), stof(characterAttributes[2]));
 	}
 	else
 	{
@@ -40,12 +42,12 @@ const std::string Character::getName() const
 	return name;
 }
 
-const unsigned int Character::getHP() const
+const float Character::getHP() const
 {
 	return HP;
 }
 
-const unsigned int Character::getDMG() const
+const float Character::getDMG() const
 {
 	return DMG;
 }
