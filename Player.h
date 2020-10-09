@@ -1,7 +1,7 @@
 #include "Character.h"
 #include <math.h>
 
-class Player : private Character
+class Player : public Character
 {
 private:
 	float XP;
