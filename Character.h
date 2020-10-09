@@ -1,3 +1,6 @@
+#ifndef CHARACTER_H
+#define CHARACTER_H
+
 #include <string>
 #include <fstream>
 
@@ -19,3 +22,5 @@ public:
 	template<typename Player>
 		void gotHit(Player &attacker);
 };
+
+#endif

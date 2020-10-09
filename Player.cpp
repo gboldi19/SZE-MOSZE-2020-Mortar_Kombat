@@ -1,8 +1,8 @@
 #include "Player.h"
 
-Player::Player(const std::string characterName, const float healthPoints, const float damagePoints, const float experiencePoints) : Character(characterName, healthPoints, experiencePoints)
+Player::Player(const std::string characterName, const float healthPoints, const float damagePoints) : Character(characterName, healthPoints, damagePoints)
 {
-	XP = experiencePoints;
+	XP = 0;
 }
 
 void Player::levelup(float levelupXP)
@@ -23,7 +23,7 @@ void Player::gainXP(float damagePoints)
 }
 
 template<typename Player>
-	void Character::gotHit(Player& attacker)
+	void Character::gotHit(Player &attacker)
 	{
 		static_assert(std::is_base_of_v<Character, Player>);
 		if (int(HP - attacker.getDMG()) > 0)
