@@ -15,5 +15,7 @@ public:
 	const std::string getName() const;
 	const float getHP() const;
 	const float getDMG() const;
-	void gotHit(const Character &attacker);
+	void gotHit(Character &attacker);
+	template<typename Player>
+		void gotHit(Player &attacker);
 };

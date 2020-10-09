@@ -21,3 +21,19 @@ void Player::gainXP(float damagePoints)
 	levelup(XP - int(XP / 100) * 100 + damagePoints);
 	XP += damagePoints;
 }
+
+template<typename Player>
+	void Character::gotHit(Player& attacker)
+	{
+		static_assert(std::is_base_of_v<Character, Player>);
+		if (int(HP - attacker.getDMG()) > 0)
+		{
+			attacker.gainXP(attacker.getDMG());
+			HP = HP - attacker.getDMG();
+		}
+		else
+		{
+			attacker.gainXP(HP);
+			HP = 0;
+		}
+	}
