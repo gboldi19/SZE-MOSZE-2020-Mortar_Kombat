@@ -56,7 +56,7 @@ void Character::gotHit(Character &attacker)
 {
 	if (int(HP - attacker.getDMG()) > 0)
 	{
-		HP = HP - attacker.getDMG();
+		HP =- attacker.getDMG();
 	}
 	else
 	{
