@@ -3,9 +3,8 @@
 
 class Character
 {
-private:
-	const std::string name;
 protected:
+	const std::string name;
 	float maxHP;
 	float HP;
 	float DMG;
