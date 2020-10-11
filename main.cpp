@@ -13,31 +13,31 @@ int main(const int argc, const char* argv[])
     {
         try
         {
-            Character player1 = Character::CharacterFromFile(argv[1]);
-			Character player2 = Character::CharacterFromFile(argv[2]);
+            Character character = Character::CharacterFromFile(argv[1]);
+			Player player = Player::PlayerFromFile(argv[2]);
 
             bool firstPlayersTurn = true;
-            while (player1.getHP() > 0 && player2.getHP() > 0)
+            while (character.getHP() > 0 && player.getHP() > 0)
             {
                 if (firstPlayersTurn)
                 {
-                    player1.doHit(player2);
+                    character.doHit(player);
                 }
                 else
                 {
-                    player2.doHit(player1);
+                    player.doHit(character);
                 }
                 firstPlayersTurn = !firstPlayersTurn;
             }
 
 
-            if (player1.getHP() == 0)
+            if (character.getHP() == 0)
             {
-                std::cout << player2.getName() << " wins. Remaining HP: " << player2.getHP() << std::endl;
+                std::cout << player.getName() << " wins. Remaining HP: " << player.getHP() << std::endl;
             }
             else
             {
-                std::cout << player1.getName() << " wins. Remaining HP: " << player1.getHP() << std::endl;
+                std::cout << character.getName() << " wins. Remaining HP: " << character.getHP() << std::endl;
             }
             return 0;
         }
