@@ -1,6 +1,7 @@
 #include "Player.h"
 
-Player::Player(const std::string characterName, const float healthPoints, const float damagePoints) : Character(characterName, healthPoints, damagePoints)
+Player::Player(const std::string* characterAttributes)
+	: Character(characterAttributes)
 {
 	XP = 0;
 }
@@ -10,9 +11,8 @@ void Player::levelup(float levelupXP)
 	while (levelupXP >= 100)
 	{
 		levelupXP -= 100;
-		maxHP = round(HP * 1.1);
+		HP = maxHP = round(maxHP * 1.1);
 		DMG *= 1.1;
-		HP = maxHP;
 	}
 }
 
@@ -22,18 +22,12 @@ void Player::gainXP(float damagePoints)
 	XP += damagePoints;
 }
 
-template<typename Player>
-	void Character::gotHit(Player &attacker)
-	{
-		static_assert(std::is_base_of_v<Character, Player>);
-		if (int(HP - attacker.getDMG()) > 0)
-		{
-			attacker.gainXP(attacker.getDMG());
-			HP = HP - attacker.getDMG();
-		}
-		else
-		{
-			attacker.gainXP(HP);
-			HP = 0;
-		}
-	}
+Player Player::PlayerFromFile(const std::string fileName)
+{
+	return Player(parseUnit(fileName));
+}
+
+void Player::doHit(Character& victim)
+{
+	this->gainXP(victim.gotHit(this));
+}

@@ -7,12 +7,15 @@
 class Player : public Character
 {
 private:
+	float DMG;
 	float XP;
 	void levelup(float levelupXP);
 	void gainXP(float damagePoints);
+	Player(const std::string* characterAttributes);
 public:
-	Player(const std::string characterName, const float healthPoints, const float damagePoints);
-	float getXP() { return XP; } //testing purposes
+	static Player PlayerFromFile(const std::string fileName);
+	void doHit(Character& victim);
+	float getXP() { return XP; } //for testing
 };
 
 #endif

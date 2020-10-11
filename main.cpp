@@ -1,4 +1,5 @@
 #include "Character.h"
+#include "Player.h"
 #include <iostream>
 
 int main(const int argc, const char* argv[])
@@ -12,19 +13,19 @@ int main(const int argc, const char* argv[])
     {
         try
         {
-            Character player1 = Character::parseUnit(argv[1]);
-            Character player2 = Character::parseUnit(argv[2]);
+            Character player1 = Character::CharacterFromFile(argv[1]);
+			Character player2 = Character::CharacterFromFile(argv[2]);
 
             bool firstPlayersTurn = true;
             while (player1.getHP() > 0 && player2.getHP() > 0)
             {
                 if (firstPlayersTurn)
                 {
-                    player2.gotHit(player1);
+                    player1.doHit(player2);
                 }
                 else
                 {
-                    player1.gotHit(player2);
+                    player2.doHit(player1);
                 }
                 firstPlayersTurn = !firstPlayersTurn;
             }
@@ -46,5 +47,4 @@ int main(const int argc, const char* argv[])
             return 1;
 	    }
     }
-
 }

@@ -1,18 +1,11 @@
 #include "Character.h"
 
-Character::Character(const std::string characterName, const float healthPoints, const float damagePoints) : name(characterName)
-{
-	maxHP = healthPoints;
-	HP = maxHP;
-	DMG = damagePoints;
-}
-
-Character Character::parseUnit(std::string fileName)
+std::string* Character::parseUnit(const std::string fileName)
 {
 	std::ifstream file(fileName);
 	if (file.good())
 	{
-		std::string characterAttributes[3];
+		static std::string characterAttributes[3];
 		std::string line;
 
 		file.ignore(14); //starting line and first column skipped
@@ -25,16 +18,28 @@ Character Character::parseUnit(std::string fileName)
 		line.resize(line.length() - 1); //',' chopped off
 		characterAttributes[1] = line;
 
-		file.ignore(9); //first column skipped
+		file.ignore(10); //first column skipped
 		std::getline(file, line);
 		characterAttributes[2] = line;
 
-		return Character(characterAttributes[0], stof(characterAttributes[1]), stof(characterAttributes[2]));
+		return characterAttributes;
 	}
 	else
 	{
 		throw std::runtime_error("File not found!");
+		return NULL;
 	}
+}
+
+Character::Character(const std::string* characterAttributes)
+	: name(characterAttributes[0]), DMG(stof(characterAttributes[2]))
+{
+	HP = maxHP = stof(characterAttributes[1]);
+}
+
+Character Character::CharacterFromFile(const std::string fileName)
+{
+	return Character(parseUnit(fileName));
 }
 
 const std::string Character::getName() const
@@ -52,14 +57,23 @@ const float Character::getDMG() const
 	return DMG;
 }
 
-void Character::gotHit(Character &attacker)
+float Character::gotHit(Character* attacker)
 {
-	if (int(HP - attacker.getDMG()) > 0)
+	float potentialXP = attacker->getDMG();
+	if (HP - potentialXP > 0)
 	{
-		HP =- attacker.getDMG();
+		HP -= potentialXP;
+		return potentialXP;
 	}
 	else
 	{
+		potentialXP = HP;
 		HP = 0;
+		return potentialXP;
 	}
+}
+
+void Character::doHit(Character& victim)
+{
+	float _ = victim.gotHit(this);
 }
