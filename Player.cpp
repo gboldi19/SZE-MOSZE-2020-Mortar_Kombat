@@ -11,8 +11,8 @@ void Player::levelup(float levelupXP)
 	while (levelupXP >= 100)
 	{
 		levelupXP -= 100;
-		HP = maxHP = static_cast<float>(round(maxHP * 1.1));
-		DMG = static_cast<float>(DMG * 1.1);
+		HP = maxHP = round(maxHP * 1.1f);
+		DMG *= 1.1f;
 	}
 }
 
