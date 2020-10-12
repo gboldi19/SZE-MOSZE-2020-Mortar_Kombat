@@ -30,7 +30,6 @@ int main(const int argc, const char* argv[])
                 firstPlayersTurn = !firstPlayersTurn;
             }
 
-
             if (character.getHP() == 0)
             {
                 std::cout << player.getName() << " wins. Remaining HP: " << player.getHP() << std::endl;
