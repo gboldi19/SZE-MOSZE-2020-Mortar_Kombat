@@ -14,7 +14,7 @@ int main(const int argc, const char* argv[])
         try
         {
             Character character = Character::CharacterFromFile(argv[1]);
-			Player player = Player::PlayerFromFile(argv[2]);
+		    Player player = Player::PlayerFromFile(argv[2]);
 
             bool firstPlayersTurn = true;
             while (character.getHP() > 0 && player.getHP() > 0)
