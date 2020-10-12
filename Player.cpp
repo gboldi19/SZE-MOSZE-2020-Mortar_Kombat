@@ -11,8 +11,8 @@ void Player::levelup(float levelupXP)
 	while (levelupXP >= 100)
 	{
 		levelupXP -= 100;
-		HP = maxHP = round(maxHP * 1.1);
-		DMG *= 1.1;
+		HP = maxHP = static_cast<float>(round(maxHP * 1.1));
+		DMG = static_cast<float>(DMG * 1.1);
 	}
 }
 
@@ -22,7 +22,7 @@ void Player::gainXP(float damagePoints)
 	XP += damagePoints;
 }
 
-Player Player::PlayerFromFile(const std::string fileName)
+Player Player::PlayerFromFile(const std::string &fileName)
 {
 	return Player(parseUnit(fileName));
 }

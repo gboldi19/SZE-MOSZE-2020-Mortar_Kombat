@@ -8,13 +8,12 @@ class Character
 {
 protected:
 	const std::string name;
-	float maxHP, HP;
-	const float DMG;
+	float maxHP, HP, DMG;
 	const float getDMG() const;
-	static std::string* parseUnit(const std::string fileName);
+	static std::string* parseUnit(const std::string &fileName);
 	Character(const std::string* characterAttributes);
 public:
-	static Character CharacterFromFile(const std::string fileName);
+	static Character CharacterFromFile(const std::string &fileName);
 	const std::string getName() const;
 	const float getHP() const;
 	float gotHit(Character* attacker);

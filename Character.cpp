@@ -1,6 +1,6 @@
 #include "Character.h"
 
-std::string* Character::parseUnit(const std::string fileName)
+std::string* Character::parseUnit(const std::string &fileName)
 {
 	std::ifstream file(fileName);
 	if (file.good())
@@ -37,7 +37,7 @@ Character::Character(const std::string* characterAttributes)
 	HP = maxHP = stof(characterAttributes[1]);
 }
 
-Character Character::CharacterFromFile(const std::string fileName)
+Character Character::CharacterFromFile(const std::string &fileName)
 {
 	return Character(parseUnit(fileName));
 }
@@ -75,5 +75,5 @@ float Character::gotHit(Character* attacker)
 
 void Character::doHit(Character& victim)
 {
-	float _ = victim.gotHit(this);
+	victim.gotHit(this);
 }
