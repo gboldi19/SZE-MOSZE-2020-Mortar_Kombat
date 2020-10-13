@@ -1,3 +1,18 @@
+/**
+ * @file main.cpp
+ *
+ *
+ * @author Mortar_Kombat
+ *  
+ *  - Geiger Boldizsár
+ *  - Rakonczai Róbert
+ *  - Tóth Balázs
+ *
+ * @brief This file contains the main function.
+ *
+ * 
+*/
+
 #include "Character.h"
 #include <iostream>
 
@@ -15,29 +30,9 @@ int main(const int argc, const char* argv[])
             Character player1 = Character::parseUnit(argv[1]);
             Character player2 = Character::parseUnit(argv[2]);
 
-            bool firstPlayersTurn = true;
-            while (player1.getHP() > 0 && player2.getHP() > 0)
-            {
-                if (firstPlayersTurn)
-                {
-                    player2.gotHit(player1);
-                }
-                else
-                {
-                    player1.gotHit(player2);
-                }
-                firstPlayersTurn = !firstPlayersTurn;
-            }
+            Character* winner = Character::Fight(player1, player2);
 
-
-            if (player1.getHP() == 0)
-            {
-                std::cout << player2.getName() << " wins. Remaining HP: " << player2.getHP() << std::endl;
-            }
-            else
-            {
-                std::cout << player1.getName() << " wins. Remaining HP: " << player1.getHP() << std::endl;
-            }
+            std::cout << winner->getName() << " wins. Remaining HP: " << winner->getHP() << std::endl;
             return 0;
         }
         catch (const std::exception& e)
