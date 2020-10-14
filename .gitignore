@@ -8,4 +8,7 @@
 !*.sh
 !*.csv
 
+!units/*
+!test/*
+!.github/*
 !.gitignore
