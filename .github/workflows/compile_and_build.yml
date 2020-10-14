@@ -1,0 +1,21 @@
+name: Default compile and build, checking diffs
+
+on: push
+
+jobs:
+  preparation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build
+        run: g++ -std=c++17 -o a.out *.cpp
+      - name: Regaining rights
+        run: chmod a+x ./test.sh
+      - name: Preventing unwanted output append
+        run: rm -f output.csv
+      - name: Calling program from shell
+        run: ./test.sh
+      - name: Checking differences
+        run: diff output.csv expected_output.csv
+      - name: Deleting temporary file
+        run: rm -f output.csv
