@@ -8,8 +8,7 @@
 !*.sh
 !*.csv
 
-!units/*
-!test/*
-!.github/*
-!.github/workflows/*
+!units
+!unit_testing
+!.github/workflows
 !.gitignore
