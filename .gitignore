@@ -11,4 +11,5 @@
 !units/*
 !test/*
 !.github/*
+!.github/workflows/*
 !.gitignore
