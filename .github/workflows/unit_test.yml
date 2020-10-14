@@ -1,4 +1,4 @@
-name: Unit test
+name: Default compile and build, checking diffs
 
 on: push
 
