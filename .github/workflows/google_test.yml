@@ -22,7 +22,7 @@ jobs:
       - name: Prepare build environment
         run: cmake unit_testing/CMakeLists.txt
       - name: Unit test
-        run: cd test && make
+        run: cd unit_testing && make
       - name: Running the generated gtest bin
         run: unit_testing/json_unit_test
         
