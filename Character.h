@@ -27,7 +27,7 @@ public:
      *@param The reference for the name of the file which contains the character attributes.
 	 *@return The name of the file which contains the character attributes.
      */
-	static Character CharacterFromFile(const std::string &fileName);    /**
+	static Character CharacterFromFile(const std::string &fileName);   
     /**
     *
     *@return Character's name
