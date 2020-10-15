@@ -1,17 +1,18 @@
 #include "Character.h"
 
+/*
 Character::Character(const std::string characterName, const unsigned int healthPoints, const unsigned int damagePoints, const double attackSpeed) : name(characterName), DMG(damagePoints), AS(attackSpeed)
 {
 	HP = healthPoints;
 }
-
-Character Character::parseUnit(std::string fileName)
+*/
+std::string* Character::parseUnit(const std::string& fileName)
 {
 	std::ifstream file(fileName);
 	if (file.good())
 	{
 
-		static std::string characterAttributes[3];
+		static std::string characterAttributes[4];
 		std::string line;
 
 		file.ignore(14); //starting line and first column skipped
@@ -34,7 +35,7 @@ Character Character::parseUnit(std::string fileName)
         characterAttributes[3]=line;
 
 
-		return Character(characterAttributes[0], stoul(characterAttributes[1]), stoul(characterAttributes[2]), stoul(characterAttributes[3]));
+		return characterAttributes;
 	}
 	else
 	{
@@ -44,9 +45,11 @@ Character Character::parseUnit(std::string fileName)
 }
 
 Character::Character(const std::string* characterAttributes)
-	: name(characterAttributes[0]), DMG(stof(characterAttributes[2]))
+	: name(characterAttributes[0])
 {
 	HP = maxHP = stof(characterAttributes[1]);
+	DMG = stof(characterAttributes[2]);
+    AS = stof(characterAttributes[3]);
 }
 
 Character Character::CharacterFromFile(const std::string &fileName)
@@ -91,21 +94,25 @@ float Character::gotHit(Character* attacker)
 	}
 }
 
+void Character::doHit(Character& victim)
+{
+	victim.gotHit(this);
+}
+
 Character* Character::Fight (Character &player1, Character &player2)
 {
-    float ASTimer1 = 0;
-    float ASTimer2 = 0;
+    float ASTimer1 = 0, ASTimer2 = 0;
 
     while (player1.getHP() > 0 && player2.getHP() > 0)
     {
         if (ASTimer1 <= ASTimer2)
         {
-            player2.gotHit(player1);
+            player2.doHit(player2);
             ASTimer1 += player1.getAS();
         }
         else
         {
-            player1.gotHit(player2);
+            player1.doHit(player1);
             ASTimer2 += player2.getAS();
         }
     }

@@ -15,29 +15,19 @@ class Character
 {
 protected:
 	const std::string name;
-	unsigned int HP;
-	const unsigned int DMG;
-    const float AS;
-    const unsigned int getDMG() const;
+	float maxHP, HP, DMG;
+	const float getDMG() const;
     const float getAS() const;
-    void gotHit(const Character &attacker);
+    Character(const std::string* characterAttributes);
+    static std::string* parseUnit(const std::string& fileName);
+    virtual void doHit(Character& victim);
 public:
     /**
-     *The Character constructor.
-     *It creates the Character object from the given parameters.
-     *@param The Character's Name
-     *@param The Character's Health Points
-     *@param The Character's Damage points
-     *@param The Character's Attack Speed
+     *This function calls th parseUnit function.
+     *@param The reference for the name of the file which contains the character attributes.
+	 *@return The name of the file which contains the character attributes.
      */
-	Character(const std::string characterName, const unsigned int healthPoints, const unsigned int damagePoints, const double attackSpeed);
-    /**
-    *It parses JSON object to Character.
-    *@param File name 
-    *@throw throw std::runtime_error("File not found!");
-    *@return to the Character constructor
-    */
-	static Character parseUnit(std::string fileName);
+	static Character CharacterFromFile(const std::string &fileName);    /**
     /**
     *
     *@return Character's name
@@ -46,7 +36,13 @@ public:
     /**
     *@return Character's Health Points
     */
-	const unsigned int getHP() const;
+	const float getHP() const;
+	/**
+	*Calculates the potentialXP from the damage dealt.
+	*@param The function's argument is the attacker's pointer.
+	*@return Returns the poteintalXP.
+	*/
+    float gotHit(Character* attacker);
     /**
     *This function 'plays the game' between the two players.
     *@param player1
