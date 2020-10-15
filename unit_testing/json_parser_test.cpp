@@ -1,4 +1,4 @@
-#include "../JSONParser.h"
+#include "../JSONParser.cpp"
 
 #include <gtest/gtest.h>
 
