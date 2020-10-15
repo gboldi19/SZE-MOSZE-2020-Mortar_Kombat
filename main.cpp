@@ -14,11 +14,12 @@
 */
 
 #include "Character.h"
+#include "Player.h"
 #include <iostream>
 
 int main(const int argc, const char* argv[])
 {
-    if (argc != 3)
+	if (argc != 3)
     {
         std::cerr << "Error, exiting with: " << "Incorrect number of arguments!" << std::endl;
         return 1;

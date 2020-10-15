@@ -5,12 +5,14 @@ Character::Character(const std::string characterName, const unsigned int healthP
 	HP = healthPoints;
 }
 
-Character Character::parseUnit(std::string fileName)
+std::string* Character::parseUnit(const std::string &fileName)
+
 {
 	std::ifstream file(fileName);
 	if (file.good())
 	{
-		std::string characterAttributes[4];
+
+		static std::string characterAttributes[3];
 		std::string line;
 
 		file.ignore(14); //starting line and first column skipped
@@ -32,12 +34,25 @@ Character Character::parseUnit(std::string fileName)
 		std::getline(file, line);
         characterAttributes[3]=line;
 
-		return Character(characterAttributes[0], stoul(characterAttributes[1]), stoul(characterAttributes[2]), stoul(characterAttributes[3]));
+
+		return characterAttributes;
 	}
 	else
 	{
 		throw std::runtime_error("File not found!");
+		return NULL;
 	}
+}
+
+Character::Character(const std::string* characterAttributes)
+	: name(characterAttributes[0]), DMG(stof(characterAttributes[2]))
+{
+	HP = maxHP = stof(characterAttributes[1]);
+}
+
+Character Character::CharacterFromFile(const std::string &fileName)
+{
+	return Character(parseUnit(fileName));
 }
 
 const std::string Character::getName() const
@@ -45,12 +60,12 @@ const std::string Character::getName() const
 	return name;
 }
 
-const unsigned int Character::getHP() const
+const float Character::getHP() const
 {
 	return HP;
 }
 
-const unsigned int Character::getDMG() const
+const float Character::getDMG() const
 {
 	return DMG;
 }
@@ -60,15 +75,20 @@ const float Character::getAS() const
     return AS;
 }
 
-void Character::gotHit(const Character &attacker)
+
+float Character::gotHit(Character* attacker)
 {
-	if (int(HP - attacker.getDMG()) > 0)
+	float potentialXP = attacker->getDMG();
+	if (HP - potentialXP > 0)
 	{
-		HP = HP - attacker.getDMG();
+		HP -= potentialXP;
+		return potentialXP;
 	}
 	else
 	{
+		potentialXP = HP;
 		HP = 0;
+		return potentialXP;
 	}
 }
 
@@ -99,4 +119,5 @@ Character* Character::Fight (Character &player1, Character &player2)
     {
         return &player1;
     }
+
 }

@@ -6,13 +6,14 @@
  * @author Mortar_Kombat
  * 
 */
-
+#ifndef CHARACTER_H
+#define CHARACTER_H
 #include <string>
 #include <fstream>
 
 class Character
 {
-private:
+protected:
 	const std::string name;
 	unsigned int HP;
 	const unsigned int DMG;
@@ -53,4 +54,7 @@ public:
     *@return the winner player
     */
     static Character* Fight (Character &player1, Character &player2);
+
 };
+
+#endif
