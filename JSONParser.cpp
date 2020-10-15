@@ -4,12 +4,6 @@
 #include <string>
 #include <any>
 
-//INSTRUCTIONS: Specify mode = "inclusive" for an allowed character set. Exclusive is default.
-static std::string::size_type findNext(std::string &s, char target, std::unordered_set<char> set = {}, std::string mode = "");
-static void checkString(std::string& s);
-static std::any string2any(std::string& s);
-static std::map<std::string, std::any> parseString(std::string& s);
-
 std::string::size_type findNext(std::string &s, char target, std::unordered_set<char> set, std::string mode)
 {
     const std::string::size_type pos = s.find(target);
