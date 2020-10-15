@@ -3,7 +3,7 @@ var indexSectionsWithContent =
   0: "cfgmps",
   1: "cp",
   2: "m",
-  3: "cfgp",
+  3: "cfg",
   4: "s"
 };
 
