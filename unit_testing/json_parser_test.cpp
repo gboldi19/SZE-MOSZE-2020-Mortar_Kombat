@@ -47,7 +47,7 @@ TEST(jsonParserTest, bad_json)
 {
     const std::string expectedError = "Incorrect value in file!";
     std::ifstream jsonFile;
-    jsonFile.open("unit_testing/missing_bracket.json");
+    jsonFile.open("unit_testing/missing_comma.json");
     try
     {
         JSONParser::parse(jsonFile);
