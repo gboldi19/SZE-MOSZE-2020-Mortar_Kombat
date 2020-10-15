@@ -1,7 +1,7 @@
 var indexSectionsWithContent =
 {
   0: "cfgmps",
-  1: "c",
+  1: "cp",
   2: "m",
   3: "cfgp",
   4: "s"

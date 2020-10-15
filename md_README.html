@@ -62,14 +62,18 @@ $(function() {
 <div class="title">SZE-MOSZE-2020-Mortar_Kombat </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>This program simulates a turn based fight between two characters.</p>
+<div class="textblock"><p>This program simulates a turn based fight between a regular character and a player.</p>
 <h2>Input instructions</h2>
 <h3>./a.out</h3>
 <p>In order to be able to use the <code>a.out</code> command, you must compile all the files in the scope with <code>.cpp</code> extension first, which is generating the <code>a.out</code> file if no output name is specified.<br />
 After compiling the user can refer to the executable from the current working directory with <code>./a.out</code> followed by the given arguments. <br />
-***The proper synthax is:*** ./a.out &lt;character_attributes_json_file_1&gt; &lt;character_attributes_json_file_2&gt;</p>
+***The proper synthax is:*** ./a.out &lt;character_attributes_json_file_1&gt; &lt;player_attributes_json_file_2&gt;</p>
 <p>Differring number of arguments and non-existent files throw error. ### '.json' format example: </p><div class="fragment"><div class="line">{</div><div class="line">  &quot;name&quot; : &quot;Kakarott&quot;,</div><div class="line">  &quot;hp&quot; : 43,</div><div class="line">  &quot;dmg&quot; : 9</div><div class="line">}</div></div><!-- fragment --><h2>Simulation</h2>
-<p>The characters fight in turns back and forth repeatedly, starting with the first character. By every attack, the attacked character's hit points reduce by the attacker character's damage points. The simulation ends when one reaches 0 hit points. The program announces the winner and it's remaining HP, then stops.</p>
+<p>The characters fight in turns back and forth repeatedly, starting with the regular character. By every attack, the attacked character's hit points reduce by the attacker character's damage points. For every damage point the player inflicts it gains an experience point. 100 experience points cause the player to level up resulting in:</p><ul>
+<li>10% more maximum hit points (rounded)</li>
+<li>10% more damage points</li>
+<li>instant hit point regeneration The simulation ends when one reaches 0 hit points. The program announces the winner and it's remaining HP, then stops.</li>
+</ul>
 <p>Documentation: <a href="https://teaching-projects.github.io/SZE-MOSZE-2020-Mortar_Kombat/">https://teaching-projects.github.io/SZE-MOSZE-2020-Mortar_Kombat/</a> </p>
 </div></div><!-- contents -->
 <!-- start footer part -->

@@ -59,24 +59,26 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">Character Member List</div>  </div>
+<div class="title">Player Member List</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>This is the complete list of members for <a class="el" href="classCharacter.html">Character</a>, including all inherited members.</p>
+<p>This is the complete list of members for <a class="el" href="classPlayer.html">Player</a>, including all inherited members.</p>
 <table class="directory">
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>AS</b> (defined in <a class="el" href="classCharacter.html">Character</a>)</td><td class="entry"><a class="el" href="classCharacter.html">Character</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
   <tr><td class="entry"><a class="el" href="classCharacter.html#a2fa16f7b6c94fc7f7eb97e0e60dbc965">Character</a>(const std::string characterName, const unsigned int healthPoints, const unsigned int damagePoints, const double attackSpeed)</td><td class="entry"><a class="el" href="classCharacter.html">Character</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>DMG</b> (defined in <a class="el" href="classCharacter.html">Character</a>)</td><td class="entry"><a class="el" href="classCharacter.html">Character</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr><td class="entry"><a class="el" href="classCharacter.html#a281ed7b7f997af3c9d773c80c6f58513">Fight</a>(Character &amp;player1, Character &amp;player2)</td><td class="entry"><a class="el" href="classCharacter.html">Character</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>getAS</b>() const (defined in <a class="el" href="classCharacter.html">Character</a>)</td><td class="entry"><a class="el" href="classCharacter.html">Character</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>getDMG</b>() const (defined in <a class="el" href="classCharacter.html">Character</a>)</td><td class="entry"><a class="el" href="classCharacter.html">Character</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classCharacter.html#af8adb5fabcbe6b8b8f04e0ee4a239935">getHP</a>() const</td><td class="entry"><a class="el" href="classCharacter.html">Character</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classCharacter.html#a1ab1d31d7776d21a0315434acc61b342">getName</a>() const</td><td class="entry"><a class="el" href="classCharacter.html">Character</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>gotHit</b>(const Character &amp;attacker) (defined in <a class="el" href="classCharacter.html">Character</a>)</td><td class="entry"><a class="el" href="classCharacter.html">Character</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>HP</b> (defined in <a class="el" href="classCharacter.html">Character</a>)</td><td class="entry"><a class="el" href="classCharacter.html">Character</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>name</b> (defined in <a class="el" href="classCharacter.html">Character</a>)</td><td class="entry"><a class="el" href="classCharacter.html">Character</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr><td class="entry"><a class="el" href="classCharacter.html#a09666e68540c318a61b44f1d1b322575">parseUnit</a>(std::string fileName)</td><td class="entry"><a class="el" href="classCharacter.html">Character</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>doHit</b>(Character &amp;victim) (defined in <a class="el" href="classPlayer.html">Player</a>)</td><td class="entry"><a class="el" href="classPlayer.html">Player</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classCharacter.html#a281ed7b7f997af3c9d773c80c6f58513">Fight</a>(Character &amp;player1, Character &amp;player2)</td><td class="entry"><a class="el" href="classCharacter.html">Character</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>getAS</b>() const (defined in <a class="el" href="classCharacter.html">Character</a>)</td><td class="entry"><a class="el" href="classCharacter.html">Character</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>getDMG</b>() const (defined in <a class="el" href="classCharacter.html">Character</a>)</td><td class="entry"><a class="el" href="classCharacter.html">Character</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classCharacter.html#af8adb5fabcbe6b8b8f04e0ee4a239935">getHP</a>() const</td><td class="entry"><a class="el" href="classCharacter.html">Character</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classCharacter.html#a1ab1d31d7776d21a0315434acc61b342">getName</a>() const</td><td class="entry"><a class="el" href="classCharacter.html">Character</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>gotHit</b>(const Character &amp;attacker) (defined in <a class="el" href="classCharacter.html">Character</a>)</td><td class="entry"><a class="el" href="classCharacter.html">Character</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>HP</b> (defined in <a class="el" href="classCharacter.html">Character</a>)</td><td class="entry"><a class="el" href="classCharacter.html">Character</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>name</b> (defined in <a class="el" href="classCharacter.html">Character</a>)</td><td class="entry"><a class="el" href="classCharacter.html">Character</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classCharacter.html#a09666e68540c318a61b44f1d1b322575">parseUnit</a>(std::string fileName)</td><td class="entry"><a class="el" href="classCharacter.html">Character</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>PlayerFromFile</b>(const std::string &amp;fileName) (defined in <a class="el" href="classPlayer.html">Player</a>)</td><td class="entry"><a class="el" href="classPlayer.html">Player</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
 </table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
