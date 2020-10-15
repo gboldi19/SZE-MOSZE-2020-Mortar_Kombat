@@ -2,69 +2,56 @@
 
 #include <gtest/gtest.h>
 
+std::map<std::string, std::any> expectedMap;
+expectedMap.insert(std::pair<std::string, std::any> ("name", "Kakarott"));
+expectedMap.insert(std::pair<std::string, std::any> ("hp", 380));
+expectedMap.insert(std::pair<std::string, std::any> ("dmg", 20));
 
-TEST(jsonParserTest, test_iostream)
-{
-    std::map<std::string, std::any> outputMap; 
-    std::map<std::string, std::any> expectedMap{
-        {"name"}, {"Kakarott"},
-        {"hp"}, {380},
-        {"dmg"}, {20}};                     
+TEST(jsonParserTest, iostream)
+{    
     std::ifstream jsonFile;
     jsonFile.open("./units/unit1.json");
-    outputMap = JSONParser::parse(jsonFile);
+    std::map<std::string, std::any> outputMap = JSONParser::parse(jsonFile);
     jsonFile.close();
-    for (auto e : expectedMap)
+    for (auto i : expectedMap)
     {
-        ASSERT_EQ(outputMap[e.first],e.second);
+        ASSERT_EQ(outputMap[i.first], i.second);
     }
 }
 
-TEST(jsonParserTest, test_filename)
-{
-    std::map<std::string, std::any> outputMap; 
-    std::map<std::string, std::any> expectedMap{
-        {"name"}, {"Kakarott"},
-        {"hp"}, {380},
-        {"dmg"}, {20}};
-    std::string fname = "./units/unit2.json";
-    outputMap = JSONParser::parse(fname, true);
-    for (auto e : expectedMap)
+TEST(jsonParserTest, filename)
+{   
+    outputMap = JSONParser::parse("./units/unit1.json", true);
+    for (auto i : expectedMap)
     {
-        ASSERT_EQ(outputMap[e.first],e.second);
+        ASSERT_EQ(outputMap[i.first], i.second);
     }
 }
 
-TEST(jsonParserTest, test_string)
+TEST(jsonParserTest, string)
 {
-    std::map<std::string, std::any> outputMap; 
-    std::map<std::string, std::any> expectedMap{
-        {"name"}, {"Kakarott"},
-        {"hp"}, {380},
-        {"dmg"}, {20}};          
-    std::string fname = "./units/unit3.json";
     std::ifstream jsonFile;
-    jsonFile.open(fname);
+    jsonFile.open("./units/unit1.json");
     std::string line;
-    std::string jsonToString = "";
-    while(getline(jsonFile,line)) jsonToString += line;
+    std::string jsonString = "";
+    while (getline(jsonFile,line)) jsonString += line;
     jsonFile.close();
-    outputMap = JSONParser::parse(jsonFile);
+    outputMap = JSONParser::parse(jsonString);
     for (auto e : expectedMap)
     {
         ASSERT_EQ(outputMap[e.first],e.second);
     }
 }
 
-TEST(jsonParserTest, wrongJsonFile)
+TEST(jsonParserTest, bad_json)
 {
-    const std::string expectedError = "Error in file: incorrect value.";
-    const std::string fname = "unit_testing/missing_comma.json";
+    const std::string expectedError = "Incorrect value in file!";
     std::ifstream jsonFile;
-    jsonFile.open(fname);
+    jsonFile.open("unit_testing/missing_bracket.json");
     try
     {
         JSONParser::parse(jsonFile);
+        jsonFile.close();
     }
     catch(std::string e)
     {
