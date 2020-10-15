@@ -3,15 +3,13 @@
 #include <gtest/gtest.h>
 
 
-TEST(parserTest, test_iostream)
+TEST(jsonParserTest, test_iostream)
 {
     std::map<std::string, std::any> outputMap; 
-    std::map<std::string, std::any> expectedMap
-    {
-        {"name", "Kakarott"},
-        {"hp", 380},
-        {"dmg", 20}
-    }                       
+    std::map<std::string, std::any> expectedMap{
+        {"name"}, {"Kakarott"},
+        {"hp"}, {380},
+        {"dmg"}, {20}};                     
     std::ifstream jsonFile;
     jsonFile.open("./units/unit1.json");
     outputMap = JSONParser::parse(jsonFile);
@@ -22,32 +20,28 @@ TEST(parserTest, test_iostream)
     }
 }
 
-TEST(parserTest, test_filename)
+TEST(jsonParserTest, test_filename)
 {
     std::map<std::string, std::any> outputMap; 
-    std::map<std::string, std::any> expectedMap
-    {
-        {"name", "Kakarott"},
-        {"hp", 380},
-        {"dmg", 20}
-    }                       
+    std::map<std::string, std::any> expectedMap{
+        {"name"}, {"Kakarott"},
+        {"hp"}, {380},
+        {"dmg"}, {20}};
     std::string fname = "./units/unit2.json";
-    outputMap = JSONParser::parse(fname);
+    outputMap = JSONParser::parse(fname, true);
     for (auto e : expectedMap)
     {
         ASSERT_EQ(outputMap[e.first],e.second);
     }
 }
 
-TEST(parserTest, test_string)
+TEST(jsonParserTest, test_string)
 {
     std::map<std::string, std::any> outputMap; 
-    std::map<std::string, std::any> expectedMap
-    {
-        {"name", "Kakarott"},
-        {"hp", 380},
-        {"dmg", 20}
-    }             
+    std::map<std::string, std::any> expectedMap{
+        {"name"}, {"Kakarott"},
+        {"hp"}, {380},
+        {"dmg"}, {20}};          
     std::string fname = "./units/unit3.json";
     std::ifstream jsonFile;
     jsonFile.open(fname);
@@ -62,7 +56,7 @@ TEST(parserTest, test_string)
     }
 }
 
-TEST(parserTest, wrongJsonFile)
+TEST(jsonParserTest, wrongJsonFile)
 {
     const std::string expectedError = "Error in file: incorrect value.";
     const std::string fname = "unit_testing/missing_comma.json";

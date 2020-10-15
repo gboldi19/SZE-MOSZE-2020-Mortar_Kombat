@@ -21,5 +21,4 @@ jobs:
         run: cmake unit_testing/CMakeLists.txt
       - name: Unit testing
         run: cd unit_testing && make
-      - name: Unit tests running
-        run: unit_testing/parseTestProcess
+        
