@@ -1,6 +1,7 @@
 #ifndef JSONPARSER_H
 #define JSONPARSER_H
 
+#include "Character.h"
 #include <map>
 #include <string>
 #include <any>
