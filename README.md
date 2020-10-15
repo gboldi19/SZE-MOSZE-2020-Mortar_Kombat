@@ -23,3 +23,5 @@ The characters fight in turns back and forth repeatedly, starting with the first
 By every attack, the attacked character's hit points reduce by the attacker character's damage points.  
 The simulation ends when one reaches 0 hit points.  
 The program announces the winner and it's remaining HP, then stops.  
+
+Documentation: https://teaching-projects.github.io/SZE-MOSZE-2020-Mortar_Kombat/
