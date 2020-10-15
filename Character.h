@@ -1,3 +1,6 @@
+#ifndef CHARACTER_H
+#define CHARACTER_H
+
 #include "JSONParser.h"
 #include <string>
 #include <fstream>
@@ -18,3 +21,5 @@ public:
 	const unsigned int getDMG() const;
 	void gotHit(const Character &attacker);
 };
+
+#endif
