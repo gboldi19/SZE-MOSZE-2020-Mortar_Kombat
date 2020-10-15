@@ -15,7 +15,7 @@ class Character
 {
 protected:
 	const std::string name;
-	float maxHP, HP, DMG;
+	float maxHP, HP, DMG, AS;
 	const float getDMG() const;
     const float getAS() const;
     Character(const std::string* characterAttributes);
