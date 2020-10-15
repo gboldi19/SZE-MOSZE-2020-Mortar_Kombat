@@ -1,6 +1,7 @@
 #ifndef JSONPARSER_H
 #define JSONPARSER_H
 
+#include "Character.h"
 #include <map>
 #include <string>
 #include <any>
@@ -8,7 +9,7 @@
 #include <streambuf>
 #include <unordered_set>
 
-class JSONParser
+namespace JSONParser
 {
 public:
     //INSTRUCTIONS: Provide parseble string (default) or text file path (isFile must be set true)!
