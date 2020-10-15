@@ -5,8 +5,7 @@ Character::Character(const std::string characterName, const unsigned int healthP
 	HP = healthPoints;
 }
 
-std::string* Character::parseUnit(const std::string &fileName)
-
+Character Character::parseUnit(std::string fileName)
 {
 	std::ifstream file(fileName);
 	if (file.good())
