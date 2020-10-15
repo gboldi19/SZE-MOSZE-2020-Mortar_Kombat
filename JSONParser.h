@@ -10,12 +10,6 @@
 
 class JSONParser
 {
-private:
-    //INSTRUCTIONS: Specify mode = "inclusive" for an allowed character set. Exclusive is default.
-    static std::string::size_type findNext(std::string &s, char target, std::unordered_set<char> set = {}, std::string mode = "");
-    static void checkString(std::string& s);
-    static std::any string2any(std::string& s);
-    static std::map<std::string, std::any> parseString(std::string& s);
 public:
     //INSTRUCTIONS: Provide parseble string (default) or text file path (isFile must be set true)!
     static std::map<std::string, std::any> parse(std::string inputString = "", bool isFile = false);
