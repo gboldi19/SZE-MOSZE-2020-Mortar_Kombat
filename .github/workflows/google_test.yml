@@ -21,10 +21,8 @@ jobs:
         run: g++ -std=c++17 *.cpp
       - name: Prepare build environment
         run: cmake unit_testing/CMakeLists.txt
-      - name: Unit test directory opening
-        run: cd unit_testing 
-      - name: Starting build
-        run: make
+      - name: Unit test
+        run: cd test && make
       - name: Running the generated gtest bin
         run: unit_testing/json_unit_test
         
