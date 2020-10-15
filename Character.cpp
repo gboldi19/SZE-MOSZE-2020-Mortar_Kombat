@@ -34,7 +34,7 @@ Character Character::parseUnit(std::string fileName)
         characterAttributes[3]=line;
 
 
-		return characterAttributes;
+		return Character(characterAttributes[0], stoul(characterAttributes[1]), stoul(characterAttributes[2]), stoul(characterAttributes[3]));
 	}
 	else
 	{
