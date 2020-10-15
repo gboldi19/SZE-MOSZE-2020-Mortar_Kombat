@@ -1,5 +1,9 @@
 #include "JSONParser.h"
 
+#include <map>
+#include <string>
+#include <any>
+
 std::string::size_type JSONParser::findNext(std::string &s, char target, std::unordered_set<char> set, std::string mode)
 {
     const std::string::size_type pos = s.find(target);
