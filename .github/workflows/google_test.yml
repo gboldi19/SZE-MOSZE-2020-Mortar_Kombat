@@ -10,15 +10,25 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install google test and cmake
-        run: sudo apt install libgtest-dev && sudo apt install cmake
-      - name: Build phase
-        run: cd /usr/src/gtest && sudo cmake CMakeLists.txt && sudo make
-      - name: Create references
-        run: sudo ln -st /usr/lib/ /usr/src/gtest/libgtest.a && sudo ln -st /usr/lib/ /usr/src/gtest/libgtest_main.a
-      - name: Compile
+        run: sudo apt install libgtest-dev cmake
+      - name: Build phase #1
+        run: cd /usr/src/gtest
+      - name: Build phase #2
+        run: sudo cmake CMakeLists.txt
+      - name: Build phase #3
+        run: sudo make
+      - name: Create symbolic references #1
+        run: sudo ln -st /usr/lib/ /usr/src/gtest/libgtest.a
+      - name: Create symbolic references #2
+        run: sudo ln -st /usr/lib/ /usr/src/gtest/libgtest_main.a
+      - name: Compile and linking .cpp files
         run: g++ -std=c++17 *.cpp
       - name: Prepare build environment
         run: cmake unit_testing/CMakeLists.txt
-      - name: Unit testing
-        run: cd unit_testing && make
+      - name: Unit test directory opening
+        run: cd unit_testing 
+      - name: Starting build
+        run: make
+      - name: Running the generated gtest bin
+        run: unit_testing/json_unit_test
         
