@@ -4,7 +4,13 @@
 #include <string>
 #include <any>
 
-std::string::size_type JSONParser::findNext(std::string &s, char target, std::unordered_set<char> set, std::string mode)
+//INSTRUCTIONS: Specify mode = "inclusive" for an allowed character set. Exclusive is default.
+static std::string::size_type findNext(std::string &s, char target, std::unordered_set<char> set = {}, std::string mode = "");
+static void checkString(std::string& s);
+static std::any string2any(std::string& s);
+static std::map<std::string, std::any> parseString(std::string& s);
+
+std::string::size_type findNext(std::string &s, char target, std::unordered_set<char> set, std::string mode)
 {
     const std::string::size_type pos = s.find(target);
     if (pos == -1)
@@ -38,7 +44,7 @@ std::string::size_type JSONParser::findNext(std::string &s, char target, std::un
     return pos;
 }
 
-void JSONParser::checkString(std::string& s)
+void checkString(std::string& s)
 {
     if (s.length() == 0) //only two '"' signs --> error
     {
@@ -58,7 +64,7 @@ void JSONParser::checkString(std::string& s)
     }
 }
 
-std::any JSONParser::string2any(std::string& s)
+std::any string2any(std::string& s)
 {    
     if (s[0] == '"') //starts with '"' --> can be string
     {
@@ -90,7 +96,7 @@ std::any JSONParser::string2any(std::string& s)
     }
 }
 
-std::map<std::string, std::any> JSONParser::parseString(std::string& s)
+std::map<std::string, std::any> parseString(std::string& s)
 {
     std::map<std::string, std::any> map;
     std::string key, valueString;
