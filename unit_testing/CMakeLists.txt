@@ -5,7 +5,7 @@ include_directories(${GTEST_INCLUDE_DIRS})
  
 # Link runTests with what we want to test 
 # and the GTest and pthread library
-add_library(TestCode ../JSONParser.cpp)
-add_executable(jsonParserTest json_parser_test.cpp)
+add_library(Code_Lib ../JSONParser.cpp)
+add_executable(json_unit_test json_parser_test.cpp)
 
-target_link_libraries(jsonParserTest ${GTEST_LIBRARIES} pthread TestCode)
+target_link_libraries(json_unit_test ${GTEST_LIBRARIES} pthread Code_Lib)
