@@ -1,6 +1,10 @@
 #include "JSONParser.h"
 #include "Character.h"
 
+#include <fstream>
+#include <map>
+#include <any>
+
 Character::Character(const std::string characterName, const unsigned int healthPoints, const unsigned int damagePoints)
     : name(characterName), DMG(damagePoints)
 {

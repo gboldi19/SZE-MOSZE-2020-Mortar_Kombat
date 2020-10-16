@@ -3,6 +3,8 @@
 #include <map>
 #include <string>
 #include <any>
+#include <streambuf>
+#include <unordered_set>
 
 std::string::size_type JSONParser::findNext(std::string &s, char target, std::unordered_set<char> set, std::string mode)
 {

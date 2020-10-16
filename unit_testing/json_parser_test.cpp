@@ -1,6 +1,10 @@
-#include "JSONParser.h"
-
+#include "../JSONParser.h"
 #include <gtest/gtest.h>
+
+#include <map>
+#include <string>
+#include <any>
+#include <fstream>
 
 std::map<std::string, std::any> expectedMap;
 expectedMap.insert(std::pair<std::string, std::any> ("name", "Kakarott"));
