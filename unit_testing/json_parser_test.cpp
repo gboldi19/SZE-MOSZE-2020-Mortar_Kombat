@@ -1,4 +1,4 @@
-#include "../JSONParser.h"
+#include "/../JSONParser.h"
 #include <gtest/gtest.h>
 
 #include <map>
@@ -14,7 +14,7 @@ expectedMap.insert(std::pair<std::string, std::any> ("dmg", 20));
 TEST(jsonParserTest, iostream)
 {    
     std::ifstream jsonFile;
-    jsonFile.open("units/unit1.json");
+    jsonFile.open("/../units/unit1.json");
     std::map<std::string, std::any> outputMap = JSONParser::parse(jsonFile);
     jsonFile.close();
     for (auto i : expectedMap)
@@ -25,7 +25,7 @@ TEST(jsonParserTest, iostream)
 
 TEST(jsonParserTest, filename)
 {   
-    outputMap = JSONParser::parse("units/unit1.json", true);
+    outputMap = JSONParser::parse("/../units/unit1.json", true);
     for (auto i : expectedMap)
     {
         ASSERT_EQ(outputMap[i.first], i.second);
@@ -35,7 +35,7 @@ TEST(jsonParserTest, filename)
 TEST(jsonParserTest, string)
 {
     std::ifstream jsonFile;
-    jsonFile.open("units/unit1.json");
+    jsonFile.open("/../units/unit1.json");
     std::string line;
     std::string jsonString = "";
     while (getline(jsonFile,line)) jsonString += line;
@@ -51,7 +51,7 @@ TEST(jsonParserTest, bad_json)
 {
     const std::string expectedError = "Incorrect value in file!";
     std::ifstream jsonFile;
-    jsonFile.open("unit_testing/missing_comma.json");
+    jsonFile.open("/../unit_testing/missing_comma.json");
     try
     {
         JSONParser::parse(jsonFile);
