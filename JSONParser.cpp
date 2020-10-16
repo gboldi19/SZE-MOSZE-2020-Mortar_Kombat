@@ -60,7 +60,7 @@ void JSONParser::checkString(std::string& s)
     }
 }
 
-std::any JSONParser::string2any(std::string& s)
+std::any JSONParser::string2any(std::string s)
 {    
     if (s[0] == '"') //starts with '"' --> can be string
     {
