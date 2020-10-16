@@ -1,11 +1,18 @@
 #include "Character.h"
 
-std::string* Character::parseUnit(const std::string &fileName)
+/*
+Character::Character(const std::string characterName, const unsigned int healthPoints, const unsigned int damagePoints, const double attackSpeed) : name(characterName), DMG(damagePoints), AS(attackSpeed)
+{
+	HP = healthPoints;
+}
+*/
+std::string* Character::parseUnit(const std::string& fileName)
 {
 	std::ifstream file(fileName);
 	if (file.good())
 	{
-		static std::string characterAttributes[3];
+
+		static std::string characterAttributes[4];
 		std::string line;
 
 		file.ignore(14); //starting line and first column skipped
@@ -20,7 +27,13 @@ std::string* Character::parseUnit(const std::string &fileName)
 
 		file.ignore(10); //first column skipped
 		std::getline(file, line);
+        line.resize(line.length() - 1); //',' chopped off
 		characterAttributes[2] = line;
+
+        file.ignore(9); //first column skipped
+		std::getline(file, line);
+        characterAttributes[3]=line;
+
 
 		return characterAttributes;
 	}
@@ -32,9 +45,11 @@ std::string* Character::parseUnit(const std::string &fileName)
 }
 
 Character::Character(const std::string* characterAttributes)
-	: name(characterAttributes[0]), DMG(stof(characterAttributes[2]))
+	: name(characterAttributes[0])
 {
 	HP = maxHP = stof(characterAttributes[1]);
+	DMG = stof(characterAttributes[2]);
+    AS = stof(characterAttributes[3]);
 }
 
 Character Character::CharacterFromFile(const std::string &fileName)
@@ -57,6 +72,12 @@ const float Character::getDMG() const
 	return DMG;
 }
 
+const float Character::getAS() const
+{
+    return AS;
+}
+
+
 float Character::gotHit(Character* attacker)
 {
 	float potentialXP = attacker->getDMG();
@@ -76,4 +97,33 @@ float Character::gotHit(Character* attacker)
 void Character::doHit(Character& victim)
 {
 	victim.gotHit(this);
+}
+
+Character* Character::Fight (Character &player1, Character &player2)
+{
+    float ASTimer1 = 0, ASTimer2 = 0;
+
+    while (player1.getHP() > 0 && player2.getHP() > 0)
+    {
+        if (ASTimer1 <= ASTimer2)
+        {
+            player2.doHit(player2);
+            ASTimer1 += player1.getAS();
+        }
+        else
+        {
+            player1.doHit(player1);
+            ASTimer2 += player2.getAS();
+        }
+    }
+
+    if (player1.getHP() == 0) 
+    {
+        return &player2;
+    }
+    else
+    {
+        return &player1;
+    }
+
 }

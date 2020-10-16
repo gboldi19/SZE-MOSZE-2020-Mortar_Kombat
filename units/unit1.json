@@ -1,5 +1,6 @@
 {
   "name" : "Kakarott",
   "hp" : 380,
-  "dmg" : 20
+  "dmg" : 20,
+  "as" : 1.9
 }

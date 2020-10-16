@@ -28,3 +28,5 @@ For every damage point the player inflicts it gains an experience point.
 - instant hit point regeneration   
 The simulation ends when one reaches 0 hit points.  
 The program announces the winner and it's remaining HP, then stops.  
+
+Documentation: https://teaching-projects.github.io/SZE-MOSZE-2020-Mortar_Kombat/
