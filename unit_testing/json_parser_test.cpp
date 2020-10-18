@@ -1,77 +1,44 @@
 #include "../JSONParser.h"
 #include <gtest/gtest.h>
-
 #include <map>
 #include <string>
-#include <any>
 #include <fstream>
+#include <any>
 
-TEST(jsonParserTest, iostream)
-{    
-    std::map<std::string, std::any> expectedMap;
-    expectedMap.insert(std::pair<std::string, std::any> ("name", "Kakarott"));
-    expectedMap.insert(std::pair<std::string, std::any> ("hp", 380));
-    expectedMap.insert(std::pair<std::string, std::any> ("dmg", 20));
-
-    std::ifstream jsonFile;
-    jsonFile.open("../units/unit1.json");
-    std::map<std::string, std::any> outputMap = JSONParser::parse(jsonFile);
-    jsonFile.close();
-    for (auto i : expectedMap)
-    {
-        ASSERT_EQ(outputMap[i.first], i.second);
-    }
+TEST(jsonParserTest, parsetest)
+{
+	ASSERT_THROW(JSONParser::parse("none.json", true), std::runtime_error);
+    ASSERT_NO_THROW(JSONParser::parse("../units/unit1.json", true));
 }
 
-TEST(jsonParserTest, filename)
+TEST(jsonParserTest, valcheck)
 {
-    std::map<std::string, std::any> expectedMap;
-    expectedMap.insert(std::pair<std::string, std::any> ("name", "Kakarott"));
-    expectedMap.insert(std::pair<std::string, std::any> ("hp", 380));
-    expectedMap.insert(std::pair<std::string, std::any> ("dmg", 20));
-  
-    std::map<std::string, std::any> outputMap = JSONParser::parse("../units/unit1.json", true);
-    for (auto i : expectedMap)
-    {
-        ASSERT_EQ(outputMap[i.first], i.second);
-    }
+	std::map<std::string, std::any> template_inp = JSONParser::parse("{\"string\":\"Stringtype\",\"int\":4,\"float\":1.6}");
+	ASSERT_EQ(std::any_cast<std::string>(template_inp["string"]), "Stringtype");
+    ASSERT_EQ(std::any_cast<float>(template_inp["int"]), 4);
+    ASSERT_EQ(std::any_cast<float>(template_inp["float"]), 1.6f);
 }
 
-TEST(jsonParserTest, string)
+TEST(jsonParserTest, filetest)
 {
-    std::map<std::string, std::any> expectedMap;
-    expectedMap.insert(std::pair<std::string, std::any> ("name", "Kakarott"));
-    expectedMap.insert(std::pair<std::string, std::any> ("hp", 380));
-    expectedMap.insert(std::pair<std::string, std::any> ("dmg", 20));
-
-    std::ifstream jsonFile;
-    jsonFile.open("../units/unit1.json");
-    std::string line;
-    std::string jsonString = "";
-    while (getline(jsonFile,line)) jsonString += line;
-    jsonFile.close();
-    std::map<std::string, std::any> outputMap = JSONParser::parse(jsonString);
-    for (auto e : expectedMap)
-    {
-        ASSERT_EQ(outputMap[e.first],e.second);
-    }
-}
-
-TEST(jsonParserTest, bad_json)
-{
-    const std::string expectedError = "Incorrect value in file!";
-    std::ifstream jsonFile;
+	std::ifstream jsonFile;
     jsonFile.open("../unit_testing/missing_comma.json");
-    try
-    {
-        JSONParser::parse(jsonFile);
-        jsonFile.close();
-    }
-    catch(std::string e)
-    {
-        ASSERT_EQ(e, expectedError);
-    }
-    
+	jsonFile.close();
+	ASSERT_THROW(JSONParser::parse(jsonFile), std::runtime_error);
+}
+
+TEST(jsonParserTest, stringtest)
+{
+	std::map<std::string, std::any> template_string = JSONParser::parse("{\"name\":\"Kakarott\",\"hp\":380,\"dmg\":20}");
+	ASSERT_EQ(std::any_cast<std::string>(template_string["name"]), "Kakarott");
+    ASSERT_EQ(std::any_cast<float>(template_string["hp"]), 380);
+    ASSERT_EQ(std::any_cast<float>(template_string["dmg"]), 20);
+}
+
+TEST(jsonParserTest, missingfile)
+{
+	std::string not_exists = "../../tobe_or_nottobe_unit_test.json";
+	ASSERT_THROW(JSONParser::parse(not_exists, true), std::runtime_error);
 }
 
 int main(int argc, char** argv)
