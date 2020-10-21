@@ -7,8 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install Cppcheck and Valgrind
-        run: sudo apt install cppcheck valgrind
+      - name: Install Cppcheck, Valgrind and Google Test to prevent inclusion error
+        run: sudo apt install cppcheck valgrind libgtest-dev
       - name: Build
         run: g++ -std=c++17 -o a.out *.cpp
       - name: Gaining rights
