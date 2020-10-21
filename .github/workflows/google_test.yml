@@ -1,8 +1,6 @@
 name: Google test unit try-out
 
-on: 
-  push:
-      branches: [jsonparser]
+on: push
 
 jobs:
   build:
