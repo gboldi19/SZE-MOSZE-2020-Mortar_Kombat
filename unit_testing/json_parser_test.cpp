@@ -34,7 +34,7 @@ TEST(jsonParserTest, stringtest)
 	ASSERT_EQ(std::any_cast<std::string>(template_string["name"]), "Kakarott");
     ASSERT_EQ(std::any_cast<float>(template_string["hp"]), 380);
     ASSERT_EQ(std::any_cast<float>(template_string["dmg"]), 20);
-    ASSERT_EQ(std::any_cast<float>(template_string["as"]), 1.2);
+    ASSERT_EQ(std::any_cast<float>(template_string["as"]), 1.2f);
 }
 
 TEST(jsonParserTest, missingfile)
