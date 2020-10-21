@@ -6,9 +6,9 @@
  * @author Mortar_Kombat
  * 
 */
+
 #ifndef CHARACTER_H
 #define CHARACTER_H
-
 #include "JSONParser.h"
 #include "Character.h"
 #include <string>
@@ -21,10 +21,10 @@ class Character
 protected:
 	const std::string name;
 	float maxHP, HP, DMG, AS;
-    Character(const std::string characterName, float healthPoints, float damagePoints, float attackSpeed);
-	const float getDMG() const;
-    const float getAS() const;
-    virtual void doHit(Character& victim);
+  Character(const std::string characterName, float healthPoints, float damagePoints, float attackSpeed);
+  const float getDMG() const;
+  const float getAS() const;
+  virtual void doHit(Character& victim);
 public:
     /**
      *This function calls th parseUnit function.

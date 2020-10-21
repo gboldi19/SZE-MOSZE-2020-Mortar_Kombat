@@ -5,16 +5,16 @@ Character::Character(const std::string characterName, float healthPoints, float 
 : name(characterName)
 {
 	HP = maxHP = healthPoints;
-    DMG = damagePoints;
-    AS = attackSpeed;
+  DMG = damagePoints;
+  AS = attackSpeed;
 }
 
 Character Character::parseUnit(std::string fileName)
 {
-    std::map<std::string, std::any> characterAttributes = JSONParser::parse(fileName, true);
-    ruleOutNegativeAnyFloat(characterAttributes["hp"]);
-    ruleOutNegativeAnyFloat(characterAttributes["dmg"]);
-    ruleOutNegativeAnyFloat(characterAttributes["as"]);
+  std::map<std::string, std::any> characterAttributes = JSONParser::parse(fileName, true);
+  ruleOutNegativeAnyFloat(characterAttributes["hp"]);
+  ruleOutNegativeAnyFloat(characterAttributes["dmg"]);
+  ruleOutNegativeAnyFloat(characterAttributes["as"]);
 	return Character(
         std::any_cast<std::string>(characterAttributes["name"]),
         std::any_cast<float>(characterAttributes["hp"]),
