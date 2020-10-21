@@ -131,7 +131,7 @@ std::map<std::string, std::any> JSONParser::parseString(std::string& s)
 
         while(spacingChars.find(valueString[valueString.length()]) != spacingChars.end()) //last character is spacing character
         {
-            valueString.substr(0, valueString.size() - 1); //remove last character
+            valueString = valueString.substr(0, valueString.size() - 1); //remove last character
         }
         value = string2any(valueString); //give value the real type
 
