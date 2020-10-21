@@ -21,6 +21,10 @@ jobs:
         run: chmod a+x ./test.sh ./memtest.sh ./code_analysis.sh
       - name: Calling code analysis
         run: ./code_analysis.sh
+      - name: Artifact error and warning messages
+        uses: actions/upload-artifact@v2
+        with:
+          path: ./warning_log.txt
       - name: Artifact performance and style messages
         uses: actions/upload-artifact@v2
         with:
