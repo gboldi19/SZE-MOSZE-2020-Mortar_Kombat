@@ -8,7 +8,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install Cppcheck, Valgrind and Google Test to prevent inclusion error
-        run: sudo apt install cppcheck valgrind libgtest-dev
+        run: sudo apt install cppcheck valgrind libgtest-dev cmake
+      - name: Build phase
+        run: cd /usr/src/gtest && sudo cmake CMakeLists.txt && sudo make
+      - name: Create symbolic references 1
+        run: sudo ln -st /usr/lib/ /usr/src/gtest/libgtest.a
+      - name: Create symbolic references 2
+        run: sudo ln -st /usr/lib/ /usr/src/gtest/libgtest_main.a
       - name: Build
         run: g++ -std=c++17 -o a.out *.cpp
       - name: Gaining rights
