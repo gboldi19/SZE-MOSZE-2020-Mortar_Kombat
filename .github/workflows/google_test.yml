@@ -1,0 +1,26 @@
+name: Google test unit try-out
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install google test and cmake
+        run: sudo apt install libgtest-dev cmake
+      - name: Build phase
+        run: cd /usr/src/gtest && sudo cmake CMakeLists.txt && sudo make
+      - name: Create symbolic references 1
+        run: sudo ln -st /usr/lib/ /usr/src/gtest/libgtest.a
+      - name: Create symbolic references 2
+        run: sudo ln -st /usr/lib/ /usr/src/gtest/libgtest_main.a
+      - name: Compile and linking .cpp files
+        run: g++ -std=c++17 *.cpp
+      - name: Prepare build environment
+        run: cmake unit_testing/CMakeLists.txt
+      - name: Unit test
+        run: cd unit_testing && make
+      - name: Running the generated gtest bin
+        run: cd unit_testing && ./runTests
+        

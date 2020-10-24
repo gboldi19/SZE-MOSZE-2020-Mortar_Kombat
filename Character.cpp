@@ -1,60 +1,25 @@
 #include "Character.h"
+#include <any>
 
-/*
-Character::Character(const std::string characterName, const unsigned int healthPoints, const unsigned int damagePoints, const double attackSpeed) : name(characterName), DMG(damagePoints), AS(attackSpeed)
+Character::Character(const std::string characterName, float healthPoints, float damagePoints, float attackSpeed)
+: name(characterName)
 {
-	HP = healthPoints;
-}
-*/
-std::string* Character::parseUnit(const std::string& fileName)
-{
-	std::ifstream file(fileName);
-	if (file.good())
-	{
-
-		static std::string characterAttributes[4];
-		std::string line;
-
-		file.ignore(14); //starting line and first column skipped
-		std::getline(file, line);
-		line.resize(line.length() - 2); //'"' and ',' chopped off
-		characterAttributes[0] = line;
-
-		file.ignore(9); //first column skipped
-		std::getline(file, line);
-		line.resize(line.length() - 1); //',' chopped off
-		characterAttributes[1] = line;
-
-		file.ignore(10); //first column skipped
-		std::getline(file, line);
-        line.resize(line.length() - 1); //',' chopped off
-		characterAttributes[2] = line;
-
-        file.ignore(9); //first column skipped
-		std::getline(file, line);
-        characterAttributes[3]=line;
-
-
-		return characterAttributes;
-	}
-	else
-	{
-		throw std::runtime_error("File not found!");
-		return NULL;
-	}
+	HP = maxHP = healthPoints;
+  DMG = damagePoints;
+  AS = attackSpeed;
 }
 
-Character::Character(const std::string* characterAttributes)
-	: name(characterAttributes[0])
+Character Character::parseUnit(std::string fileName)
 {
-	HP = maxHP = stof(characterAttributes[1]);
-	DMG = stof(characterAttributes[2]);
-    AS = stof(characterAttributes[3]);
-}
-
-Character Character::CharacterFromFile(const std::string &fileName)
-{
-	return Character(parseUnit(fileName));
+  std::map<std::string, std::any> characterAttributes = JSONParser::parse(fileName, true);
+  ruleOutNegativeAnyFloat(characterAttributes["hp"]);
+  ruleOutNegativeAnyFloat(characterAttributes["dmg"]);
+  ruleOutNegativeAnyFloat(characterAttributes["as"]);
+	return Character(
+        std::any_cast<std::string>(characterAttributes["name"]),
+        std::any_cast<float>(characterAttributes["hp"]),
+        std::any_cast<float>(characterAttributes["dmg"]),
+        std::any_cast<float>(characterAttributes["as"]));
 }
 
 const std::string Character::getName() const
@@ -99,7 +64,7 @@ void Character::doHit(Character& victim)
 	victim.gotHit(this);
 }
 
-Character* Character::Fight (Character &player1, Character &player2)
+Character* Character::Fight(Character &player1, Character &player2)
 {
     float ASTimer1 = 0, ASTimer2 = 0;
 
@@ -125,5 +90,12 @@ Character* Character::Fight (Character &player1, Character &player2)
     {
         return &player1;
     }
+}
 
+void ruleOutNegativeAnyFloat(std::any& num)
+{
+    if (std::any_cast<float>(num) < 0)
+    {
+        throw std::runtime_error("Negative numeric value is not acceptable here!");
+    }
 }

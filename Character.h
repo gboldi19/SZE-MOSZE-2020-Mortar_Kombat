@@ -6,28 +6,32 @@
  * @author Mortar_Kombat
  * 
 */
+
 #ifndef CHARACTER_H
 #define CHARACTER_H
+#include "JSONParser.h"
+#include "Character.h"
 #include <string>
 #include <fstream>
+#include <map>
+#include <any>
 
 class Character
 {
 protected:
 	const std::string name;
 	float maxHP, HP, DMG, AS;
-	const float getDMG() const;
-    const float getAS() const;
-    Character(const std::string* characterAttributes);
-    static std::string* parseUnit(const std::string& fileName);
-    virtual void doHit(Character& victim);
+  Character(const std::string characterName, float healthPoints, float damagePoints, float attackSpeed);
+  const float getDMG() const;
+  const float getAS() const;
+  virtual void doHit(Character& victim);
 public:
     /**
      *This function calls th parseUnit function.
      *@param The reference for the name of the file which contains the character attributes.
 	 *@return The name of the file which contains the character attributes.
      */
-	static Character CharacterFromFile(const std::string &fileName);   
+	static Character parseUnit(std::string fileName);
     /**
     *
     *@return Character's name
@@ -52,5 +56,7 @@ public:
     static Character* Fight (Character &player1, Character &player2);
 
 };
+
+void ruleOutNegativeAnyFloat(std::any& num);
 
 #endif

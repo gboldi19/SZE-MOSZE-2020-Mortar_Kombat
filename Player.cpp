@@ -1,9 +1,23 @@
 #include "Player.h"
+#include <any>
 
-Player::Player(const std::string* characterAttributes)
-	: Character(characterAttributes)
+Player::Player(const std::string characterName, float healthPoints, float damagePoints, float attackSpeed)
+	: Character(characterName, healthPoints, damagePoints, attackSpeed)
 {
 	XP = 0;
+}
+
+Player Player::parseUnit(std::string fileName)
+{
+  std::map<std::string, std::any> characterAttributes = JSONParser::parse(fileName, true);
+  ruleOutNegativeAnyFloat(characterAttributes["hp"]);
+  ruleOutNegativeAnyFloat(characterAttributes["dmg"]);
+  ruleOutNegativeAnyFloat(characterAttributes["as"]);
+	return Player(
+        std::any_cast<std::string>(characterAttributes["name"]),
+        std::any_cast<float>(characterAttributes["hp"]),
+        std::any_cast<float>(characterAttributes["dmg"]),
+        std::any_cast<float>(characterAttributes["as"]));
 }
 
 void Player::levelup(float levelupXP)
@@ -20,11 +34,6 @@ void Player::gainXP(float damagePoints)
 {
 	levelup(XP - int(XP / 100) * 100 + damagePoints);
 	XP += damagePoints;
-}
-
-Player Player::PlayerFromFile(const std::string &fileName)
-{
-	return Player(parseUnit(fileName));
 }
 
 void Player::doHit(Character& victim)

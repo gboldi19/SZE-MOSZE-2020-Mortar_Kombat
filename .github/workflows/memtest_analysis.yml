@@ -1,0 +1,23 @@
+name: Memory test, code analysis
+
+on: push
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Cppcheck, Valgrind and Google Test to prevent inclusion error
+        run: sudo apt install cppcheck valgrind
+      - name: Build phase
+        run: g++ -std=c++17 -o a.out *.cpp
+      - name: Gaining rights
+        run: chmod a+x ./test.sh ./memtest.sh ./code_analysis.sh
+      - name: Calling code analysis
+        run: ./code_analysis.sh
+      - name: Artifact performance and style messages
+        uses: actions/upload-artifact@v2
+        with:
+          path: ./perf-style_log.txt
+      - name: Calling memtest
+        run: ./memtest.sh

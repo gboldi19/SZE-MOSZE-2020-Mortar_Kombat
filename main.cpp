@@ -28,8 +28,8 @@ int main(const int argc, const char* argv[])
     {
         try
         {
-            Character player1 = Character::CharacterFromFile(argv[1]);
-            Character player2 = Character::CharacterFromFile(argv[2]);
+            Character player1 = Character::parseUnit(argv[1]);
+            Character player2 = Character::parseUnit(argv[2]);
 
             Character* winner = Character::Fight(player1, player2);
 

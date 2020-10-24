@@ -1,5 +1,4 @@
 *
-
 !*.cpp
 !*.h
 !*.md
@@ -8,4 +7,8 @@
 !*.sh
 !*.csv
 
+!CMakeLists.txt
+!units
+!unit_testing
+!.github/workflows
 !.gitignore
