@@ -18,7 +18,7 @@ TEST(jsonParserTest, valcheck)
 	ASSERT_EQ(std::any_cast<std::string>(template_inp["string"]), "Stringtype");
     	ASSERT_EQ(std::any_cast<bool>(template_inp["bool"]), true);
     	ASSERT_EQ(std::any_cast<float>(template_inp["float"]), 1.6f);
-	ASSERT_EQ(std::any_cast<int>template_inp["null"], 0);
+	ASSERT_EQ(std::any_cast<int>(template_inp["null"]), 0);
 }
 
 TEST(jsonParserTest, filetest)
