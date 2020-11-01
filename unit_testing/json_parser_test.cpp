@@ -9,7 +9,7 @@
 TEST(jsonParserTest, parsetest)
 {
 	ASSERT_THROW(JSON::parse("none.json", true), std::runtime_error);
-   	ASSERT_NO_THROW(JSON::parse("../units/unit1.json", true));
+   	ASSERT_NO_THROW(JSON::parse("../unit_testing/good.json", true));
 }
 
 TEST(jsonParserTest, valcheck)
