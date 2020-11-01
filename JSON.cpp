@@ -57,20 +57,21 @@ void checkString(std::string& s)
 
 std::any string2any(std::string& s)
 {
-    if (s[0] == '"') //starts with '"' --> can be string
-    {
-        if (s[s.length() - 1] != '"') //does not end with '"' --> error
-        {
-            throw std::runtime_error("7: Unrecognized value!");
-            return -1;
-        }
-        s = s.substr(1, s.length() - 2);
-        checkString(s);
-        return s; //is string
-    }
+	if (s[0] == '"') //starts with '"' --> can be string
+	{
+		if (s[s.length() - 1] != '"') //does not end with '"' --> error
+		{
+			throw std::runtime_error("7: Unrecognized value!");
+			return -1;
+		}
+		s = s.substr(1, s.length() - 2);
+		checkString(s);
+		return s; //is string
+	}
 
-    else if (s == "true") return true; //is boolean
-    else if (s == "false") return false; //is boolean
+	else if (s == "true") return true; //is boolean
+	else if (s == "false") return false; //is boolean
+	else if (s == "null") return NULL;
 
     else //all correct non-numeric types covered --> can be numeric
     {
