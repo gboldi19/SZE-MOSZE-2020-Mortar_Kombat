@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build
-        run: g++ -std=c++17 -o a.out *.cpp -lstdc++fs
+        run: g++-10 -std=c++17 -o a.out *.cpp -lstdc++fs
       - name: Regaining rights
         run: chmod a+x ./test.sh
       - name: Preventing unwanted output append
@@ -28,7 +28,7 @@ jobs:
       - name: Install Cppcheck, Valgrind and Google Test to prevent inclusion error
         run: sudo apt install cppcheck valgrind
       - name: Build phase
-        run: g++ -std=c++17 -o a.out *.cpp -lstdc++fs
+        run: g++-10 -std=c++17 -o a.out *.cpp -lstdc++fs
       - name: Gaining rights
         run: chmod a+x ./test.sh ./memtest.sh ./code_analysis.sh
       - name: Calling code analysis
@@ -54,7 +54,7 @@ jobs:
       - name: Create symbolic references 2
         run: sudo ln -st /usr/lib/ /usr/src/gtest/libgtest_main.a
       - name: Compile and linking .cpp files
-        run: g++ -std=c++17 *.cpp -lstdc++fs
+        run: g++-10 -std=c++17 *.cpp -lstdc++fs
       - name: Prepare build environment
         run: cmake unit_testing/CMakeLists.txt
       - name: Unit test
