@@ -71,7 +71,7 @@ std::any string2any(std::string& s)
 
 	else if (s == "true") return true; //is boolean
 	else if (s == "false") return false; //is boolean
-	else if (s == "null") return NULL; //is null pointer
+	else if (s == "null") return nullptr; //is null pointer
 
     else //all correct non-numeric types covered --> can be numeric
     {
