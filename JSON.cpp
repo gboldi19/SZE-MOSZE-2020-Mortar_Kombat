@@ -1,12 +1,7 @@
-#include "JSONParser.h"
+#include "JSON.h"
 
-#include <map>
-#include <string>
-#include <any>
-#include <streambuf>
-#include <unordered_set>
-
-std::string::size_type JSONParser::findNext(std::string &s, char target, std::unordered_set<char> set, std::string mode)
+//INSTRUCTIONS: Specify mode = "inclusive" for an allowed character set. Exclusive is default.
+std::string::size_type findNext(std::string &s, char target, std::unordered_set<char> set, std::string mode = "")
 {
     const std::string::size_type pos = s.find(target);
     if (pos == -1)
@@ -40,7 +35,7 @@ std::string::size_type JSONParser::findNext(std::string &s, char target, std::un
     return pos;
 }
 
-void JSONParser::checkString(std::string& s)
+void checkString(std::string& s)
 {
     if (s.length() == 0) //only two '"' signs --> error
     {
@@ -60,8 +55,8 @@ void JSONParser::checkString(std::string& s)
     }
 }
 
-std::any JSONParser::string2any(std::string& s)
-{    
+std::any string2any(std::string& s)
+{
     if (s[0] == '"') //starts with '"' --> can be string
     {
         if (s[s.length() - 1] != '"') //does not end with '"' --> error
@@ -92,7 +87,7 @@ std::any JSONParser::string2any(std::string& s)
     }
 }
 
-std::map<std::string, std::any> JSONParser::parseString(std::string& s)
+std::map<std::string, std::any> parseString(std::string& s)
 {
     std::map<std::string, std::any> map;
     std::string key, valueString;
@@ -117,7 +112,7 @@ std::map<std::string, std::any> JSONParser::parseString(std::string& s)
 
         s = s.substr(findNext(s, ':', spacingChars, "inclusive") + 1, s.length()); //remove ':' operator
         pos = 0; //reset position
-        while(spacingChars.find(s[pos]) != spacingChars.end() && pos < s.length()) pos++; //find value begginging (or incorrect string end)
+        while(spacingChars.find(s[pos]) != spacingChars.end() && pos < s.length()) pos++; //find value begginging
         if (pairEndingChars.find(s[pos]) != pairEndingChars.end()) //':' is followed directly by ',' or '}'
         {
             throw std::runtime_error("10: No value found!");
@@ -158,7 +153,7 @@ std::map<std::string, std::any> JSONParser::parseString(std::string& s)
     return map;
 }
     
-std::map<std::string, std::any> JSONParser::parse(std::string inputString, bool isFile)
+std::map<std::string, std::any> JSON::parse(std::string inputString, bool isFile)
 {
     if (isFile)
     {
@@ -180,9 +175,14 @@ std::map<std::string, std::any> JSONParser::parse(std::string inputString, bool 
     return parseString(inputString);
 }
 
-std::map<std::string, std::any> JSONParser::parse(std::istream &stream)
+std::map<std::string, std::any> JSON::parse(std::istream &stream)
 {
     std::istreambuf_iterator<char> eos;
     std::string s(std::istreambuf_iterator<char>(stream), eos);
     return parse(s);
+}
+
+JSON JSON::parseFromFile(std::string fileName)
+{
+	return(JSON(JSON::parse(fileName, true)));
 }

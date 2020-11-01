@@ -1,5 +1,5 @@
 IFS=$'\n'
-command="$(valgrind --leak-check=yes --log-file=memtest_log.txt ./a.out units/unit1.json units/unit2.json)"
+command="$(valgrind --leak-check=yes --log-file=memtest_log.txt ./a.out units/test_scenario1.json)"
 result="$(cat ./memtest_log.txt)"
 echo $result
 if [ "$(echo $result | sed 's/^.*ERROR SUMMARY: \([0-9]*\) errors.*$/\1/')" == "0" ]

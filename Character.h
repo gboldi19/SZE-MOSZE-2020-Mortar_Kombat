@@ -9,8 +9,8 @@
 
 #ifndef CHARACTER_H
 #define CHARACTER_H
-#include "JSONParser.h"
-#include "Character.h"
+
+#include "JSON.h"
 #include <string>
 #include <fstream>
 #include <map>
@@ -20,18 +20,16 @@ class Character
 {
 protected:
 	const std::string name;
-	float maxHP, HP, DMG, AS;
-  Character(const std::string characterName, float healthPoints, float damagePoints, float attackSpeed);
-  const float getDMG() const;
-  const float getAS() const;
-  virtual void doHit(Character& victim);
+	float maxHP, HP, DMG, ACD;
+	Character(const std::string characterName, float healthPoints, float damagePoints, float attackCoolDown);
+	virtual void doHit(Character& victim);
 public:
     /**
      *This function calls th parseUnit function.
      *@param The reference for the name of the file which contains the character attributes.
 	 *@return The name of the file which contains the character attributes.
      */
-	static Character parseUnit(std::string fileName);
+	static Character parse(std::string fileName);
     /**
     *
     *@return Character's name
@@ -40,20 +38,18 @@ public:
     /**
     *@return Character's Health Points
     */
-	const float getHP() const;
+	const float getHealthPoints() const;
+	const float getMaxHealthPoints() const;
+	const float getDamage() const;
+	const float getAttackCoolDown() const;
 	/**
 	*Calculates the potentialXP from the damage dealt.
 	*@param The function's argument is the attacker's pointer.
 	*@return Returns the poteintalXP.
 	*/
     float gotHit(Character* attacker);
-    /**
-    *This function 'plays the game' between the two players.
-    *@param player1
-    *@param player2
-    *@return the winner player
-    */
-    static Character* Fight (Character &player1, Character &player2);
+	bool isAlive();
+	void fightTilDeath(Character &enemy);
 
 };
 

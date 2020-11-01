@@ -1,26 +1,25 @@
-#include "Player.h"
-#include <any>
+#include "Hero.h"
 
-Player::Player(const std::string characterName, float healthPoints, float damagePoints, float attackSpeed)
-	: Character(characterName, healthPoints, damagePoints, attackSpeed)
+Hero::Hero(const std::string characterName, float healthPoints, float damagePoints, float attackCoolDown)
+	: Character(characterName, healthPoints, damagePoints, attackCoolDown)
 {
 	XP = 0;
 }
 
-Player Player::parseUnit(std::string fileName)
+Hero Hero::parse(std::string fileName)
 {
-  std::map<std::string, std::any> characterAttributes = JSONParser::parse(fileName, true);
+  std::map<std::string, std::any> characterAttributes = JSON::parse(fileName, true);
   ruleOutNegativeAnyFloat(characterAttributes["hp"]);
   ruleOutNegativeAnyFloat(characterAttributes["dmg"]);
   ruleOutNegativeAnyFloat(characterAttributes["as"]);
-	return Player(
+	return Hero(
         std::any_cast<std::string>(characterAttributes["name"]),
         std::any_cast<float>(characterAttributes["hp"]),
         std::any_cast<float>(characterAttributes["dmg"]),
         std::any_cast<float>(characterAttributes["as"]));
 }
 
-void Player::levelup(float levelupXP)
+void Hero::levelup(float levelupXP)
 {
 	while (levelupXP >= 100)
 	{
@@ -30,13 +29,18 @@ void Player::levelup(float levelupXP)
 	}
 }
 
-void Player::gainXP(float damagePoints)
+void Hero::gainXP(float damagePoints)
 {
 	levelup(XP - int(XP / 100) * 100 + damagePoints);
 	XP += damagePoints;
 }
 
-void Player::doHit(Character& victim)
+void Hero::doHit(Character& victim)
 {
 	this->gainXP(victim.gotHit(this));
+}
+
+const unsigned int Hero::getLevel() const
+{
+	return int(XP / 100);
 }
