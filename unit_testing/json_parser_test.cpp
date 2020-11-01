@@ -14,7 +14,7 @@ TEST(jsonParserTest, parsetest)
 
 TEST(jsonParserTest, valcheck)
 {
-	std::map<std::string, std::any> template_inp = JSON::parse("{\"string\":\"Stringtype\",\"bool\":true,\"float\":1.6}");
+	std::map<std::string, std::any> template_inp = JSON::parse("{\"string\":\"Stringtype\",\"bool\":true,\"float\":1.6\"null pointer\":null}");
 	ASSERT_EQ(std::any_cast<std::string>(template_inp["string"]), "Stringtype");
     	ASSERT_EQ(std::any_cast<bool>(template_inp["bool"]), true);
     	ASSERT_EQ(std::any_cast<float>(template_inp["float"]), 1.6f);
