@@ -117,7 +117,7 @@ std::map<std::string, std::any> JSONParser::parseString(std::string& s)
 
         s = s.substr(findNext(s, ':', spacingChars, "inclusive") + 1, s.length()); //remove ':' operator
         pos = 0; //reset position
-        while(spacingChars.find(s[pos]) != spacingChars.end()) pos++; //find value begginging
+        while(spacingChars.find(s[pos]) != spacingChars.end()) pos++  && pos < s.length()) pos++; //find value begginging
         if (pairEndingChars.find(s[pos]) != pairEndingChars.end()) //':' is followed directly by ',' or '}'
         {
             throw std::runtime_error("10: No value found!");
