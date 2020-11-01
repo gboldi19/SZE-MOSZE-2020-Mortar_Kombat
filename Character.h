@@ -15,21 +15,16 @@
 #include <fstream>
 #include <map>
 #include <any>
+#include <iostream> //testing!!!!!!!!!!!!
 
 class Character
 {
 protected:
 	const std::string name;
 	float maxHP, HP, DMG, ACD;
-	Character(const std::string characterName, float healthPoints, float damagePoints, float attackCoolDown);
+	Character(const std::string _name, float _maxHP, float _DMG, float _ACD);
 	virtual void doHit(Character& victim);
 public:
-    /**
-     *This function calls th parseUnit function.
-     *@param The reference for the name of the file which contains the character attributes.
-	 *@return The name of the file which contains the character attributes.
-     */
-	static Character parse(std::string fileName);
     /**
     *
     *@return Character's name
@@ -50,9 +45,6 @@ public:
     float gotHit(Character* attacker);
 	bool isAlive();
 	void fightTilDeath(Character &enemy);
-
 };
-
-void ruleOutNegativeAnyFloat(std::any& num);
 
 #endif

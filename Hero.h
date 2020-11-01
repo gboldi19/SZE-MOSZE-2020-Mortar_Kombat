@@ -7,8 +7,8 @@
 class Hero : public Character
 {
 private:
-	float XP;
-    Hero(const std::string characterName, float healthPoints, float damagePoints, float attackCoolDown);
+	float XP, maxHPBonus, DMGBonus, ACDBonus, XPtoLevelup;
+    Hero(const std::string _name, float _HP, float _DMG, float _ACD, float _XPtoLevelup, float _maxHPBonus, float _DMGBonus, float _ACDBonus);
 	void levelup(float levelupXP);
 	void gainXP(float damagePoints);
 public:

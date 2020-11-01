@@ -71,7 +71,7 @@ std::any string2any(std::string& s)
 
 	else if (s == "true") return true; //is boolean
 	else if (s == "false") return false; //is boolean
-	else if (s == "null") return NULL;
+	else if (s == "null") return NULL; //is null pointer
 
     else //all correct non-numeric types covered --> can be numeric
     {
@@ -193,4 +193,12 @@ std::map<std::string, std::any> JSON::parse(std::istream &stream)
 JSON JSON::parseFromFile(std::string fileName)
 {
 	return(JSON(JSON::parse(fileName, true)));
+}
+
+void JSON::ruleOutNegativeAnyFloat(std::any& num)
+{
+	if (std::any_cast<float>(num) < 0)
+	{
+		throw std::runtime_error("Negative numeric value is not acceptable here!");
+	}
 }

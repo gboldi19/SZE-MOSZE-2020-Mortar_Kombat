@@ -1,4 +1,4 @@
 {
-  "hero": "units/unit1.json",
-  "monsters": "units/unit3.json"
+  "hero": "units/unit1_Hero.json",
+  "monsters": "units/unit3_Monster.json"
 }

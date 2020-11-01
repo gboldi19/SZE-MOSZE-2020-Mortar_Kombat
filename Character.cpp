@@ -1,33 +1,11 @@
 #include "Character.h"
 
-void ruleOutNegativeAnyFloat(std::any& num)
+Character::Character(const std::string _name, float _maxHP, float _DMG, float _ACD)
+: name(_name)
 {
-	if (std::any_cast<float>(num) < 0)
-	{
-		throw std::runtime_error("Negative numeric value is not acceptable here!");
-	}
-}
-
-
-Character::Character(const std::string characterName, float healthPoints, float damagePoints, float attackCoolDown)
-: name(characterName)
-{
-	HP = maxHP = healthPoints;
-	DMG = damagePoints;
-	ACD = attackCoolDown;
-}
-
-Character Character::parse(std::string fileName)
-{
-	std::map<std::string, std::any> characterAttributes = JSON::parse(fileName, true);
-	ruleOutNegativeAnyFloat(characterAttributes["hp"]);
-	ruleOutNegativeAnyFloat(characterAttributes["dmg"]);
-	ruleOutNegativeAnyFloat(characterAttributes["as"]);
-	return Character(
-        std::any_cast<std::string>(characterAttributes["name"]),
-        std::any_cast<float>(characterAttributes["hp"]),
-        std::any_cast<float>(characterAttributes["dmg"]),
-        std::any_cast<float>(characterAttributes["as"]));
+	HP = maxHP = _maxHP;
+	DMG = _DMG;
+	ACD = _ACD;
 }
 
 const std::string Character::getName() const
