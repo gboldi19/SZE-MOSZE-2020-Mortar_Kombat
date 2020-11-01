@@ -5,7 +5,7 @@ Hero::Hero(
 		float _maxHP,
 		float _DMG,
 		float _ACD,
-		float _XPtoLevelup,
+		float _XPToLevelup,
 		float _maxHPBonus,
 		float _DMGBonus,
 		float _ACDBonus)
@@ -15,7 +15,7 @@ Hero::Hero(
 	maxHPBonus = _maxHPBonus;
 	DMGBonus = _DMGBonus;
 	ACDBonus = _ACDBonus;
-	XPtoLevelup = _XPtoLevelup;
+	XPToLevelup = _XPToLevelup;
 }
 
 Hero Hero::parse(std::string fileName)
