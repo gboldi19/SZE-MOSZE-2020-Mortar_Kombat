@@ -112,15 +112,22 @@ std::map<std::string, std::any> parseString(std::string& s)
 
         s = s.substr(findNext(s, ':', spacingChars, "inclusive") + 1, s.length()); //remove ':' operator
         pos = 0; //reset position
-        while(spacingChars.find(s[pos]) != spacingChars.end() && pos < s.length()) pos++; //find value begginging
+        while(spacingChars.find(s[pos]) != spacingChars.end() && pos < s.length()) pos++; //find value begginging (or incorrect content end)
         if (pairEndingChars.find(s[pos]) != pairEndingChars.end()) //':' is followed directly by ',' or '}'
         {
             throw std::runtime_error("10: No value found!");
         }
         s = s.substr(pos, s.length()); //remove everything before value
-
-        pos = 0; //reset position
-        while(pairEndingChars.find(s[pos]) == pairEndingChars.end() && pos < s.length()) pos++; //find value end (or incorrect string end)
+		
+		if (s[0] == '"') //starts as a string
+		{
+			pos = s.substr(1, s.length()).find('"'); //skip inside of string
+		}
+		else
+		{
+			pos = 0; //just reset position
+		}
+		while (pairEndingChars.find(s[pos]) == pairEndingChars.end() && pos < s.length()) pos++; //find value end if non-string (or incorrect content end)
         valueString = s.substr(0, pos); //pass value string
         s = s.substr(pos, s.length()); //remove everything before value
 
