@@ -16,6 +16,7 @@ private:
     Hero(const std::string _name, float _HP, float _DMG, float _ACD, float _XPToLevelup, float _maxHPBonus, float _DMGBonus, float _ACDBonus);
 	void levelup(float levelupXP);
 	void gainXP(float damagePoints);
+	void doHit(Character& victim);
 public:
 	/**
 	* @brief Hero construction.
@@ -23,7 +24,6 @@ public:
 	* @return Hero with defined parameters.
 	*/
     static Hero parse(std::string fileName);
-	void doHit(Character& victim);
 	const unsigned int getLevel() const; ///< Getter for level.
 };
 
