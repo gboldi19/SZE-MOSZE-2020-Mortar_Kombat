@@ -1,8 +1,5 @@
 /**
  * @file main.cpp
- * @brief Initializes a Hero and some Monsters.
- * @brief Hero fights the monsters one by one until death.
- * Prints to screen.
 */
 
 #include <iostream>
@@ -35,7 +32,13 @@ void bad_exit(int exitcode){ ///< function to write error messages
     exit(exitcode);
 }
 
-int main(int argc, char** argv){ ///< main function
+/**
+ * @brief Initializes a Hero and some Monsters.
+ * @brief Hero fights the monsters one by one until death.
+ * @arg scenario file path
+ * Prints to screen.
+*/
+int main(int argc, char** argv){
     if (argc != 2) bad_exit(1);
     if (!std::filesystem::exists(argv[1])) bad_exit(2);
 
