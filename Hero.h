@@ -1,7 +1,7 @@
 /**
  * @class Hero
  * @brief This is a subclass representing the main character.
- * Contains level up management.
+ * Contains construction and level up management.
 */
 
 #ifndef Hero_H
