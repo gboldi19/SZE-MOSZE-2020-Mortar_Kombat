@@ -7,16 +7,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Install cmake
+        run: sudo apt install cmake
       - name: Build
-        run: g++-10 -std=c++17 -o a.out *.cpp -lstdc++fs
+        run: make combat
       - name: Preventing unwanted output append
-        run: rm -f output.csv
-      - name: Calling program from shell
-        run: ./test.sh
+        run: make act_fight_removal
+      - name: Calling program from makefile
+        run: make act_fight
       - name: Checking differences
-        run: diff output.csv expected_output.csv
+        run: make act_fight_diff
       - name: Deleting temporary file
-        run: rm -f output.csv
+        run: make act_fight_removal
 
   Memory_test_code_analysis:
     needs: [Build_and_compile]
@@ -24,7 +26,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install Cppcheck, Valgrind and Google Test to prevent inclusion error
-        run: sudo apt install cppcheck valgrind
+        run: sudo apt install cppcheck valgrind cmake
       - name: Build phase
         run: g++-10 -std=c++17 -o a.out *.cpp -lstdc++fs
       - name: Gaining rights
