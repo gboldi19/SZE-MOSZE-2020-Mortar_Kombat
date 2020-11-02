@@ -9,8 +9,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build
         run: g++-10 -std=c++17 -o a.out *.cpp -lstdc++fs
-      - name: Regaining rights
-        run: chmod a+x ./test.sh
       - name: Preventing unwanted output append
         run: rm -f output.csv
       - name: Calling program from shell
@@ -48,16 +46,4 @@ jobs:
       - name: Install google test and cmake
         run: sudo apt install libgtest-dev cmake
       - name: Build phase
-        run: cd /usr/src/gtest && sudo cmake CMakeLists.txt && sudo make
-      - name: Create symbolic references 1
-        run: sudo ln -st /usr/lib/ /usr/src/gtest/libgtest.a
-      - name: Create symbolic references 2
-        run: sudo ln -st /usr/lib/ /usr/src/gtest/libgtest_main.a
-      - name: Compile and linking .cpp files
-        run: g++-10 -std=c++17 *.cpp -lstdc++fs
-      - name: Prepare build environment
-        run: cmake unit_testing/CMakeLists.txt
-      - name: Unit test
-        run: cd unit_testing && make
-      - name: Running the generated gtest bin
-        run: cd unit_testing && ./runTests
+        run: make google_test
