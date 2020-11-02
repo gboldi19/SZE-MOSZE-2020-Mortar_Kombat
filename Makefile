@@ -64,13 +64,13 @@ cppcheck:
 	fi
 
 memtest:
-valgrind --leak-check=yes --log-file=memtest_log.txt ./a.out $(UNIT1) $(UNIT2))" && result="$(cat ./memtest_log.txt)"; && echo $$result;
-if [ "$$(echo $$result | sed 's/^.*ERROR SUMMARY: \([0-9]*\) errors.*$$/\1/')" == "0" ]; then \
-    echo "No memory leak(s) found."; \
-else \
-    echo "Memory leak(s) found. Quitting."; \
-    exit 1; \
-fi
+	valgrind --leak-check=yes --log-file=memtest_log.txt ./a.out $(UNIT1) $(UNIT2))" && result="$(cat ./memtest_log.txt)"; && echo $$result;
+	if [ "$$(echo $$result | sed 's/^.*ERROR SUMMARY: \([0-9]*\) errors.*$$/\1/')" == "0" ]; then \
+		echo "No memory leak(s) found."; \
+	else \
+		echo "Memory leak(s) found. Quitting."; \
+		exit 1; \
+	fi
 
 google_test_first:
 	cd /usr/src/gtest && sudo cmake CMakeLists.txt && sudo make
