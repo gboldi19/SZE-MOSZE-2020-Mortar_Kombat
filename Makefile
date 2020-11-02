@@ -1,4 +1,4 @@
-OBJS := Character.o JSONParser.o main.o Player.o
+OBJS := main.o Player.o Character.o JSONParser.o 
 CFLAGS := -std=c++17 -Wall -g
 CC := g++-10
 RUNCPP := Character.cpp JSONParser.cpp main.cpp Player.cpp
