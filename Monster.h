@@ -1,6 +1,7 @@
 /**
  * @class Monster
  * @brief This is a subclass representing the enemies.
+ * Contains construction.
 */
 
 #ifndef MONSTER_H
