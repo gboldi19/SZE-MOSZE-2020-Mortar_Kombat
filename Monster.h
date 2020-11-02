@@ -10,8 +10,9 @@
 
 class Monster : public Character
 {
-public:
+private:
     Monster(const std::string characterName, float healthPoints, float damagePoints, float attackCoolDown);
+public:
     /**
     * @brief Monster construction.
     * @param Path to file containing the attributes.
