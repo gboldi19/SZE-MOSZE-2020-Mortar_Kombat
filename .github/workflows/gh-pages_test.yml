@@ -13,7 +13,7 @@ jobs:
     - run: sudo apt-get install doxygen
     - run: sudo apt-get install graphviz
     - run: sudo apt-get install cmake
-    - run: make doc_gen
+    - run: make doc_generation
 
     - name: Push git subdirectory as branch
       uses: s0/git-publish-subdir-action@develop
