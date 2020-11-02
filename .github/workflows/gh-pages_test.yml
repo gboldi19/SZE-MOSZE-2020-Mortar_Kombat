@@ -1,6 +1,6 @@
 name: Deploying documentation
 
-on: pull_request
+on: push #normally on pull_request, but now testing new document deployment
 
 jobs:
 
