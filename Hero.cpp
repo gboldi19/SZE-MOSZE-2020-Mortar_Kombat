@@ -41,17 +41,18 @@ Hero Hero::parse(std::string fileName)
 
 void Hero::levelup(float levelupXP)
 {
-	while (levelupXP >= 100)
+	while (levelupXP >= XPToLevelup)
 	{
-		levelupXP -= 100;
-		HP = maxHP = round(maxHP * 1.1f);
-		DMG *= 1.1f;
+		levelupXP -= XPToLevelup;
+		HP = maxHP += maxHPBonus;
+		DMG += DMGBonus;
+		ACD *= ACDBonus;
 	}
 }
 
 void Hero::gainXP(float damagePoints)
 {
-	levelup(XP - int(XP / 100) * 100 + damagePoints);
+	levelup(XP - int(XP / XPToLevelup) * XPToLevelup + damagePoints);
 	XP += damagePoints;
 }
 
@@ -62,5 +63,5 @@ void Hero::doHit(Character& victim)
 
 const unsigned int Hero::getLevel() const
 {
-	return int(XP / 100);
+	return int(XP / XPToLevelup) + 1;
 }

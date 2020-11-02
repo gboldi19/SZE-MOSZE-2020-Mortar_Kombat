@@ -2,7 +2,6 @@
 #define Hero_H
 
 #include "Character.h"
-#include <math.h>
 
 class Hero : public Character
 {
