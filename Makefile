@@ -64,7 +64,7 @@ cppcheck:
 	fi
 
 memtest:
-	command="$$(valgrind --leak-check=yes --log-file=memtest_log.txt ./a.out $(UNIT1) $(UNIT2)); \
+	valgrind --leak-check=yes --log-file=memtest_log.txt ./a.out $(UNIT1) $(UNIT2)
 	result="$$(cat ./memtest_log.txt)"; \
 	echo $$result; \
 	if [ "$$(echo $$result | sed 's/^.*ERROR SUMMARY: \([0-9]*\) errors.*$$/\1/')" == "0" ]; then \
