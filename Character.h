@@ -1,8 +1,7 @@
 /**
  * @class Character
  * @brief This is a base class representing our entity.
- * @brief Handels their attributes and interactions.
- * @author Mortar_Kombat
+ * Handels their attributes and interactions.
 */
 
 #ifndef CHARACTER_H
