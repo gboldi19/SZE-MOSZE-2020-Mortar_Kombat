@@ -1,3 +1,10 @@
+/**
+ * @file main.cpp
+ * @brief Initializes a Hero and some Monsters.
+ * @brief Hero fights the monsters one by one until death.
+ * Prints to screen.
+*/
+
 #include <iostream>
 #include <map>
 #include <string>
@@ -14,21 +21,21 @@
 
 
 
-const std::map<int,std::string> error_messages = {
+const std::map<int,std::string> error_messages = { ///< map containing error messages
     { 1 , "Bad number of arguments. Only a single scenario file should be provided." },
     { 2 , "The provided scenario file is not accessible." },
     { 3 , "The provided scenario file is invalid." },
     { 4 , "JSON parsing error." }
 };
 
-void bad_exit(int exitcode){
+void bad_exit(int exitcode){ ///< function to write error messages
     std::cerr 
         << (error_messages.count(exitcode) ? error_messages.at(exitcode) : "Unknown error")
         << std::endl;
     exit(exitcode);
 }
 
-int main(int argc, char** argv){
+int main(int argc, char** argv){ ///< main function
     if (argc != 2) bad_exit(1);
     if (!std::filesystem::exists(argv[1])) bad_exit(2);
 
