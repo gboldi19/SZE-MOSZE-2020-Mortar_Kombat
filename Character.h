@@ -28,7 +28,8 @@ public:
 	const float getDamage() const; ///< Getter for damage.
 	const float getAttackCoolDown() const; ///< Getter for attack cooldown.
 	/**
-	* @brief Decreases HP by attacker's damage. Calculates the potentialXP from the damage dealt.
+	* @brief Decreases HP by attacker's damage.
+	* @brief Calculates the potentialXP from the damage dealt.
 	* @param The Character pointer of the attacker.
 	* @return The poteintal XP.
 	*/
