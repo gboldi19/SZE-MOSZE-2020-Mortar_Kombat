@@ -67,7 +67,8 @@ memtest:
 	valgrind --leak-check=yes --log-file=memtest_log.txt ./a.out $(UNIT1) $(UNIT2)
 	result="$$(cat ./memtest_log.txt)"; \
 	echo $$result; \
-	if [ "$$(echo $$result | sed 's/^.*ERROR SUMMARY: \([0-9]*\) errors.*$$/\1/')" == "0" ]; then \
+	if [ "$$(echo $$result | sed 's/^.*ERROR SUMMARY: \([0-9]*\) errors.*$$/\1/')" == "0" ]; \
+	then \
 		echo "No memory leak(s) found."; \
 	else \
 		echo "Memory leak(s) found. Quitting."; \
