@@ -10,7 +10,6 @@
 #ifndef CHARACTER_H
 #define CHARACTER_H
 #include "JSONParser.h"
-#include "Character.h"
 #include <string>
 #include <fstream>
 #include <map>
