@@ -7,8 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install cmake
-        run: sudo apt install cmake
       - name: Clearing out previous binary files, if any exists
         run: make clean
       - name: Build, compile, linking
@@ -27,8 +25,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install Cppcheck, Valgrind and Google Test to prevent inclusion error
-        run: sudo apt install cppcheck valgrind cmake
+      - name: Install Cppcheck, Valgrind
+        run: sudo apt install cppcheck valgrind
       - name: Clearing out previous binary files, if any exists
         run: make clean
       - name: Build, compile, linking
