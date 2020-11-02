@@ -8,7 +8,7 @@
 
 std::string::size_type JSONParser::findNext(std::string &s, char target, std::unordered_set<char> set, std::string mode)
 {
-    const std::string::size_type pos = s.find(target);
+    long pos = s.find(target);
     if (pos == -1)
     {
         throw std::runtime_error("1: Expected token not found!");
@@ -17,7 +17,7 @@ std::string::size_type JSONParser::findNext(std::string &s, char target, std::un
 
     if (mode == "inclusive")
     {
-        for (std::string::size_type i = 0; i < pos; i++)
+        for (long i = 0; i < pos; i++)
         {
             if (set.find(s[i]) == set.end())
             {
@@ -28,7 +28,7 @@ std::string::size_type JSONParser::findNext(std::string &s, char target, std::un
     }
     else
     {
-        for (std::string::size_type i = 0; i < pos; i++)
+        for (long i = 0; i < pos; i++)
         {
             if (set.find(s[i]) != set.end())
             {
