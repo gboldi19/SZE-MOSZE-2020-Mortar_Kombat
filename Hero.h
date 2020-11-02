@@ -1,3 +1,9 @@
+/**
+ * @class Hero
+ * @brief This is a subclass representing the main character.
+ * Contains level up management.
+*/
+
 #ifndef Hero_H
 #define Hero_H
 
@@ -11,12 +17,14 @@ private:
 	void levelup(float levelupXP);
 	void gainXP(float damagePoints);
 public:
+	/**
+	* @brief Hero construction.
+	* @param Path to file containing the attributes.
+	* @return Hero with defined parameters.
+	*/
     static Hero parse(std::string fileName);
 	void doHit(Character& victim);
-	/**
-	 @return the Hero's current level.
-	 */
-	const unsigned int getLevel() const;
+	const unsigned int getLevel() const; ///< Getter for level.
 };
 
 #endif
