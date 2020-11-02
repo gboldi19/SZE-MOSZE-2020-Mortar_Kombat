@@ -9,7 +9,7 @@ BAD_UNIT := unit_testing/missing_comma.json
 FSYS_FLAG := -lstdc++fs
 
 combat: $(OBJS)
-	$(CC) $(CFLAGS) -o combat $(OBJS) $(FSYS_FLAG)
+	$(CC) $(CFLAGS) -o cmbt.o $(OBJS) $(FSYS_FLAG)
 
 main.o: main.cpp
 	$(CC) $(CFLAGS) main.cpp $(FSYS_FLAG)
@@ -32,12 +32,12 @@ act_fight_removal:
 
 act_fight:
 	touch output.csv
-	./combat $(UNIT1) $(UNIT2) >> output.csv
-	./combat $(UNIT1) $(UNIT3) >> output.csv
-	./combat $(UNIT2) $(UNIT1) >> output.csv
-	./combat $(UNIT2) $(UNIT3) >> output.csv
-	./combat $(UNIT3) $(UNIT2) >> output.csv
-	./combat $(UNIT3) $(UNIT1) >> output.csv
+	./cmbt.o $(UNIT1) $(UNIT2) >> output.csv
+	./cmbt.o $(UNIT1) $(UNIT3) >> output.csv
+	./cmbt.o $(UNIT2) $(UNIT1) >> output.csv
+	./cmbt.o $(UNIT2) $(UNIT3) >> output.csv
+	./cmbt.o $(UNIT3) $(UNIT2) >> output.csv
+	./cmbt.o $(UNIT3) $(UNIT1) >> output.csv
 
 act_fight_diff:
 	diff output.csv expected_output.csv
