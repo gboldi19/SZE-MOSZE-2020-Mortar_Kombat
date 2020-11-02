@@ -24,6 +24,7 @@ Character.o: Character.cpp Character.h JSONParser.h
 	$(CC) $(CFLAGS) Character.cpp $(FSYS_FLAG)
 
 doc_gen:
+	doxygen -g
 	doxygen Doxyfile
 
 act_fight:
