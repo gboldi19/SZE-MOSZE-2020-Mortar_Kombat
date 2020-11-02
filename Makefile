@@ -64,7 +64,7 @@ cppcheck:
 	fi
 
 memtest:
-	valgrind --error-exitcode=1 --leak-check=full --log-file=memtest_log.txt ./a.out $(UNIT1) $(UNIT2)
+	valgrind --error-exitcode=1 --leak-check=full ./a.out $(UNIT1) $(UNIT2)
 
 google_test_first:
 	cd /usr/src/gtest && sudo cmake CMakeLists.txt && sudo make
