@@ -6,10 +6,10 @@ UNIT2 := units/unit2.json
 UNIT3 := units/unit3.json
 BAD_UNIT := unit_testing/missing_comma.json
 FSYS_FLAG := -lstdc++fs
-BINAME := a.out
+OUTBIN := a.out
 
 build: $(OBJS)
-	$(CC) $(CFLAGS) -o $(BINAME) $(OBJS) $(FSYS_FLAG)
+	$(CC) $(CFLAGS) -o $(OUTBIN) $(OBJS) $(FSYS_FLAG)
 
 main.o: main.cpp
 	$(CC) $(CFLAGS) -c main.cpp Character.h Player.h JSONParser.h $(FSYS_FLAG)
@@ -49,6 +49,9 @@ clean:
 cppcheck:
 	cppcheck *.cpp --enable=warning --output-file=warning_log.txt --error-exitcode=1
 	cppcheck *.cpp --enable=warning,style,performance --output-file=perf-style_log.txt
+
+memtest:
+	valgrind --leak-check=yes --log-file=memtest_log.txt ./a.out $(UNIT1) $(UNIT2)
 
 google_test_first:
 	cd /usr/src/gtest && sudo cmake CMakeLists.txt && sudo make

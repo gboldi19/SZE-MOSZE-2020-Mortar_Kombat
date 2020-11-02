@@ -40,7 +40,7 @@ jobs:
         with:
           path: ./perf-style_log.txt
       - name: Calling memtest
-        run: ./memtest.sh
+        run: make memtest
 
   Google_test_and_unit_testing:
     needs: [Build_and_compile, Memory_test_code_analysis]
