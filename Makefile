@@ -47,14 +47,14 @@ clean:
 	rm -rf *.o *.out
 
 cppcheck:
-	echo "$(cppcheck *.cpp --enable=warning --output-file=warning_log.txt)"
+	echo "$$(cppcheck *.cpp --enable=warning --output-file=warning_log.txt)"
 	if [ -s ./warning_log.txt ]
 	then
 		echo "Errors and/or warnings found."
 		exit 1
 	else
 		echo "No errors or warnings found."
-		echo "$(cppcheck *.cpp --enable=performance,style --output-file=perf-style_log.txt)"
+		echo "$$(cppcheck *.cpp --enable=performance,style --output-file=perf-style_log.txt)"
 		if [ -s ./perf-style_log.txt ]
 		then
 			echo "Performance and/or style problems found."
@@ -64,10 +64,10 @@ cppcheck:
 	fi
 
 memtest:
-	command="$(valgrind --leak-check=yes --log-file=memtest_log.txt ./a.out $(UNIT1) $(UNIT2))"
-	result="$(cat ./memtest_log.txt)"
-	echo $result
-	if [ "$(echo $result | sed 's/^.*ERROR SUMMARY: \([0-9]*\) errors.*$/\1/')" == "0" ]
+	command="$$(valgrind --leak-check=yes --log-file=memtest_log.txt ./a.out $(UNIT1) $(UNIT2))"
+	result="$$(cat ./memtest_log.txt)"
+	echo $$result
+	if [ "$$(echo $$result | sed 's/^.*ERROR SUMMARY: \([0-9]*\) errors.*$$/\1/')" == "0" ]
 	then
 		echo "No memory leak(s) found."
 	else
