@@ -60,7 +60,7 @@ cppcheck:
 			echo "Performance and/or style problems found."; \
 		else \
 			echo "No performance or style problems found."; \
-		fi
+		fi \
 	fi
 
 memtest:
