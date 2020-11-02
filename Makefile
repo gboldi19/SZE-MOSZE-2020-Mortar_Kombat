@@ -11,16 +11,16 @@ FSYS_FLAG := -lstdc++fs
 combat: $(OBJS)
 	$(CC) $(CFLAGS) -o combat $(OBJS) $(FSYS_FLAG)
 
-main.o: main.cpp Player.h Character.h
+main.o: main.cpp
 	$(CC) $(CFLAGS) main.cpp $(FSYS_FLAG)
 
 JSONParser.o: JSONParser.cpp JSONParser.h
 	$(CC) $(CFLAGS) JSONParser.cpp $(FSYS_FLAG)
 
-Player.o: Player.cpp Player.h Character.h
+Player.o: Player.cpp Player.h
 	$(CC) $(CFLAGS) Player.cpp $(FSYS_FLAG)
 
-Character.o: Character.cpp Character.h JSONParser.h
+Character.o: Character.cpp Character.h
 	$(CC) $(CFLAGS) Character.cpp $(FSYS_FLAG)
 
 doc_gen:
