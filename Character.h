@@ -1,10 +1,8 @@
 /**
  * @class Character
- * 
- * @brief This class is the spine of our game, links together the varaiable parts. 
- * 
+ * @brief This is a base class representing our entity.
+ * @brief Handels their attributes and interactions.
  * @author Mortar_Kombat
- * 
 */
 
 #ifndef CHARACTER_H
@@ -25,25 +23,30 @@ protected:
 	Character(const std::string _name, float _maxHP, float _DMG, float _ACD);
 	virtual void doHit(Character& victim);
 public:
-    /**
-    *
-    *@return Character's name
-    */
-	const std::string getName() const;
-    /**
-    *@return Character's Health Points
-    */
-	const float getHealthPoints() const;
-	const float getMaxHealthPoints() const;
-	const float getDamage() const;
-	const float getAttackCoolDown() const;
+	const std::string getName() const; ///< Getter for name.
+	const float getHealthPoints() const; ///< Getter for health points.
+	const float getMaxHealthPoints() const; ///< Getter for maximum health points.
+	const float getDamage() const; ///< Getter for damage.
+	const float getAttackCoolDown() const; ///< Getter for attack cooldown.
 	/**
-	*Calculates the potentialXP from the damage dealt.
-	*@param The function's argument is the attacker's pointer.
-	*@return Returns the poteintalXP.
+	* @brief Decreases HP by attacker's damage. Calculates the potentialXP from the damage dealt.
+	* @param The Character pointer of the attacker.
+	* @return The poteintal XP.
 	*/
     float gotHit(Character* attacker);
+	/**
+	* @brief Checks vitals of Character.
+	* @return true if alive
+	* @return false if dead
+	*/
 	bool isAlive();
+	/**
+	* @brief Fight simulation.
+	* @param Enemy.
+	* Characters hit each other.
+	* With every hit an attack cooldown starts.
+	* Exits if either dies.
+	*/
 	void fightTilDeath(Character &enemy);
 };
 
