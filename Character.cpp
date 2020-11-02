@@ -68,13 +68,13 @@ void Character::fightTilDeath(Character &enemy)
     {
         if (ACDTimer1 <= ACDTimer2)
         {
-			enemy.doHit(*this);
-            ACDTimer1 += enemy.getAttackCoolDown();
+			this->doHit(enemy);
+			ACDTimer1 += ACD;
         }
         else
         {
-			this->doHit(enemy);
-            ACDTimer2 += ACD;
+			enemy.doHit(*this);
+			ACDTimer2 += enemy.getAttackCoolDown();
         }
     }
 }
