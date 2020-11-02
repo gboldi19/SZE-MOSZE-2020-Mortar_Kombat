@@ -1,5 +1,5 @@
 OBJS := Character.o JSONParser.o main.o Player.o
-CFLAGS := -std=c++17 -Wall -c
+CFLAGS := -std=c++17 -Wall -g
 CC := g++-10
 RUNCPP := Character.cpp JSONParser.cpp main.cpp Player.cpp
 UNIT1 := units/unit1.json
@@ -11,7 +11,7 @@ FSYS_FLAG := -lstdc++fs
 combat: $(OBJS)
 	$(CC) $(CFLAGS) -o combat $(OBJS) $(FSYS_FLAG)
 
-main.o: main.cpp
+main.o: main.cpp Player.h Character.h
 	$(CC) $(CFLAGS) main.cpp $(FSYS_FLAG)
 
 JSONParser.o: JSONParser.cpp JSONParser.h
