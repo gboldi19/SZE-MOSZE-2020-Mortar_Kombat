@@ -1,27 +1,24 @@
 var indexSectionsWithContent =
 {
-  0: "cfgmps",
-  1: "cp",
-  2: "m",
-  3: "fgp",
-  4: "s"
+  0: "cfghijmprs",
+  1: "chjmp",
+  2: "cfgipr",
+  3: "s"
 };
 
 var indexSectionNames =
 {
   0: "all",
   1: "classes",
-  2: "files",
-  3: "functions",
-  4: "pages"
+  2: "functions",
+  3: "pages"
 };
 
 var indexSectionLabels =
 {
   0: "All",
   1: "Classes",
-  2: "Files",
-  3: "Functions",
-  4: "Pages"
+  2: "Functions",
+  3: "Pages"
 };
 
