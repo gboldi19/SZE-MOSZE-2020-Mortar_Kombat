@@ -15,10 +15,7 @@
 #include "Hero.h"
 #include "Monster.h"
 
-
-
-
-const std::map<int,std::string> error_messages = { ///< map containing error messages
+const std::map<int,std::string> error_messages = {
     { 1 , "Bad number of arguments. Only a single scenario file should be provided." },
     { 2 , "The provided scenario file is not accessible." },
     { 3 , "The provided scenario file is invalid." },
