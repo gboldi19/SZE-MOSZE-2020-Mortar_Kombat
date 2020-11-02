@@ -12,13 +12,13 @@ jobs:
       - name: Build, compile, linking
         run: make build
       - name: Preventing unwanted output append
-        run: make act_fight_removal
+        run: make static_fight_output_removal
       - name: Calling program from makefile
-        run: make act_fight
+        run: make static_fight_scenario
       - name: Checking differences
-        run: make act_fight_diff
+        run: make static_fight_diff
       - name: Deleting temporary file
-        run: make act_fight_removal
+        run: make static_fight_output_removal
 
   Memory_test_code_analysis:
     needs: [Build_and_compile]
@@ -32,13 +32,13 @@ jobs:
       - name: Build, compile, linking
         run: make build
       - name: Calling code analysis
-        run: make cppcheck
+        run: make static_code_analysis
       - name: Artifact performance and style messages
         uses: actions/upload-artifact@v2
         with:
           path: ./perf-style_log.txt
-      - name: Calling memtest
-        run: make memtest
+      - name: Calling memory test
+        run: make memory_leak_testing
 
   Google_test_and_unit_testing:
     needs: [Build_and_compile, Memory_test_code_analysis]

@@ -23,14 +23,14 @@ Player.o: Player.cpp Player.h
 Character.o: Character.cpp Character.h
 	$(CC) $(CFLAGS) -c Character.cpp Character.h JSONParser.h $(FSYS_FLAG)
 
-doc_gen:
+doc_generation:
 	doxygen -g
 	doxygen Doxyfile
 
-act_fight_removal:
+static_fight_output_removal:
 	rm -f output.csv
 
-act_fight:
+static_fight_scenario:
 	touch "output.csv"
 	> output.csv
 	./a.out $(UNIT1) $(UNIT2) >> output.csv
@@ -40,13 +40,13 @@ act_fight:
 	./a.out $(UNIT3) $(UNIT2) >> output.csv
 	./a.out $(UNIT3) $(UNIT1) >> output.csv
 
-act_fight_diff:
+static_fight_diff:
 	diff output.csv expected_output.csv
 	
 clean:
 	rm -rf *.o *.out
 
-cppcheck:
+static_code_analysis:
 	echo "$$(cppcheck *.cpp --enable=warning --output-file=warning_log.txt)"; \
 	if [ -s ./warning_log.txt ]; \
 	then \
@@ -63,7 +63,7 @@ cppcheck:
 		fi \
 	fi
 
-memtest:
+memory_leak_testing:
 	valgrind --error-exitcode=1 --leak-check=full ./a.out $(UNIT1) $(UNIT2)
 
 google_test_first:
