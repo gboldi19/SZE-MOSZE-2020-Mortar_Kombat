@@ -30,7 +30,7 @@ void bad_exit(int exitcode){ ///< function to write error messages
 }
 
 /**
- * @brief Initializes a Hero and some Monsters.
+ * @brief Initializes a Hero and some Monster objects.
  * @brief Hero fights the monsters one by one until death.
  * @arg scenario file path
  * Prints to screen.
