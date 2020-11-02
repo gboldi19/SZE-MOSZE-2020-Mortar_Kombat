@@ -47,33 +47,30 @@ clean:
 	rm -rf *.o *.out
 
 cppcheck:
-	echo "$$(cppcheck *.cpp --enable=warning --output-file=warning_log.txt)"
-	if [ -s ./warning_log.txt ]
-	then
-		echo "Errors and/or warnings found."
-		exit 1
-	else
-		echo "No errors or warnings found."
-		echo "$$(cppcheck *.cpp --enable=performance,style --output-file=perf-style_log.txt)"
-		if [ -s ./perf-style_log.txt ]
-		then
-			echo "Performance and/or style problems found."
-		else
-			echo "No performance or style problems found."
+	echo "$$(cppcheck *.cpp --enable=warning --output-file=warning_log.txt)"; \
+	if [ -s ./warning_log.txt ]; \
+	then \
+		echo "Errors and/or warnings found."; \
+		exit 1; \
+	else \
+		echo "No errors or warnings found."; \
+		echo "$$(cppcheck *.cpp --enable=performance,style --output-file=perf-style_log.txt)"; \
+		if [ -s ./perf-style_log.txt ]; \
+		then \
+			echo "Performance and/or style problems found."; \
+		else \
+			echo "No performance or style problems found."; \
 		fi
 	fi
 
 memtest:
-	command="$$(valgrind --leak-check=yes --log-file=memtest_log.txt ./a.out $(UNIT1) $(UNIT2))"
-	result="$$(cat ./memtest_log.txt)"
-	echo $$result
-	if [ "$$(echo $$result | sed 's/^.*ERROR SUMMARY: \([0-9]*\) errors.*$$/\1/')" == "0" ]
-	then
-		echo "No memory leak(s) found."
-	else
-		echo "Memory leak(s) found. Quitting."
-		exit 1
-	fi
+valgrind --leak-check=yes --log-file=memtest_log.txt ./a.out $(UNIT1) $(UNIT2))" && result="$(cat ./memtest_log.txt)"; && echo $$result;
+if [ "$$(echo $$result | sed 's/^.*ERROR SUMMARY: \([0-9]*\) errors.*$$/\1/')" == "0" ]; then \
+    echo "No memory leak(s) found."; \
+else \
+    echo "Memory leak(s) found. Quitting."; \
+    exit 1; \
+fi
 
 google_test_first:
 	cd /usr/src/gtest && sudo cmake CMakeLists.txt && sudo make
