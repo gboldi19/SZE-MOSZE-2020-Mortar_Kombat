@@ -62,7 +62,6 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
-<a href="#pro-static-methods">Static Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classCharacter-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -94,31 +93,25 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:aa56d20501eb267c514077ec76fa92bcc"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classCharacter.html">Character</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacter.html#aa56d20501eb267c514077ec76fa92bcc">CharacterFromFile</a> (const std::string &amp;fileName)</td></tr>
-<tr class="separator:aa56d20501eb267c514077ec76fa92bcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea1b46f5cc8b94282555593335dab181"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classCharacter.html">Character</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacter.html#aea1b46f5cc8b94282555593335dab181">parseUnit</a> (std::string fileName)</td></tr>
+<tr class="separator:aea1b46f5cc8b94282555593335dab181"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a281ed7b7f997af3c9d773c80c6f58513"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classCharacter.html">Character</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacter.html#a281ed7b7f997af3c9d773c80c6f58513">Fight</a> (<a class="el" href="classCharacter.html">Character</a> &amp;player1, <a class="el" href="classCharacter.html">Character</a> &amp;player2)</td></tr>
 <tr class="separator:a281ed7b7f997af3c9d773c80c6f58513"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
+<tr class="memitem:a40f7676cbb9e2cb689f0b9782f25650a"><td class="memItemLeft" align="right" valign="top"><a id="a40f7676cbb9e2cb689f0b9782f25650a"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Character</b> (const std::string characterName, float healthPoints, float damagePoints, float attackSpeed)</td></tr>
+<tr class="separator:a40f7676cbb9e2cb689f0b9782f25650a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a849201a95c6c7936a3dd85095f44d88f"><td class="memItemLeft" align="right" valign="top"><a id="a849201a95c6c7936a3dd85095f44d88f"></a>
 const float&#160;</td><td class="memItemRight" valign="bottom"><b>getDMG</b> () const</td></tr>
 <tr class="separator:a849201a95c6c7936a3dd85095f44d88f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64e05d1af14da77f6979bcd987d79e21"><td class="memItemLeft" align="right" valign="top"><a id="a64e05d1af14da77f6979bcd987d79e21"></a>
 const float&#160;</td><td class="memItemRight" valign="bottom"><b>getAS</b> () const</td></tr>
 <tr class="separator:a64e05d1af14da77f6979bcd987d79e21"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b4efa3a944c18430384a4c2486eeac4"><td class="memItemLeft" align="right" valign="top"><a id="a6b4efa3a944c18430384a4c2486eeac4"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Character</b> (const std::string *characterAttributes)</td></tr>
-<tr class="separator:a6b4efa3a944c18430384a4c2486eeac4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2b8f33202d111dd7f2e9a99e2e6cb90c"><td class="memItemLeft" align="right" valign="top"><a id="a2b8f33202d111dd7f2e9a99e2e6cb90c"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>doHit</b> (<a class="el" href="classCharacter.html">Character</a> &amp;victim)</td></tr>
 <tr class="separator:a2b8f33202d111dd7f2e9a99e2e6cb90c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-static-methods"></a>
-Static Protected Member Functions</h2></td></tr>
-<tr class="memitem:ab3580067f7dc9531f593ea414b8a0240"><td class="memItemLeft" align="right" valign="top"><a id="ab3580067f7dc9531f593ea414b8a0240"></a>
-static std::string *&#160;</td><td class="memItemRight" valign="bottom"><b>parseUnit</b> (const std::string &amp;fileName)</td></tr>
-<tr class="separator:ab3580067f7dc9531f593ea414b8a0240"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -142,39 +135,6 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>AS</b></td></tr>
 <div class="textblock"><p>This class is the spine of our game, links together the varaiable parts. </p>
 <dl class="section author"><dt>Author</dt><dd>Mortar_Kombat </dd></dl>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="aa56d20501eb267c514077ec76fa92bcc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa56d20501eb267c514077ec76fa92bcc">&#9670;&nbsp;</a></span>CharacterFromFile()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classCharacter.html">Character</a> Character::CharacterFromFile </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>fileName</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>This function calls th parseUnit function. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">The</td><td>reference for the name of the file which contains the character attributes. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The name of the file which contains the character attributes. </dd></dl>
-
-</div>
-</div>
 <a id="a281ed7b7f997af3c9d773c80c6f58513"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a281ed7b7f997af3c9d773c80c6f58513">&#9670;&nbsp;</a></span>Fight()</h2>
 
@@ -277,6 +237,39 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>AS</b></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Returns the poteintalXP. </dd></dl>
+
+</div>
+</div>
+<a id="aea1b46f5cc8b94282555593335dab181"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea1b46f5cc8b94282555593335dab181">&#9670;&nbsp;</a></span>parseUnit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCharacter.html">Character</a> Character::parseUnit </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>fileName</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>This function calls th parseUnit function. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">The</td><td>reference for the name of the file which contains the character attributes. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The name of the file which contains the character attributes. </dd></dl>
 
 </div>
 </div>

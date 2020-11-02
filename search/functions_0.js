@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['characterfromfile',['CharacterFromFile',['../classCharacter.html#aa56d20501eb267c514077ec76fa92bcc',1,'Character']]]
+  ['fight',['Fight',['../classCharacter.html#a281ed7b7f997af3c9d773c80c6f58513',1,'Character']]]
 ];
