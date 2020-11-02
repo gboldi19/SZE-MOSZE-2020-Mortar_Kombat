@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['fighttildeath',['fightTilDeath',['../classCharacter.html#a15b0d051e3faf8895cf3d73d35d50da6',1,'Character']]]
+  ['character',['Character',['../classCharacter.html',1,'']]],
+  ['count',['count',['../classJSON.html#a8cdf7734b3652ae5b7e600eb0b4549bb',1,'JSON']]]
 ];
