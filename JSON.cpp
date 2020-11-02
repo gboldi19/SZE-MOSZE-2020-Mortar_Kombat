@@ -120,15 +120,15 @@ std::map<std::string, std::any> parseString(std::string& s)
         }
         s = s.substr(pos, s.length()); //remove everything before value
 		
-		if (s[0] == '"') //starts as a string
-		{
-			pos = s.substr(1, s.length()).find('"'); //skip inside of string
-		}
-		else
-		{
-			pos = 0; //just reset position
-		}
-		while (pairEndingChars.find(s[pos]) == pairEndingChars.end() && pos < s.length()) pos++; //find value end if non-string (or incorrect content end)
+	if (s[0] == '"') //starts as a string
+	{
+		pos = s.substr(1, s.length()).find('"'); //skip inside of string
+	}
+	else
+	{
+		pos = 0; //just reset position
+	}
+	while (pairEndingChars.find(s[pos]) == pairEndingChars.end() && pos < s.length()) pos++; //find value end if non-string (or incorrect content end)
         valueString = s.substr(0, pos); //pass value string
         s = s.substr(pos, s.length()); //remove everything before value
 
