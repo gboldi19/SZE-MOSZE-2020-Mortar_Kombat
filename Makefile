@@ -31,6 +31,7 @@ act_fight_removal:
 	rm -f output.csv
 
 act_fight:
+	touch output.csv
 	file='output.csv'
 	./combat $(UNIT1) $(UNIT2) >> $$file
 	./combat $(UNIT1) $(UNIT3) >> $$file
