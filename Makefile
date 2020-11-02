@@ -32,12 +32,12 @@ act_fight_removal:
 
 act_fight:
 	file='output.csv'
-	$(combat) $(UNIT1) $(UNIT2) >> $$file
-	$(combat) $(UNIT1) $(UNIT3) >> $$file
-	$(combat) $(UNIT2) $(UNIT1) >> $$file
-	$(combat) $(UNIT2) $(UNIT3) >> $$file
-	$(combat) $(UNIT3) $(UNIT2) >> $$file
-	$(combat) $(UNIT3) $(UNIT1) >> $$file
+	./combat $(UNIT1) $(UNIT2) >> $$file
+	./combat $(UNIT1) $(UNIT3) >> $$file
+	./combat $(UNIT2) $(UNIT1) >> $$file
+	./combat $(UNIT2) $(UNIT3) >> $$file
+	./combat $(UNIT3) $(UNIT2) >> $$file
+	./combat $(UNIT3) $(UNIT1) >> $$file
 
 act_fight_diff:
 	diff output.csv expected_output.csv
