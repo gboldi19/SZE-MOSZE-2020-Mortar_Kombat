@@ -15,8 +15,10 @@ jobs:
         run: rm -f output.csv
       - name: Calling program from shell
         run: ./test.sh
-      - name: Checking differences
-        run: diff output.csv expected_output.csv
+      - name: Checking differences 1
+        run: diff output1.csv expected_output1.csv
+      - name: Checking differences 2
+        run: diff output2.csv expected_output2.csv
       - name: Deleting temporary file
         run: rm -f output.csv
 
