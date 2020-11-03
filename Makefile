@@ -11,17 +11,17 @@ OUTBIN := a.out
 build: $(OBJS)
 	$(CC) $(CFLAGS) -o $(OUTBIN) $(OBJS) $(FSYS_FLAG)
 
-main.o: main.cpp
-	$(CC) $(CFLAGS) -c main.cpp Character.h Player.h JSONParser.h $(FSYS_FLAG)
+main.o: main.cpp Character.h Player.h JSONParser.h
+	$(CC) $(CFLAGS) -c main.cpp $(FSYS_FLAG)
 
-JSONParser.o: JSONParser.cpp JSONParser.h
-	$(CC) $(CFLAGS) -c JSONParser.cpp JSONParser.h Character.h $(FSYS_FLAG)
+JSONParser.o: JSONParser.cpp JSONParser.h Character.h
+	$(CC) $(CFLAGS) -c JSONParser.cpp $(FSYS_FLAG)
 
-Player.o: Player.cpp Player.h
-	$(CC) $(CFLAGS) -c Player.cpp Player.h Character.h $(FSYS_FLAG)
+Player.o: Player.cpp Player.h Character.h 
+	$(CC) $(CFLAGS) -c Player.cpp $(FSYS_FLAG)
 
-Character.o: Character.cpp Character.h
-	$(CC) $(CFLAGS) -c Character.cpp Character.h JSONParser.h $(FSYS_FLAG)
+Character.o: Character.cpp Character.h JSONParser.h
+	$(CC) $(CFLAGS) -c Character.cpp $(FSYS_FLAG)
 
 doc_generation:
 	doxygen -g
