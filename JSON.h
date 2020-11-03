@@ -26,7 +26,7 @@ public:
 
 	class ParseException : public std::exception {};
 
-	static void ruleOutNegativeAnyFloat(std::any& num);
+	static float RONAF(const float& num); //Rule Out Negative Any Float
 };
 
 #endif

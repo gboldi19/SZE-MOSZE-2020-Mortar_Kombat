@@ -195,10 +195,11 @@ JSON JSON::parseFromFile(std::string fileName)
 	return(JSON(JSON::parse(fileName, true)));
 }
 
-void JSON::ruleOutNegativeAnyFloat(std::any& num)
+float JSON::RONAF(const float& num)
 {
-	if (std::any_cast<float>(num) < 0)
+	if (num < 0)
 	{
 		throw std::runtime_error("Negative numeric value is not acceptable here!");
 	}
+	return num;
 }
