@@ -68,7 +68,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>This is a base class representing our entity. Handels their attributes and interactions.  
+<p>This class is the spine of our game, links together the varaiable parts.  
  <a href="classCharacter.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="Character_8h_source.html">Character.h</a>&gt;</code></p>
@@ -77,41 +77,33 @@ Inheritance diagram for Character:</div>
 <div class="dyncontent">
 <div class="center"><img src="classCharacter__inherit__graph.png" border="0" usemap="#Character_inherit__map" alt="Inheritance graph"/></div>
 <map name="Character_inherit__map" id="Character_inherit__map">
-<area shape="rect" id="node2" href="classHero.html" title="This is a subclass representing the main character. Contains construction and level up management..." alt="" coords="5,80,56,107"/>
-<area shape="rect" id="node3" href="classMonster.html" title="This is a subclass representing the enemies. Contains construction. " alt="" coords="80,80,149,107"/>
+<area shape="rect" id="node2" href="classHero.html" title="Hero" alt="" coords="5,80,56,107"/>
+<area shape="rect" id="node3" href="classMonster.html" title="Monster" alt="" coords="80,80,149,107"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a1ab1d31d7776d21a0315434acc61b342"><td class="memItemLeft" align="right" valign="top"><a id="a1ab1d31d7776d21a0315434acc61b342"></a>
-const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacter.html#a1ab1d31d7776d21a0315434acc61b342">getName</a> () const</td></tr>
-<tr class="memdesc:a1ab1d31d7776d21a0315434acc61b342"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for name. <br /></td></tr>
+<tr class="memitem:a1ab1d31d7776d21a0315434acc61b342"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacter.html#a1ab1d31d7776d21a0315434acc61b342">getName</a> () const</td></tr>
 <tr class="separator:a1ab1d31d7776d21a0315434acc61b342"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac8c4243e79dba2482a473dc0306ae4fc"><td class="memItemLeft" align="right" valign="top"><a id="ac8c4243e79dba2482a473dc0306ae4fc"></a>
-const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacter.html#ac8c4243e79dba2482a473dc0306ae4fc">getHealthPoints</a> () const</td></tr>
-<tr class="memdesc:ac8c4243e79dba2482a473dc0306ae4fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for health points. <br /></td></tr>
+<tr class="memitem:ac8c4243e79dba2482a473dc0306ae4fc"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacter.html#ac8c4243e79dba2482a473dc0306ae4fc">getHealthPoints</a> () const</td></tr>
 <tr class="separator:ac8c4243e79dba2482a473dc0306ae4fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e467b44bc30bd2bd6aa0782a13b4c99"><td class="memItemLeft" align="right" valign="top"><a id="a0e467b44bc30bd2bd6aa0782a13b4c99"></a>
-const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacter.html#a0e467b44bc30bd2bd6aa0782a13b4c99">getMaxHealthPoints</a> () const</td></tr>
-<tr class="memdesc:a0e467b44bc30bd2bd6aa0782a13b4c99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for maximum health points. <br /></td></tr>
+const float&#160;</td><td class="memItemRight" valign="bottom"><b>getMaxHealthPoints</b> () const</td></tr>
 <tr class="separator:a0e467b44bc30bd2bd6aa0782a13b4c99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac547bfbee95afd83807684f2e9013459"><td class="memItemLeft" align="right" valign="top"><a id="ac547bfbee95afd83807684f2e9013459"></a>
-const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacter.html#ac547bfbee95afd83807684f2e9013459">getDamage</a> () const</td></tr>
-<tr class="memdesc:ac547bfbee95afd83807684f2e9013459"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for damage. <br /></td></tr>
+const float&#160;</td><td class="memItemRight" valign="bottom"><b>getDamage</b> () const</td></tr>
 <tr class="separator:ac547bfbee95afd83807684f2e9013459"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3fe644e2fed8cb4f0a4fe6e74ade5a55"><td class="memItemLeft" align="right" valign="top"><a id="a3fe644e2fed8cb4f0a4fe6e74ade5a55"></a>
-const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacter.html#a3fe644e2fed8cb4f0a4fe6e74ade5a55">getAttackCoolDown</a> () const</td></tr>
-<tr class="memdesc:a3fe644e2fed8cb4f0a4fe6e74ade5a55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for attack cooldown. <br /></td></tr>
+const float&#160;</td><td class="memItemRight" valign="bottom"><b>getAttackCoolDown</b> () const</td></tr>
 <tr class="separator:a3fe644e2fed8cb4f0a4fe6e74ade5a55"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abed8c1bf3fae4ce36942dbf73a9d85d4"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacter.html#abed8c1bf3fae4ce36942dbf73a9d85d4">gotHit</a> (<a class="el" href="classCharacter.html">Character</a> *attacker)</td></tr>
-<tr class="memdesc:abed8c1bf3fae4ce36942dbf73a9d85d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decreases HP by attacker's damage.  <a href="#abed8c1bf3fae4ce36942dbf73a9d85d4">More...</a><br /></td></tr>
 <tr class="separator:abed8c1bf3fae4ce36942dbf73a9d85d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa49f985b1b05751b2d4b3de74b4acc8c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacter.html#aa49f985b1b05751b2d4b3de74b4acc8c">isAlive</a> ()</td></tr>
-<tr class="memdesc:aa49f985b1b05751b2d4b3de74b4acc8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks vitals of <a class="el" href="classCharacter.html" title="This is a base class representing our entity. Handels their attributes and interactions. ">Character</a>.  <a href="#aa49f985b1b05751b2d4b3de74b4acc8c">More...</a><br /></td></tr>
+<tr class="memitem:aa49f985b1b05751b2d4b3de74b4acc8c"><td class="memItemLeft" align="right" valign="top"><a id="aa49f985b1b05751b2d4b3de74b4acc8c"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>isAlive</b> ()</td></tr>
 <tr class="separator:aa49f985b1b05751b2d4b3de74b4acc8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a15b0d051e3faf8895cf3d73d35d50da6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacter.html#a15b0d051e3faf8895cf3d73d35d50da6">fightTilDeath</a> (<a class="el" href="classCharacter.html">Character</a> &amp;enemy)</td></tr>
-<tr class="memdesc:a15b0d051e3faf8895cf3d73d35d50da6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fight simulation.  <a href="#a15b0d051e3faf8895cf3d73d35d50da6">More...</a><br /></td></tr>
+<tr class="memitem:a15b0d051e3faf8895cf3d73d35d50da6"><td class="memItemLeft" align="right" valign="top"><a id="a15b0d051e3faf8895cf3d73d35d50da6"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>fightTilDeath</b> (<a class="el" href="classCharacter.html">Character</a> &amp;enemy)</td></tr>
 <tr class="separator:a15b0d051e3faf8895cf3d73d35d50da6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
@@ -142,31 +134,42 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>ACD</b></td></tr>
 <tr class="separator:a62c5b993c88227007c10ba73b0ef538e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This is a base class representing our entity. Handels their attributes and interactions. </p>
+<div class="textblock"><p>This class is the spine of our game, links together the varaiable parts. </p>
+<dl class="section author"><dt>Author</dt><dd>Mortar_Kombat </dd></dl>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a15b0d051e3faf8895cf3d73d35d50da6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a15b0d051e3faf8895cf3d73d35d50da6">&#9670;&nbsp;</a></span>fightTilDeath()</h2>
+<a id="ac8c4243e79dba2482a473dc0306ae4fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8c4243e79dba2482a473dc0306ae4fc">&#9670;&nbsp;</a></span>getHealthPoints()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Character::fightTilDeath </td>
+          <td class="memname">const float Character::getHealthPoints </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classCharacter.html">Character</a> &amp;&#160;</td>
-          <td class="paramname"><em>enemy</em></td><td>)</td>
-          <td></td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classCharacter.html" title="This class is the spine of our game, links together the varaiable parts. ">Character</a>'s Health Points </dd></dl>
 
-<p>Fight simulation. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">Enemy.</td><td>Characters hit each other. With every hit an attack cooldown starts. Exits if either dies. </td></tr>
-  </table>
-  </dd>
-</dl>
+</div>
+</div>
+<a id="a1ab1d31d7776d21a0315434acc61b342"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ab1d31d7776d21a0315434acc61b342">&#9670;&nbsp;</a></span>getName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string Character::getName </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classCharacter.html" title="This class is the spine of our game, links together the varaiable parts. ">Character</a>'s name </dd></dl>
 
 </div>
 </div>
@@ -185,37 +188,13 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>ACD</b></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Decreases HP by attacker's damage. </p>
 <p>Calculates the potentialXP from the damage dealt. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">The</td><td><a class="el" href="classCharacter.html" title="This is a base class representing our entity. Handels their attributes and interactions. ">Character</a> pointer of the attacker. </td></tr>
+    <tr><td class="paramname">The</td><td>function's argument is the attacker's pointer. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The poteintal XP. </dd></dl>
-
-</div>
-</div>
-<a id="aa49f985b1b05751b2d4b3de74b4acc8c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa49f985b1b05751b2d4b3de74b4acc8c">&#9670;&nbsp;</a></span>isAlive()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool Character::isAlive </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Checks vitals of <a class="el" href="classCharacter.html" title="This is a base class representing our entity. Handels their attributes and interactions. ">Character</a>. </p>
-<dl class="section return"><dt>Returns</dt><dd>true if alive </dd>
-<dd>
-false if dead </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns the poteintalXP. </dd></dl>
 
 </div>
 </div>
