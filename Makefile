@@ -1,9 +1,12 @@
-OBJS := main.o Player.o Character.o JSONParser.o 
+OBJS := main.o Hero.o Character.o JSON.o 
 CFLAGS := -std=c++17 -Wall -Werror -g 
-CC := g++
-UNIT1 := units/unit1.json
-UNIT2 := units/unit2.json
-UNIT3 := units/unit3.json
+CC := g++-10
+UNIT1 := units/test_scenario1.json
+UNIT2 := units/test_scenario2.json
+UNIT3 := units/test_scenario3.json
+UNIT4 := units/test_scenario4.json
+UNIT5 := units/test_scenario5.json
+UNIT6 := units/test_scenario6.json
 BAD_UNIT := unit_testing/missing_comma.json
 FSYS_FLAG := -lstdc++fs
 OUTBIN := a.out
@@ -11,17 +14,20 @@ OUTBIN := a.out
 build: $(OBJS)
 	$(CC) $(CFLAGS) -o $(OUTBIN) $(OBJS) $(FSYS_FLAG)
 
-main.o: main.cpp Character.h Player.h JSONParser.h
+main.o: main.cpp Character.h Hero.h JSON.h
 	$(CC) $(CFLAGS) -c main.cpp $(FSYS_FLAG)
 
-JSONParser.o: JSONParser.cpp JSONParser.h
-	$(CC) $(CFLAGS) -c JSONParser.cpp $(FSYS_FLAG)
+JSON.o: JSON.cpp JSON.h
+	$(CC) $(CFLAGS) -c JSON.cpp $(FSYS_FLAG)
 
-Player.o: Player.cpp Player.h Character.h JSONParser.h
-	$(CC) $(CFLAGS) -c Player.cpp $(FSYS_FLAG)
+Hero.o: Hero.cpp Hero.h Character.h JSON.h
+	$(CC) $(CFLAGS) -c Hero.cpp $(FSYS_FLAG)
 
-Character.o: Character.cpp Character.h JSONParser.h
+Character.o: Character.cpp Character.h JSON.h
 	$(CC) $(CFLAGS) -c Character.cpp $(FSYS_FLAG)
+
+Monster.o: Monster.cpp Monster.h Character.h JSON.h
+	$(CC) $(CFLAGS) -c Monster.cpp $(FSYS_FLAG)
 
 doc_generation:
 	doxygen -g
@@ -33,15 +39,15 @@ static_fight_output_removal:
 static_fight_scenario:
 	touch "output.csv"
 	> output.csv
-	./a.out $(UNIT1) $(UNIT2) >> output.csv
-	./a.out $(UNIT1) $(UNIT3) >> output.csv
-	./a.out $(UNIT2) $(UNIT1) >> output.csv
-	./a.out $(UNIT2) $(UNIT3) >> output.csv
-	./a.out $(UNIT3) $(UNIT2) >> output.csv
-	./a.out $(UNIT3) $(UNIT1) >> output.csv
+	./a.out $(UNIT1) >> output.csv
+	./a.out $(UNIT2) >> output.csv
+	./a.out $(UNIT3) >> output.csv
+	./a.out $(UNIT4) >> output.csv
+	./a.out $(UNIT5) >> output.csv
+	./a.out $(UNIT6) >> output.csv
 
 static_fight_diff:
-	diff output.csv expected_output.csv
+	diff output.csv expected_output1.csv
 	
 clean:
 	rm -rf *.o *.out
@@ -64,7 +70,7 @@ static_code_analysis:
 	fi
 
 memory_leak_testing:
-	valgrind --error-exitcode=1 --leak-check=full ./a.out $(UNIT1) $(UNIT2)
+	valgrind --error-exitcode=1 --leak-check=full ./a.out $(UNIT1)
 
 google_test_first:
 	cd /usr/src/gtest && sudo cmake CMakeLists.txt && sudo make

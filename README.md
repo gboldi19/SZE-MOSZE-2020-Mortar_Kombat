@@ -1,32 +1,57 @@
 # SZE-MOSZE-2020-Mortar_Kombat
 
-This program simulates a turn based fight between a regular character and a player.  
-
-## Input instructions
-### ./a.out
-In order to be able to use the `a.out` command, you must compile all the files in the scope with `.cpp` extension first, which is generating the `a.out` file if no output name is specified.<br>After compiling the user can refer to the executable from the current working directory with `./a.out` followed by the given arguments.  
-<br>***The proper synthax is:***  
-./a.out <character_attributes_json_file_1> <player_attributes_json_file_2>  
-   
-Differring number of arguments and non-existent files throw error.
-### '.json' format example:
-```
+This program simulates a turn based fight between a hero and a some monsters.  
+  
+## Input instructions  
+### Argument  
+Use an argument when running the compiled executable. The argument should be a path to a .json file describing a scenario.  
+There must be a "hero" and a "monsters" key with paths to all the entities' .json files.  
+```   
 {
-  "name" : "Kakarott",
-  "hp" : 43,
-  "dmg" : 9
-}
-```
-
-## Simulation
-The characters fight in turns back and forth repeatedly, starting with the regular character.  
+    "hero" : "Dark_Wanderer.json",
+    "monsters" : " Fallen.json  Fallen.json  Zombie.json  Fallen.json  Blood_Raven.json "
+} 
+```  
+### Entities  
+All entities' .json files must contain specific keys, as in the following examples:
+#### Hero
+```   
+{  
+    "name" : "Prince Aidan of Khanduras",  
+    "base_health_points" : 30,  
+    "base_damage" : 3,  
+    "base_attack_cooldown" : 1.1,  
+    "experience_per_level" : 20,  
+    "health_point_bonus_per_level" : 5,  
+    "damage_bonus_per_level" : 1,  
+    "cooldown_multiplier_per_level": 0.9  
+}  
+```  
+#### Monster
+```   
+{  
+    "name" : "Blood Raven",  
+    "health_points" : 113,  
+    "damage" : 8,  
+    "attack_cooldown" : 1.2,  
+}  
+```  
+  
+## Simulation  
+### Fight
+The characters fight in turns back and forth repeatedly.  
 By every attack, the attacked character's hit points reduce by the attacker character's damage points.   
-For every damage point the player inflicts it gains an experience point.   
-100 experience points cause the player to level up resulting in:
-- 10% more maximum hit points (rounded)   
-- 10% more damage points   
-- instant hit point regeneration   
+For every damage point the hero inflicts it gains an experience point.   
+After a given amount of experience points the hero levels up resulting in:
+- Given amount of increase in maximum hit points   
+- Given amount of increase in damage points   
+- Less damage cooldown by given ratio
+- Instant hit point regeneration   
 The simulation ends when one reaches 0 hit points.  
-The program announces the winner and it's remaining HP, then stops.  
-
-Documentation: https://teaching-projects.github.io/SZE-MOSZE-2020-Mortar_Kombat/
+## Scenario  
+The hero fights throught all the monsters one by one. 
+Before every fight the name, level and the opponent's name is printed.  
+If either any of the monster or the hero has no hit points left, the simulation ends.  
+The hero's name, level, hit points, maximum hit points, damage points, attack cooldown are printed, and then the program exits.   
+  
+Documentation: https://teaching-projects.github.io/SZE-MOSZE-2020-Mortar_Kombat/   

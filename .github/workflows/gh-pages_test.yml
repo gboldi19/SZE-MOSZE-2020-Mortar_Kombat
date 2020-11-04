@@ -1,4 +1,4 @@
-name: Deploy documentation Workflow
+name: Deploying documentation
 
 on: pull_request
 

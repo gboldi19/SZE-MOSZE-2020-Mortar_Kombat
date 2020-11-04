@@ -1,25 +1,11 @@
 #include "Character.h"
-#include <any>
 
-Character::Character(const std::string characterName, float healthPoints, float damagePoints, float attackSpeed)
-: name(characterName)
+Character::Character(const std::string _name, float _maxHP, float _DMG, float _ACD)
+: name(_name)
 {
-	HP = maxHP = healthPoints;
-  DMG = damagePoints;
-  AS = attackSpeed;
-}
-
-Character Character::parseUnit(std::string fileName)
-{
-  std::map<std::string, std::any> characterAttributes = JSONParser::parse(fileName, true);
-  ruleOutNegativeAnyFloat(characterAttributes["hp"]);
-  ruleOutNegativeAnyFloat(characterAttributes["dmg"]);
-  ruleOutNegativeAnyFloat(characterAttributes["as"]);
-	return Character(
-        std::any_cast<std::string>(characterAttributes["name"]),
-        std::any_cast<float>(characterAttributes["hp"]),
-        std::any_cast<float>(characterAttributes["dmg"]),
-        std::any_cast<float>(characterAttributes["as"]));
+	HP = maxHP = _maxHP;
+	DMG = _DMG;
+	ACD = _ACD;
 }
 
 const std::string Character::getName() const
@@ -27,25 +13,30 @@ const std::string Character::getName() const
 	return name;
 }
 
-const float Character::getHP() const
+const float Character::getHealthPoints() const
 {
 	return HP;
 }
 
-const float Character::getDMG() const
+const float Character::getMaxHealthPoints() const
+{
+	return maxHP;
+}
+
+const float Character::getDamage() const
 {
 	return DMG;
 }
 
-const float Character::getAS() const
+const float Character::getAttackCoolDown() const
 {
-    return AS;
+    return ACD;
 }
 
 
 float Character::gotHit(Character* attacker)
 {
-	float potentialXP = attacker->getDMG();
+	float potentialXP = attacker->getDamage();
 	if (HP - potentialXP > 0)
 	{
 		HP -= potentialXP;
@@ -64,38 +55,36 @@ void Character::doHit(Character& victim)
 	victim.gotHit(this);
 }
 
-Character* Character::Fight(Character &player1, Character &player2)
+bool Character::isAlive()
 {
-    float ASTimer1 = 0, ASTimer2 = 0;
+	return HP > 0;
+}
 
-    while (player1.getHP() > 0 && player2.getHP() > 0)
+void Character::fightTilDeath(Character &enemy)
+{
+    float ACDTimer1 = 0, ACDTimer2 = 0;
+
+    while (enemy.getHealthPoints() > 0 && HP > 0)
     {
-        if (ASTimer1 <= ASTimer2)
+        if (ACDTimer1 <= ACDTimer2)
         {
-            player2.doHit(player2);
-            ASTimer1 += player1.getAS();
+			this->doHit(enemy);
+			ACDTimer1 += ACD;
         }
         else
         {
-            player1.doHit(player1);
-            ASTimer2 += player2.getAS();
+			enemy.doHit(*this);
+			ACDTimer2 += enemy.getAttackCoolDown();
         }
     }
-
-    if (player1.getHP() == 0) 
-    {
-        return &player2;
-    }
-    else
-    {
-        return &player1;
-    }
 }
 
-void ruleOutNegativeAnyFloat(std::any& num)
+float RONAF(const float& num)
 {
-    if (std::any_cast<float>(num) < 0)
-    {
-        throw std::runtime_error("Negative numeric value is not acceptable here!");
-    }
+	if (num < 0)
+	{
+		throw std::runtime_error("Negative numeric value is not acceptable here!");
+	}
+	return num;
 }
+
