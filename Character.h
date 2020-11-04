@@ -17,9 +17,15 @@
 class Character
 {
 protected:
-	const std::string name;
-	float maxHP, HP, DMG, ACD;
-	Character(const std::string _name, float _maxHP, float _DMG, float _ACD);
+	const std::string name; ///< Name of the Character.
+	float maxHP, HP, DMG, ACD; ///< Maximum health points, health points, damage points and attack cooldown time of the Character, respectively.
+	Character(const std::string _name, float _maxHP, float _DMG, float _ACD); ///< Generic constructor of the class.
+	/**
+	* @brief Starts hitting procedure.
+	* @param The victim Character.
+	* Inflicts damage to the victim's health points.
+	* Overload available for XP management.
+	*/
 	virtual void doHit(Character& victim);
 public:
 	const std::string getName() const; ///< Getter for name.
