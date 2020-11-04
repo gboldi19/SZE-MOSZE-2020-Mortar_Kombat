@@ -23,13 +23,13 @@ Hero Hero::parse(std::string fileName)
 	JSON characterAttributes = JSON::parseFromFile(fileName);
 	return Hero(
 		characterAttributes.get<std::string>("name"),
-		JSON::RONAF(characterAttributes.get<float>("base_health_points")),
-		JSON::RONAF(characterAttributes.get<float>("base_damage")),
-		JSON::RONAF(characterAttributes.get<float>("base_attack_cooldown")),
-		JSON::RONAF(characterAttributes.get<float>("experience_per_level")),
-		JSON::RONAF(characterAttributes.get<float>("health_point_bonus_per_level")),
-		JSON::RONAF(characterAttributes.get<float>("damage_bonus_per_level")),
-		JSON::RONAF(characterAttributes.get<float>("cooldown_multiplier_per_level")));
+		RONAF(characterAttributes.get<float>("base_health_points")),
+		RONAF(characterAttributes.get<float>("base_damage")),
+		RONAF(characterAttributes.get<float>("base_attack_cooldown")),
+		RONAF(characterAttributes.get<float>("experience_per_level")),
+		RONAF(characterAttributes.get<float>("health_point_bonus_per_level")),
+		RONAF(characterAttributes.get<float>("damage_bonus_per_level")),
+		RONAF(characterAttributes.get<float>("cooldown_multiplier_per_level")));
 }
 
 void Hero::levelup(float levelupXP)

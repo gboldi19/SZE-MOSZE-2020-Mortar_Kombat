@@ -194,12 +194,3 @@ JSON JSON::parseFromFile(std::string fileName)
 {
 	return(JSON(JSON::parse(fileName, true)));
 }
-
-float JSON::RONAF(const float& num)
-{
-	if (num < 0)
-	{
-		throw std::runtime_error("Negative numeric value is not acceptable here!");
-	}
-	return num;
-}
