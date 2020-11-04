@@ -1,0 +1,57 @@
+name: Unified testing (DIFFTEST,GTEST,MEMTEST)
+
+on: push
+
+jobs:
+  Build_and_compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Clearing out previous binary files, if any exists
+        run: make clean
+      - name: Build, compile, linking
+        run: make build
+      - name: Preventing unwanted output append
+        run: make static_fight_output_removal
+      - name: Calling program from makefile
+        run: make static_fight_scenario
+      - name: Checking differences
+        run: make static_fight_diff
+      - name: Deleting temporary file
+        run: make static_fight_output_removal
+
+  Memory_test_code_analysis:
+    needs: [Build_and_compile]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Cppcheck, Valgrind
+        run: sudo apt install cppcheck valgrind
+      - name: Clearing out previous binary files, if any exists
+        run: make clean
+      - name: Build, compile, linking
+        run: make build
+      - name: Calling code analysis
+        run: make static_code_analysis
+      - name: Artifact performance and style messages
+        uses: actions/upload-artifact@v2
+        with:
+          path: ./perf-style_log.txt
+      - name: Calling memory test
+        run: make memory_leak_testing
+
+  Google_test_and_unit_testing:
+    needs: [Build_and_compile, Memory_test_code_analysis]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install google test and cmake
+        run: sudo apt install libgtest-dev cmake
+      - name: Clearing out previous binary files, if any exists
+        run: make clean
+      - name: Build phase first
+        run: make google_test_first
+      - name: Build, compile, linking
+        run: make build
+      - name: Build phase second
+        run: make google_test_second
