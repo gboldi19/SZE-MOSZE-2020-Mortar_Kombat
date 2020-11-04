@@ -72,7 +72,7 @@ TEST(jsonParserTest, missingfile)
 
 TEST(jsonParserTest, hero_get_test)
 {
-	Hero* hero = new Hero::parse<std::map<std::string, std::any>>("../unit/unit1_Hero.json");
+	Hero* hero = new Hero::parse<std::string>("../unit/unit1_Hero.json");
 	ASSERT_EQ(hero->getName(), "Kakarott");
 	ASSERT_EQ(hero->getMaxHealthPoints(), 380);
 	ASSERT_EQ(hero->getDamage(), 20);
