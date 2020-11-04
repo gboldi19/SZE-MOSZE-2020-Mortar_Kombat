@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['bad_5fexit',['bad_exit',['../main_8cpp.html#a1ce890c481f9c234aa8c899acfb8f92b',1,'main.cpp']]]
+  ['fight',['Fight',['../classCharacter.html#a281ed7b7f997af3c9d773c80c6f58513',1,'Character']]]
 ];

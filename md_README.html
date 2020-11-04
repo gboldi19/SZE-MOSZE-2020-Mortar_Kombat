@@ -62,20 +62,18 @@ $(function() {
 <div class="title">SZE-MOSZE-2020-Mortar_Kombat </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>This program simulates a turn based fight between a hero and a some monsters.</p>
+<div class="textblock"><p>This program simulates a turn based fight between a regular character and a player.</p>
 <h2>Input instructions</h2>
-<h3>Argument</h3>
-<p>Use an argument when running the compiled executable. The argument should be a path to a .json file describing a scenario. There must be a "hero" and a "monsters" key with paths to all the entities' .json files. </p><div class="fragment"><div class="line">{</div><div class="line">    &quot;hero&quot; : &quot;Dark_Wanderer.json&quot;,</div><div class="line">    &quot;monsters&quot; : &quot; Fallen.json  Fallen.json  Zombie.json  Fallen.json  Blood_Raven.json &quot;</div><div class="line">} </div></div><!-- fragment --> <h3>Entities</h3>
-<p>All entities' .json files must contain specific keys, as in the following examples: #### <a class="el" href="classHero.html" title="This is a subclass representing the main character. Contains construction and level up management...">Hero</a> </p><div class="fragment"><div class="line">{  </div><div class="line">    &quot;name&quot; : &quot;Prince Aidan of Khanduras&quot;,  </div><div class="line">    &quot;base_health_points&quot; : 30,  </div><div class="line">    &quot;base_damage&quot; : 3,  </div><div class="line">    &quot;base_attack_cooldown&quot; : 1.1,  </div><div class="line">    &quot;experience_per_level&quot; : 20,  </div><div class="line">    &quot;health_point_bonus_per_level&quot; : 5,  </div><div class="line">    &quot;damage_bonus_per_level&quot; : 1,  </div><div class="line">    &quot;cooldown_multiplier_per_level&quot;: 0.9  </div><div class="line">}  </div></div><!-- fragment --><p> #### <a class="el" href="classMonster.html" title="This is a subclass representing the enemies. Contains construction. ">Monster</a> </p><div class="fragment"><div class="line">{  </div><div class="line">    &quot;name&quot; : &quot;Blood Raven&quot;,  </div><div class="line">    &quot;health_points&quot; : 113,  </div><div class="line">    &quot;damage&quot; : 8,  </div><div class="line">    &quot;attack_cooldown&quot; : 1.2,  </div><div class="line">}  </div></div><!-- fragment --><h2>Simulation</h2>
-<h3>Fight</h3>
-<p>The characters fight in turns back and forth repeatedly. By every attack, the attacked character's hit points reduce by the attacker character's damage points. For every damage point the hero inflicts it gains an experience point. After a given amount of experience points the hero levels up resulting in:</p><ul>
-<li>Given amount of increase in maximum hit points</li>
-<li>Given amount of increase in damage points</li>
-<li>Less damage cooldown by given ratio</li>
-<li>Instant hit point regeneration The simulation ends when one reaches 0 hit points. <h2>Scenario</h2>
-</li>
+<h3>./a.out</h3>
+<p>In order to be able to use the <code>a.out</code> command, you must compile all the files in the scope with <code>.cpp</code> extension first, which is generating the <code>a.out</code> file if no output name is specified.<br />
+After compiling the user can refer to the executable from the current working directory with <code>./a.out</code> followed by the given arguments. <br />
+***The proper synthax is:*** ./a.out &lt;character_attributes_json_file_1&gt; &lt;player_attributes_json_file_2&gt;</p>
+<p>Differring number of arguments and non-existent files throw error. ### '.json' format example: </p><div class="fragment"><div class="line">{</div><div class="line">  &quot;name&quot; : &quot;Kakarott&quot;,</div><div class="line">  &quot;hp&quot; : 43,</div><div class="line">  &quot;dmg&quot; : 9</div><div class="line">}</div></div><!-- fragment --><h2>Simulation</h2>
+<p>The characters fight in turns back and forth repeatedly, starting with the regular character. By every attack, the attacked character's hit points reduce by the attacker character's damage points. For every damage point the player inflicts it gains an experience point. 100 experience points cause the player to level up resulting in:</p><ul>
+<li>10% more maximum hit points (rounded)</li>
+<li>10% more damage points</li>
+<li>instant hit point regeneration The simulation ends when one reaches 0 hit points. The program announces the winner and it's remaining HP, then stops.</li>
 </ul>
-<p>The hero fights throught all the monsters one by one. Before every fight the name, level and the opponent's name is printed. If either any of the monster or the hero has no hit points left, the simulation ends. The hero's name, level, hit points, maximum hit points, damage points, attack cooldown are printed, and then the program exits.</p>
 <p>Documentation: <a href="https://teaching-projects.github.io/SZE-MOSZE-2020-Mortar_Kombat/">https://teaching-projects.github.io/SZE-MOSZE-2020-Mortar_Kombat/</a> </p>
 </div></div><!-- contents -->
 <!-- start footer part -->

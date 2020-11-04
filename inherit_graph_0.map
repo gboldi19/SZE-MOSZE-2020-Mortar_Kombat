@@ -1,5 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classCharacter.html" title="This is a base class representing our entity. Handels their attributes and interactions. " alt="" coords="5,31,84,57"/>
-<area shape="rect" id="node2" href="$classHero.html" title="This is a subclass representing the main character. Contains construction and level up management..." alt="" coords="141,5,192,32"/>
-<area shape="rect" id="node3" href="$classMonster.html" title="This is a subclass representing the enemies. Contains construction. " alt="" coords="132,56,201,83"/>
+<area shape="rect" id="node1" href="$classCharacter.html" title="This class is the spine of our game, links together the varaiable parts. " alt="" coords="5,5,84,32"/>
+<area shape="rect" id="node2" href="$classPlayer.html" title="Player" alt="" coords="132,5,191,32"/>
 </map>

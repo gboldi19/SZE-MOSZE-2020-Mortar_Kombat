@@ -59,117 +59,43 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">main.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;iostream&gt;</code><br />
-<code>#include &lt;map&gt;</code><br />
-<code>#include &lt;string&gt;</code><br />
-<code>#include &lt;filesystem&gt;</code><br />
-<code>#include &lt;sstream&gt;</code><br />
-<code>#include &lt;algorithm&gt;</code><br />
-<code>#include &lt;iterator&gt;</code><br />
-<code>#include &lt;list&gt;</code><br />
-<code>#include &quot;JSON.h&quot;</code><br />
-<code>#include &quot;Hero.h&quot;</code><br />
-<code>#include &quot;Monster.h&quot;</code><br />
+
+<p>This file contains the main function.  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &quot;Character.h&quot;</code><br />
+<code>#include &quot;Player.h&quot;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for main.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="main_8cpp__incl.png" border="0" usemap="#main_8cpp" alt=""/></div>
 <map name="main_8cpp" id="main_8cpp">
-<area shape="rect" id="node10" href="JSON_8h_source.html" title="JSON.h" alt="" coords="268,229,338,256"/>
-<area shape="rect" id="node15" href="Hero_8h_source.html" title="Hero.h" alt="" coords="276,80,338,107"/>
-<area shape="rect" id="node17" href="Monster_8h_source.html" title="Monster.h" alt="" coords="172,80,252,107"/>
-<area shape="rect" id="node16" href="Character_8h_source.html" title="Character.h" alt="" coords="176,155,267,181"/>
+<area shape="rect" id="node2" href="Character_8h_source.html" title="Character.h" alt="" coords="173,155,264,181"/>
+<area shape="rect" id="node10" href="Player_8h_source.html" title="Player.h" alt="" coords="95,80,166,107"/>
+<area shape="rect" id="node3" href="JSONParser_8h_source.html" title="JSONParser.h" alt="" coords="165,229,272,256"/>
 </map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a1ce890c481f9c234aa8c899acfb8f92b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a1ce890c481f9c234aa8c899acfb8f92b">bad_exit</a> (int exitcode)</td></tr>
-<tr class="separator:a1ce890c481f9c234aa8c899acfb8f92b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a> (int argc, char **argv)</td></tr>
-<tr class="memdesc:a3c04138a5bfe5d72780bb7e82a18e627"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a <a class="el" href="classHero.html" title="This is a subclass representing the main character. Contains construction and level up management...">Hero</a> and some <a class="el" href="classMonster.html" title="This is a subclass representing the enemies. Contains construction. ">Monster</a> objects.  <a href="#a3c04138a5bfe5d72780bb7e82a18e627">More...</a><br /></td></tr>
-<tr class="separator:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:a2f21842d2f61486c25e9891375f1eaec"><td class="memItemLeft" align="right" valign="top">const std::map&lt; int, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>error_messages</b></td></tr>
-<tr class="separator:a2f21842d2f61486c25e9891375f1eaec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad53223b8779f25caeddb70a3b9172967"><td class="memItemLeft" align="right" valign="top"><a id="ad53223b8779f25caeddb70a3b9172967"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>main</b> (const int argc, const char *argv[])</td></tr>
+<tr class="separator:ad53223b8779f25caeddb70a3b9172967"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="a1ce890c481f9c234aa8c899acfb8f92b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1ce890c481f9c234aa8c899acfb8f92b">&#9670;&nbsp;</a></span>bad_exit()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void bad_exit </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>exitcode</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>&lt; function to write error messages </p>
-
-</div>
-</div>
-<a id="a3c04138a5bfe5d72780bb7e82a18e627"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3c04138a5bfe5d72780bb7e82a18e627">&#9670;&nbsp;</a></span>main()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int main </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>argc</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char **&#160;</td>
-          <td class="paramname"><em>argv</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Initializes a <a class="el" href="classHero.html" title="This is a subclass representing the main character. Contains construction and level up management...">Hero</a> and some <a class="el" href="classMonster.html" title="This is a subclass representing the enemies. Contains construction. ">Monster</a> objects. </p>
-<p><a class="el" href="classHero.html" title="This is a subclass representing the main character. Contains construction and level up management...">Hero</a> fights the monsters one by one until death. </p><ul>
-<li>scenario file path Prints to screen. </li>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This file contains the main function. </p>
+<dl class="section author"><dt>Author</dt><dd>Mortar_Kombat</dd></dl>
+<ul>
+<li>Geiger Boldizsár</li>
+<li>Rakonczai Róbert</li>
+<li>Tóth Balázs </li>
 </ul>
-
-</div>
-</div>
-<h2 class="groupheader">Variable Documentation</h2>
-<a id="a2f21842d2f61486c25e9891375f1eaec"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2f21842d2f61486c25e9891375f1eaec">&#9670;&nbsp;</a></span>error_messages</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const std::map&lt;int,std::string&gt; error_messages</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {</div><div class="line">    { 1 , <span class="stringliteral">&quot;Bad number of arguments. Only a single scenario file should be provided.&quot;</span> },</div><div class="line">    { 2 , <span class="stringliteral">&quot;The provided scenario file is not accessible.&quot;</span> },</div><div class="line">    { 3 , <span class="stringliteral">&quot;The provided scenario file is invalid.&quot;</span> },</div><div class="line">    { 4 , <span class="stringliteral">&quot;JSON parsing error.&quot;</span> }</div><div class="line">}</div></div><!-- fragment -->
-</div>
-</div>
-</div><!-- contents -->
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['dohit',['doHit',['../classCharacter.html#a2b8f33202d111dd7f2e9a99e2e6cb90c',1,'Character']]]
+  ['parseunit',['parseUnit',['../classCharacter.html#aea1b46f5cc8b94282555593335dab181',1,'Character']]]
 ];
