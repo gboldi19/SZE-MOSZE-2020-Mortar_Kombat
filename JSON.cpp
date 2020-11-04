@@ -3,7 +3,7 @@
 //INSTRUCTIONS: Specify mode = "inclusive" for an allowed character set. Exclusive is default.
 std::string::size_type findNext(std::string &s, char target, std::unordered_set<char> set, std::string mode = "")
 {
-    const std::string::size_type pos = s.find(target);
+    long pos = s.find(target);
     if (pos == -1)
     {
         throw std::runtime_error("1: Expected token not found!");
