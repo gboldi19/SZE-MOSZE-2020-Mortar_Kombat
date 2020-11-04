@@ -14,10 +14,10 @@ build: $(OBJS)
 main.o: main.cpp Character.h Player.h JSONParser.h
 	$(CC) $(CFLAGS) -c main.cpp $(FSYS_FLAG)
 
-JSONParser.o: JSONParser.cpp JSONParser.h Character.h
+JSONParser.o: JSONParser.cpp JSONParser.h
 	$(CC) $(CFLAGS) -c JSONParser.cpp $(FSYS_FLAG)
 
-Player.o: Player.cpp Player.h Character.h 
+Player.o: Player.cpp Player.h Character.h JSONParser.h
 	$(CC) $(CFLAGS) -c Player.cpp $(FSYS_FLAG)
 
 Character.o: Character.cpp Character.h JSONParser.h
