@@ -72,5 +72,5 @@ TEST(jsonParserTest, missingfile)
 
 int main(int argc, char** argv)
 {
- n RUN_ALL_TESTS();
+ RUN_ALL_TESTS();
 }
