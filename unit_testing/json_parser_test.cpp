@@ -16,8 +16,8 @@ TEST(JSONTest, valcheck)
 {
 	std::map<std::string, std::any> template_inp = JSON::parse("{\"string\":\"Stringtype\",\"bool\":true,\"float\":1.6,\"null pointer\":null}");
 	ASSERT_EQ(std::any_cast<std::string>(template_inp["string"]), "Stringtype");
-    	ASSERT_EQ(std::any_cast<bool>(template_inp["bool"]), true);
-    	ASSERT_EQ(std::any_cast<float>(template_inp["float"]), 1.6f);
+    ASSERT_EQ(std::any_cast<bool>(template_inp["bool"]), true);
+    ASSERT_EQ(std::any_cast<float>(template_inp["float"]), 1.6f);
 	ASSERT_EQ(std::any_cast<nullptr_t>(template_inp["null pointer"]), nullptr);
 }
 
@@ -34,8 +34,8 @@ TEST(JSONTest, stringtest)
 	std::map<std::string, std::any> template_string = JSON::parse("{\"name\":\"Kakarott\",\"hp\":380,\"dmg\":20,\"as\":1.2}");
 	ASSERT_EQ(std::any_cast<std::string>(template_string["name"]), "Kakarott");
 	ASSERT_EQ(std::any_cast<float>(template_string["hp"]), 380);
-    	ASSERT_EQ(std::any_cast<float>(template_string["dmg"]), 20);
-    	ASSERT_EQ(std::any_cast<float>(template_string["as"]), 1.2f);
+    ASSERT_EQ(std::any_cast<float>(template_string["dmg"]), 20);
+    ASSERT_EQ(std::any_cast<float>(template_string["as"]), 1.2f);
 }
 
 TEST(JSONTest, missingfile)

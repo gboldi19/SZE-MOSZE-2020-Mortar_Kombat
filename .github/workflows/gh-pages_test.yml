@@ -1,6 +1,10 @@
 name: Deploying documentation
 
-on: pull_request
+on:
+  push:
+    branches:
+      - master
+      - documentation
 
 jobs:
 
