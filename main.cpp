@@ -1,3 +1,7 @@
+/**
+ * @file main.cpp
+*/
+
 #include <iostream>
 #include <map>
 #include <string>
@@ -11,9 +15,6 @@
 #include "Hero.h"
 #include "Monster.h"
 
-
-
-
 const std::map<int,std::string> error_messages = {
     { 1 , "Bad number of arguments. Only a single scenario file should be provided." },
     { 2 , "The provided scenario file is not accessible." },
@@ -21,13 +22,19 @@ const std::map<int,std::string> error_messages = {
     { 4 , "JSON parsing error." }
 };
 
-void bad_exit(int exitcode){
+void bad_exit(int exitcode){ ///< function to write error messages
     std::cerr 
         << (error_messages.count(exitcode) ? error_messages.at(exitcode) : "Unknown error")
         << std::endl;
     exit(exitcode);
 }
 
+/**
+ * @brief Initializes a Hero and some Monster objects.
+ * @brief Hero fights the monsters one by one until death.
+ * @arg scenario file path
+ * Prints to screen.
+*/
 int main(int argc, char** argv){
     if (argc != 2) bad_exit(1);
     if (!std::filesystem::exists(argv[1])) bad_exit(2);
