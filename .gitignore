@@ -12,3 +12,4 @@
 !unit_testing
 !.github/workflows
 !.gitignore
+!Makefile

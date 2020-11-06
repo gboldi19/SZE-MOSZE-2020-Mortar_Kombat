@@ -56,14 +56,6 @@ public:
 		T get(const std::string &key) { return std::any_cast<T>(map[key]); }
 
 	class ParseException : public std::exception {}; ///< Class member for exception handling.
-    
-    /**
-	* @brief Tests for negativity.
-	* @param Number to test.
-    * Converts the given any to float.
-    * Throws error, if float is smaller then 0.
-	*/
-	static void ruleOutNegativeAnyFloat(std::any& num);
 };
 
 #endif

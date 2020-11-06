@@ -78,3 +78,13 @@ void Character::fightTilDeath(Character &enemy)
         }
     }
 }
+
+float RONAF(const float& num)
+{
+	if (num < 0)
+	{
+		throw std::runtime_error("Negative numeric value is not acceptable here!");
+	}
+	return num;
+}
+
