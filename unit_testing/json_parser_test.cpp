@@ -45,7 +45,7 @@ TEST(parse_test, any_types)
 TEST(parse_test, rearranged_keys)
 {
 	std::map<std::string, std::any> data = JSON::parse(" {\"name\" : \"Kakarott\", \"hp\" : 380} ");
-	ASSERT_EQ(std::any_cast<float>(data["hp"]), 380);
+	ASSERT_EQ(std::any_cast<float>(data["hp"]), 380.0f);
 	ASSERT_EQ(std::any_cast<std::string>(data["name"]), "Kakarott");
 }
 
@@ -56,9 +56,15 @@ TEST(parse_test, empty_string)
 	ASSERT_THROW(JSON::parse(dataString), std::runtime_error);
 }
 
-TEST(parse_test, unexpected_backslash)
+TEST(parse_test, unexpected_inside_A) //backslashchar in the beginning
 {
-	std::string dataString = " {\"name\" : \"Kaka\rott\"} ";
+	std::string dataString = " {\"name\" : \"\"Kakarott\"} ";
+	ASSERT_ANY_THROW(JSON::parse(dataString));
+}
+
+TEST(parse_test, unexpected_inside_B) //backslashchar after the beginning
+{
+	std::string dataString = " {\"name\" : \"Kaka\\rott\"} ";
 	ASSERT_ANY_THROW(JSON::parse(dataString));
 }
 
@@ -74,7 +80,7 @@ TEST(parse_test, no_string_ending)
 	ASSERT_ANY_THROW(JSON::parse(dataString));
 }
 
-TEST(parse_test, unrecognizedvalue)
+TEST(parse_test, unrecognized_value)
 {
 	std::string dataString = " { \"name\" : almostString } ";
 	ASSERT_ANY_THROW(JSON::parse(dataString));
@@ -83,6 +89,12 @@ TEST(parse_test, unrecognizedvalue)
 TEST(parse_test, duplicate_keys)
 {
 	std::string dataString = " {\"name\" : \"Kakarott\", \"name\" : \"another Kakarott\"} ";
+	ASSERT_ANY_THROW(JSON::parse(dataString));
+}
+
+TEST(parse_test, no_key)
+{
+	std::string dataString = "{ : \"Kakarott\" }";
 	ASSERT_ANY_THROW(JSON::parse(dataString));
 }
 
@@ -104,13 +116,13 @@ TEST(parse_test, bad_continuation)
 	ASSERT_ANY_THROW(JSON::parse(dataString));
 }
 													   
-TEST(parse_test, expected_char)
+TEST(parse_test, expected_outside)
 {
 	std::string dataString = " {\"name\" \"Kakarott\"} ";
 	ASSERT_ANY_THROW(JSON::parse(dataString));
 }													   
 													   
-TEST(parse_test, unexpected_char)
+TEST(parse_test, unexpected_outside)
 {
 	std::string dataString = " {\"name\" :: \"Kakarott\"} ";
 	ASSERT_ANY_THROW(JSON::parse(dataString));
@@ -141,7 +153,7 @@ TEST(parseFromFile_test, get_numeric)
 {
 	std::string fileName = "./good.json";
 	JSON testMap = JSON::parseFromFile(fileName);
-	ASSERT_EQ(testMap.get<float>("hp"), 666f);
+	ASSERT_EQ(testMap.get<float>("hp"), 666.0f);
 }
 
 //_______________________________running all tests_______________________________
