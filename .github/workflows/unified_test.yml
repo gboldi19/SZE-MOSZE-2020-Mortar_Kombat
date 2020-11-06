@@ -54,8 +54,4 @@ jobs:
       - name: Build, compile, linking
         run: make build
       - name: Build phase second
-<<<<<<< HEAD
         run: make google_test_second
-=======
-        run: make google_test_second
->>>>>>> refactor
