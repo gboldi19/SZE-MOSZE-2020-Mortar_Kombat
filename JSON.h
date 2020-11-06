@@ -25,8 +25,6 @@ public:
 		T get(const std::string &key) { return std::any_cast<T>(map[key]); }
 
 	class ParseException : public std::exception {};
-
-	static void ruleOutNegativeAnyFloat(std::any& num);
 };
 
 #endif

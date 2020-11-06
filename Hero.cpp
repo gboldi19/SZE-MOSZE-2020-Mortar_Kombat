@@ -20,23 +20,16 @@ Hero::Hero(
 
 Hero Hero::parse(std::string fileName)
 {
-	std::map<std::string, std::any> characterAttributes = JSON::parse(fileName, true);
-	JSON::ruleOutNegativeAnyFloat(characterAttributes["base_health_points"]);
-	JSON::ruleOutNegativeAnyFloat(characterAttributes["base_damage"]);
-	JSON::ruleOutNegativeAnyFloat(characterAttributes["base_attack_cooldown"]);
-	JSON::ruleOutNegativeAnyFloat(characterAttributes["experience_per_level"]);
-	JSON::ruleOutNegativeAnyFloat(characterAttributes["health_point_bonus_per_level"]);
-	JSON::ruleOutNegativeAnyFloat(characterAttributes["damage_bonus_per_level"]);
-	JSON::ruleOutNegativeAnyFloat(characterAttributes["cooldown_multiplier_per_level"]);
+	JSON characterAttributes = JSON::parseFromFile(fileName);
 	return Hero(
-        std::any_cast<std::string>(characterAttributes["name"]),
-        std::any_cast<float>(characterAttributes["base_health_points"]),
-        std::any_cast<float>(characterAttributes["base_damage"]),
-        std::any_cast<float>(characterAttributes["base_attack_cooldown"]),
-		std::any_cast<float>(characterAttributes["experience_per_level"]),
-		std::any_cast<float>(characterAttributes["health_point_bonus_per_level"]),
-		std::any_cast<float>(characterAttributes["damage_bonus_per_level"]),
-		std::any_cast<float>(characterAttributes["cooldown_multiplier_per_level"]));
+		characterAttributes.get<std::string>("name"),
+		RONAF(characterAttributes.get<float>("base_health_points")),
+		RONAF(characterAttributes.get<float>("base_damage")),
+		RONAF(characterAttributes.get<float>("base_attack_cooldown")),
+		RONAF(characterAttributes.get<float>("experience_per_level")),
+		RONAF(characterAttributes.get<float>("health_point_bonus_per_level")),
+		RONAF(characterAttributes.get<float>("damage_bonus_per_level")),
+		RONAF(characterAttributes.get<float>("cooldown_multiplier_per_level")));
 }
 
 void Hero::levelup(float levelupXP)
