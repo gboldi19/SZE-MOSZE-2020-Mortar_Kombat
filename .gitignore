@@ -6,6 +6,7 @@
 !*.yml
 !*.sh
 !*.csv
+!*.dockerfile
 
 !CMakeLists.txt
 !units
@@ -13,3 +14,4 @@
 !.github/workflows
 !.gitignore
 !Makefile
+!docker
