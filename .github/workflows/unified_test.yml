@@ -32,7 +32,7 @@ jobs:
       - name: Build, compile, linking
         run: make build
       - name: Calling code analysis
-        run: make static_code_analysis
+        run: make -s static_code_analysis
       - name: Artifact performance and style messages
         uses: actions/upload-artifact@v2
         with:
