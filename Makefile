@@ -73,9 +73,9 @@ memory_leak_testing:
 	valgrind --error-exitcode=1 --leak-check=full ./a.out $(UNIT1)
 
 google_test_first:
-	cd /usr/src/gtest && sudo cmake CMakeLists.txt && sudo make
-	sudo ln -st /usr/lib/ /usr/src/gtest/libgtest.a
-	sudo ln -st /usr/lib/ /usr/src/gtest/libgtest_main.a
+	cd /usr/src/gtest && cmake CMakeLists.txt && make
+	ln -st /usr/lib/ /usr/src/gtest/libgtest.a
+	ln -st /usr/lib/ /usr/src/gtest/libgtest_main.a
 
 google_test_second:
 	cmake unit_testing/CMakeLists.txt
