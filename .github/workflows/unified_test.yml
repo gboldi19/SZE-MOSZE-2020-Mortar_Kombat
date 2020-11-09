@@ -5,6 +5,7 @@ on: push
 jobs:
   Build_and_compile:
     runs-on: ubuntu-latest
+    container: gboldi19/multitest_env:latest
     steps:
       - uses: actions/checkout@v2
       - name: Clearing out previous binary files, if any exists
@@ -23,10 +24,9 @@ jobs:
   Memory_test_code_analysis:
     needs: [Build_and_compile]
     runs-on: ubuntu-latest
+    container: gboldi19/multitest_env:latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install Cppcheck, Valgrind
-        run: sudo apt install cppcheck valgrind
       - name: Clearing out previous binary files, if any exists
         run: make clean
       - name: Build, compile, linking
@@ -43,10 +43,9 @@ jobs:
   Google_test_and_unit_testing:
     needs: [Build_and_compile, Memory_test_code_analysis]
     runs-on: ubuntu-latest
+    container: gboldi19/multitest_env:latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install google test and cmake
-        run: sudo apt install libgtest-dev cmake
       - name: Clearing out previous binary files, if any exists
         run: make clean
       - name: Build phase first
