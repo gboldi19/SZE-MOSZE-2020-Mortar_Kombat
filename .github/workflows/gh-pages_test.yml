@@ -1,10 +1,6 @@
 name: Deploying documentation
 
-on:
-  push:
-    branches:
-      - master
-      - gh-pages
+on: pull_request
 
 jobs:
 
