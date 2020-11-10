@@ -1,8 +1,9 @@
 name: Deploying documentation
 
-on: 
+on:
   pull_request:
-    - master
+    branches:
+      - master
 
 jobs:
 
