@@ -50,12 +50,6 @@ TEST(parse_test, rearranged_keys)
 }
 
 //_______________________________JSON::parse wrong input tests_______________________________
-TEST(parse_test, empty_string)
-{
-	std::string dataString = " {\"name\" : \"\"} ";
-	ASSERT_THROW(JSON::parse(dataString), std::runtime_error);
-}
-
 TEST(parse_test, unexpected_inside_A) //backslashchar in the beginning
 {
 	std::string dataString = " {\"name\" : \"\"Kakarott\"} ";
