@@ -13,6 +13,7 @@
 #include <fstream>
 #include <streambuf>
 #include <unordered_set>
+#include <list>
 
 class JSON
 {
@@ -52,10 +53,17 @@ public:
 	* @param Key of the value to return.
 	* @return Value of the provided key.
 	*/
-	template <typename T>
-		T get(const std::string &key) { return std::any_cast<T>(map[key]); }
+
+	template <typename T> //pre-declare to be able to use "JSON::" scope
+		T get(const std::string&);
+	template <typename T> //using "JSON::" scope to differenciate from "std::get"
+		T JSON::get(const std::string &key) { return std::any_cast<T>(map[key]); }
 
 	class ParseException : public std::exception {}; ///< Class member for exception handling.
+	
+	typedef std::list<std::string> list;
+	template <typename T> //polymorph "std::get"
+		T std::get(std::any value) { return std::any_cast<T>(value); }
 };
 
 #endif
