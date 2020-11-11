@@ -68,12 +68,6 @@ TEST(parse_test, unexpected_inside_B) //backslashchar after the beginning
 	ASSERT_ANY_THROW(JSON::parse(dataString));
 }
 
-TEST(parse_test, unexpected_mokusos_bracket)
-{
-	std::string dataString = " {\"name\" : \"Kaka}rott\"} ";
-	ASSERT_ANY_THROW(JSON::parse(dataString));
-}
-
 TEST(parse_test, no_string_ending)
 {
 	std::string dataString = "{ \"name\" : \"Kakarott }";
