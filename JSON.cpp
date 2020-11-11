@@ -37,10 +37,6 @@ std::string::size_type findNext(std::string &s, char target, std::unordered_set<
 
 void checkString(std::string& s)
 {
-    if (s.length() == 0) //only two '"' signs --> error
-    {
-        throw std::runtime_error("4: Empty string!");
-    }
     std::unordered_set<char> backslashChars = {'"', '\\'};
 	if (backslashChars.find(s[0]) != backslashChars.end()) //first character is backslashchar --> error
 	{
