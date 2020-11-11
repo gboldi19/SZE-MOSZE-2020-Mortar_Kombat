@@ -55,10 +55,6 @@ void checkString(std::string& s)
             	throw std::runtime_error("5B: Unrecognized value!");
 			}
         }
-        if (s[pos] == '{' || s[pos] == '}') //these mókusos brackets are not allowed --> error - (Names for various bracket symbols, [https://en.wikipedia.org/wiki/Bracket])
-        {
-            throw std::runtime_error("6: Unrecognized value!");
-        }
     }
 }
 
