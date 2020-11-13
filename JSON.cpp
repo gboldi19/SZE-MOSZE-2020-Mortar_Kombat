@@ -7,7 +7,7 @@ std::unordered_set<char> backslashChars = { '"', '\\' };
 //INSTRUCTIONS: Specify mode = "inclusive" for an allowed character set. Exclusive is default.
 std::string::size_type findNext(std::string &s, char target, std::unordered_set<char> set, std::string mode = "")
 {
-    long pos = s.find(target);
+    double pos = s.find(target);
     if (pos == std::string::npos)
     {
         throw std::runtime_error("1: Expected token not found!");
@@ -57,7 +57,7 @@ void checkString(std::string& s)
     }
 }
 
-std::any string2any(std::string& s)
+std::variant<std::string, std::list<std::variant<std::string>>, bool, nullptr_t, float > string2variant(std::string& s)
 {
 	if (s[0] == '"') //starts with '"' --> string
 	{
@@ -72,7 +72,7 @@ std::any string2any(std::string& s)
 		checkString(s);
 		bool inString = false;
 		std::string word = "";
-		std::list<std::any> outputList;
+		std::list<std::variant<std::string>> outputList;
 
 		findNext(s, '"', spacingChars, "inclusive"); //check, if there is anything unexpected before the first '"' sign
 		for (char c : s)
@@ -188,7 +188,7 @@ std::map<std::string, std::any> parseString(std::string& s)
 		{
 			valueString = valueString.substr(0, valueString.size() - 1); //remove last character
 		}
-		value = string2any(valueString); //give value the real type
+		value = string2variant(valueString); //give value the real type
 
 		map.insert(make_pair(key, value)); //add pair to map
 
