@@ -122,7 +122,6 @@ std::variant<std::string, std::list<std::variant<std::string>>, bool, nullptr_t,
             if (numChars.find(c) == numChars.end()) //has non numeric chars -> error
             {
                 throw std::runtime_error("8: Unrecognized value!");
-                return -1;
             }
         }
         return stof(s); //is numeric
