@@ -89,7 +89,7 @@ std::variant<std::string, std::list<std::variant<std::string>>, bool, nullptr_t,
 							throw std::runtime_error("15A: Unexpected character inside list!");
 						}	
 					}
-					if (count(word.begin(), word.end(), ',') != 1) //more than
+					if (std::count(word.begin(), word.end(), ',') != 1) //more than
 					{
 						throw std::runtime_error("16: Unexpected number of commas (not 1)!");
 					}
