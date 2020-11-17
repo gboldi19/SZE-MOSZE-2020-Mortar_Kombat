@@ -6,8 +6,8 @@
 !*.yml
 !*.sh
 !*.csv
+!*.txt
 
-!CMakeLists.txt
 !units
 !unit_testing
 !.github/workflows
