@@ -33,6 +33,5 @@ Map::type Map::get(int x, int y) const
 			return structure[x][y];
 		}
 	}
-	throw std::runtime_error("Out of range!");
-	//will be Map::WrongIndexException later
+	throw Map::WrongIndexException();
 }

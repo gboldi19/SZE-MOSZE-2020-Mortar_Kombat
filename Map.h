@@ -14,6 +14,7 @@ private:
 public:
 	Map(std::string filename);
 	type get(int x, int y) const;
+	class WrongIndexException : public std::exception {};
 };
 
 #endif
