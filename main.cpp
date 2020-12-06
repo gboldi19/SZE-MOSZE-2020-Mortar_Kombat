@@ -46,7 +46,7 @@ int main(int argc, char** argv){
 		if (!(scenario.count("hero") && scenario.count("monsters"))) bad_exit(3);
 		else {
 			hero_file = scenario.get<std::string>("hero");
-			JSON::list monster_file_list = scenario.get<JSON::list>("monsters");
+			std::istringstream monsters(scenario.get<std::string>("monsters"));
 			for (auto monster_file : monster_file_list)
 				monster_files.push_back(std::get<std::string>(monster_file));
 		}
