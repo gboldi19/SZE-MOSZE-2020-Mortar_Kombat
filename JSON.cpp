@@ -1,14 +1,10 @@
 #include "JSON.h"
 
-std::unordered_set<char> spacingChars = { ' ', '\n', '\t', '\r', '\f', '\b' }; //whitespace + nonprintables
-std::unordered_set<char> pairEndingChars = { ',', '}' };
-std::unordered_set<char> backslashChars = { '"', '\\' };
-
 //INSTRUCTIONS: Specify mode = "inclusive" for an allowed character set. Exclusive is default.
 std::string::size_type findNext(std::string &s, char target, std::unordered_set<char> set, std::string mode = "")
 {
-    double pos = s.find(target);
-    if (pos == std::string::npos)
+    long pos = s.find(target);
+    if (pos == -1)
     {
         throw std::runtime_error("1: Expected token not found!");
         return -1;
@@ -41,6 +37,11 @@ std::string::size_type findNext(std::string &s, char target, std::unordered_set<
 
 void checkString(std::string& s)
 {
+    if (s.length() == 0) //only two '"' signs --> error
+    {
+        throw std::runtime_error("4: Empty string!");
+    }
+    std::unordered_set<char> backslashChars = {'"', '\\'};
 	if (backslashChars.find(s[0]) != backslashChars.end()) //first character is backslashchar --> error
 	{
 		throw std::runtime_error("5A: Unrecognized value!");
@@ -54,60 +55,25 @@ void checkString(std::string& s)
             	throw std::runtime_error("5B: Unrecognized value!");
 			}
         }
+        if (s[pos] == '{' || s[pos] == '}') //these mókusos brackets are not allowed --> error - (Names for various bracket symbols, [https://en.wikipedia.org/wiki/Bracket])
+        {
+            throw std::runtime_error("6: Unrecognized value!");
+        }
     }
 }
 
-std::variant<std::string, std::list<std::variant<std::string>>, bool, nullptr_t, float > string2variant(std::string& s)
+std::variant<std::string, int, double> string2variant(std::string& s)
 {
-	if (s[0] == '"') //starts with '"' --> string
+	if (s[0] == '"') //starts with '"' --> can be string
 	{
+		if (s[s.length() - 1] != '"') //does not end with '"' --> error
+		{
+			throw std::runtime_error("7: Unrecognized value!");
+			return -1;
+		}
 		s.erase(0, 1).erase(s.length() - 1); //remove '"' signs
 		checkString(s);
 		return s; //is string
-	}
-
-	else if (s[0] == '[') //starts with "[" --> list
-	{
-		s.erase(0, 1).erase(s.length() - 1); //remove square bracket signs
-		checkString(s);
-		bool inString = false;
-		std::string word = "";
-		std::list<std::variant<std::string>> outputList;
-
-		findNext(s, '"', spacingChars, "inclusive"); //check, if there is anything unexpected before the first '"' sign
-		for (char c : s)
-		{
-			if (c == '"')
-			{
-				if (inString) outputList.push_back(word);
-				else
-				{
-					for (char c2 : word)
-					{
-						if (spacingChars.find(c2) == spacingChars.end() && c2 != ',') //other than spacing characters or ',' sign is found between two values
-						{
-							throw std::runtime_error("15A: Unexpected character inside list!");
-						}	
-					}
-					if (std::count(word.begin(), word.end(), ',') != 1) //more than
-					{
-						throw std::runtime_error("16: Unexpected number of commas (not 1)!");
-					}
-				}
-				inString = !inString;
-				word = "";
-			}
-			else word += c;
-		}
-		for (char c2 : word)
-		{
-			if (spacingChars.find(c2) == spacingChars.end()) //other than spacing characters found after all values
-			{
-				throw std::runtime_error("15B: Unexpected character inside list!");
-			}
-		}
-		return outputList;
-		//!!! NOTE: Lists are expected to contain only strings. Other types are not accepted inside lists. !!!
 	}
 
 	else if (s == "true") return true; //is boolean
@@ -116,25 +82,27 @@ std::variant<std::string, std::list<std::variant<std::string>>, bool, nullptr_t,
 
     else //all correct non-numeric types covered --> can be numeric
     {
-        std::unordered_set<char> numChars = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '-', '+', 'e', 'E'};
+        std::unordered_set<char> numChars = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '-'};
         for (char c : s.substr(1, s.length() - 1))
         {
             if (numChars.find(c) == numChars.end()) //has non numeric chars -> error
             {
                 throw std::runtime_error("8: Unrecognized value!");
+                return -1;
             }
         }
         return stof(s); //is numeric
-		//!!! NOTE: stof accepts some synthax that the official json does not. !!!
     }
 }
 
-std::map<std::string, std::any> parseString(std::string& s)
+std::map<std::string, std::variant<std::string, int, double>> parseString(std::string& s)
 {
-    std::map<std::string, std::any> map;
+    std::map<std::string, std::variant<std::string, int, double>> map;
     std::string key, valueString;
-    std::any value;
+    std::variant<std::string, int, double> value;
     std::string::size_type pos;
+    std::unordered_set<char> spacingChars = {' ', '\n', '\t', '\r', '\v'}; //whitespace + nonprintables
+    std::unordered_set<char> pairEndingChars = {',', '}'};
 
     s.erase(0, findNext(s, '{', spacingChars, "inclusive") + 1); //remove first '{'
     bool thereIsMore;
@@ -159,44 +127,33 @@ std::map<std::string, std::any> parseString(std::string& s)
         }
         s.erase(0, pos); //remove everything before value
 		
-		if (s[0] == '"') //starts as a string
-		{
-			pos = s.substr(1, s.length()).find('"'); //skip inside of string
-			if (pos == std::string::npos) //does not end with '"' --> error
-			{
-				throw std::runtime_error("13A: Expected '\"'!");
-			}
-		}
-		else if (s[0] == '[') //starts as list
-		{
-			pos = s.substr(1, s.length()).find(']'); //skip inside of list
-			if (pos == std::string::npos) //does not end with ']' --> error
-			{
-				throw std::runtime_error("13A: Expected ']'!");
-			}
-		}
-		else
-		{
-			pos = 0; //just reset position
-		}
-		while (pairEndingChars.find(s[pos]) == pairEndingChars.end() && pos < s.length()) pos++; //find value end if non-string (or incorrect content end)
-		valueString = s.substr(0, pos); //pass value string
-		s.erase(0, pos); //remove everything before value
+	if (s[0] == '"') //starts as a string
+	{
+		pos = s.substr(1, s.length()).find('"'); //skip inside of string
+	}
+	else
+	{
+		pos = 0; //just reset position
+	}
+	while (pairEndingChars.find(s[pos]) == pairEndingChars.end() && pos < s.length()) pos++; //find value end if non-string (or incorrect content end)
+        valueString = s.substr(0, pos); //pass value string
+        s.erase(0, pos); //remove everything before value
 
-		while(spacingChars.find(valueString[valueString.length() - 1]) != spacingChars.end()) //last character is spacing character
-		{
-			valueString = valueString.substr(0, valueString.size() - 1); //remove last character
-		}
-		value = string2variant(valueString); //give value the real type
+        while(spacingChars.find(valueString[valueString.length() - 1]) != spacingChars.end()) //last character is spacing character
+        {
+            valueString = valueString.substr(0, valueString.size() - 1); //remove last character
+        }
+        value = string2variant(valueString); //give value the real type
 
-		map.insert(make_pair(key, value)); //add pair to map
+        map.insert(make_pair(key, value)); //add pair to map
 
-		thereIsMore = s[0] == ',' ? true : false; //check for more data (',')
-		if (thereIsMore)
-		{
-			s.erase(0, 1); //remove ','
-		}
-    } while (thereIsMore); //listing continues
+        thereIsMore = s[0] == ',' ? true : false; //check for more data (',')
+        if (thereIsMore)
+        {
+            s.erase(0, 1); //remove ','
+        }
+    }
+    while (thereIsMore); //listing continues
 
     s.erase(0, findNext(s, '}', spacingChars, "inclusive") + 1); //find closing '}'
     pos = 0;
@@ -211,7 +168,7 @@ std::map<std::string, std::any> parseString(std::string& s)
     return map;
 }
     
-std::map<std::string, std::any> JSON::parse(std::string inputString, bool isFile)
+std::map<std::string, std::variant<std::string, int, double>> JSON::parse(std::string inputString, bool isFile)
 {
     if (isFile)
     {
@@ -233,7 +190,7 @@ std::map<std::string, std::any> JSON::parse(std::string inputString, bool isFile
     return parseString(inputString);
 }
 
-std::map<std::string, std::any> JSON::parse(std::istream &stream)
+std::map<std::string, std::variant<std::string, int, double>> JSON::parse(std::istream &stream)
 {
     std::istreambuf_iterator<char> eos;
     std::string s(std::istreambuf_iterator<char>(stream), eos);
@@ -242,5 +199,5 @@ std::map<std::string, std::any> JSON::parse(std::istream &stream)
 
 JSON JSON::parseFromFile(std::string fileName)
 {
-	return(JSON(JSON::parse(fileName, true)));
+	return (JSON(JSON::parse(fileName, true)));
 }
