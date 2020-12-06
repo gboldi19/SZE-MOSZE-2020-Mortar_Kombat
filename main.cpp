@@ -47,8 +47,9 @@ int main(int argc, char** argv){
 		else {
 			hero_file = scenario.get<std::string>("hero");
 			std::istringstream monsters(scenario.get<std::string>("monsters"));
-			for (auto monster_file : monster_file_list)
-				monster_files.push_back(std::get<std::string>(monster_file));
+			std::copy(std::istream_iterator<std::string>(monsters),
+			    std::istream_iterator<std::string>(),
+			    std::back_inserter(monster_files));
 		}
 	}
 	catch (const JSON::ParseException & e) { bad_exit(4); }
