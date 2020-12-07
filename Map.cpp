@@ -24,11 +24,31 @@ Map::Map(std::string filename)
 	}
 }
 
+long Map::getRowNum()
+{
+	return structure.size();
+}
+
+long Map::getRowSize(int rowNum)
+{
+	return structure[rowNum].size();
+}
+
+long Map::getMaxRowSize()
+{
+	long max = 0;
+	for (std::vector<type> row : structure)
+	{
+		if (max < row.size()) max = row.size();
+	}
+	return max;
+}
+
 Map::type Map::get(int x, int y) const
 {
-	if (structure.size() >= x)
+	if (int(structure.size()) >= x)
 	{
-		if (structure[x].size() >= y)
+		if (int(structure[x].size()) >= y)
 		{
 			return structure[x][y];
 		}
