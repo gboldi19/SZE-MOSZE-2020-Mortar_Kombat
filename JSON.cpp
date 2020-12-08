@@ -62,7 +62,7 @@ void checkString(std::string& s)
     }
 }
 
-std::variant<std::string, int, double> string2variant(std::string& s)
+std::variant<std::string, int, double, float> string2variant(std::string& s)
 {
 	if (s[0] == '"') //starts with '"' --> can be string
 	{
@@ -95,11 +95,11 @@ std::variant<std::string, int, double> string2variant(std::string& s)
     }
 }
 
-std::map<std::string, std::variant<std::string, int, double>> parseString(std::string& s)
+std::map<std::string, std::variant<std::string, int, double, float>> parseString(std::string& s)
 {
-    std::map<std::string, std::variant<std::string, int, double>> map;
+    std::map<std::string, std::variant<std::string, int, double, float>> map;
     std::string key, valueString;
-    std::variant<std::string, int, double> value;
+    std::variant<std::string, int, double, float> value;
     std::string::size_type pos;
     std::unordered_set<char> spacingChars = {' ', '\n', '\t', '\r', '\v'}; //whitespace + nonprintables
     std::unordered_set<char> pairEndingChars = {',', '}'};
@@ -168,7 +168,7 @@ std::map<std::string, std::variant<std::string, int, double>> parseString(std::s
     return map;
 }
     
-std::map<std::string, std::variant<std::string, int, double>> JSON::parse(std::string inputString, bool isFile)
+std::map<std::string, std::variant<std::string, int, double, float>> JSON::parse(std::string inputString, bool isFile)
 {
     if (isFile)
     {
@@ -190,7 +190,7 @@ std::map<std::string, std::variant<std::string, int, double>> JSON::parse(std::s
     return parseString(inputString);
 }
 
-std::map<std::string, std::variant<std::string, int, double>> JSON::parse(std::istream &stream)
+std::map<std::string, std::variant<std::string, int, double, float>> JSON::parse(std::istream &stream)
 {
     std::istreambuf_iterator<char> eos;
     std::string s(std::istreambuf_iterator<char>(stream), eos);
