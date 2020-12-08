@@ -1,8 +1,8 @@
 {
   "name": "Kakarott",
   "base_health_points": 380,
-  "base_physical_damage": 20,
-  "base_magical_damage" :  0,
+  "damage": 20,
+  "magical-damage" :  0,
   "base_attack_cooldown": 1.9,
   "experience_per_level": 100,
   "health_point_bonus_per_level": 1.1,

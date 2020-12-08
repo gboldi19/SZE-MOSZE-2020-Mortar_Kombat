@@ -9,7 +9,7 @@ Monster Monster::parse(std::string fileName)
 	return Monster(
 		characterAttributes.get<std::string>("name"),
 		RONAF(characterAttributes.get<float>("health_points")),
-		RONAF(characterAttributes.get<float>("physical_damage")),
-		RONAF(characterAttributes.get<float>("magical_damage")),
+		RONAF(characterAttributes.get<float>("damage")),
+		RONAF(characterAttributes.get<float>("magical-damage")),
 		RONAF(characterAttributes.get<float>("attack_cooldown")));
 }

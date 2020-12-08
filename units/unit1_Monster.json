@@ -1,7 +1,7 @@
 {
   "name": "Kakarott",
   "health_points": 380,
-  "physical_damage": 20,
-  "magical_damage" : 0,
+  "damage": 20,
+  "magical-damage" : 0,
   "attack_cooldown": 1.9
 }
