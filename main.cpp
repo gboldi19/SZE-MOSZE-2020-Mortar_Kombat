@@ -47,7 +47,6 @@ int main(int argc, char** argv){
         if (!(scenario.count("hero")&&scenario.count("monsters"))) bad_exit(3);
         else {
             hero_file=scenario.get<std::string>("hero");
-            std::cout << "monster_files" << std::endl;
             std::istringstream monsters(scenario.get<std::string>("monsters"));
             std::copy(std::istream_iterator<std::string>(monsters),
                 std::istream_iterator<std::string>(),
