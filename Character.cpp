@@ -1,10 +1,11 @@
 #include "Character.h"
 
-Character::Character(const std::string _name, float _maxHP, float _DMG, float _ACD)
+Character::Character(const std::string _name, float _maxHP, float _physicalDMG, float _magicalDMG, float _ACD)
 : name(_name)
 {
 	HP = maxHP = _maxHP;
-	DMG = _DMG;
+	physicalDMG = _physicalDMG;
+	magicalDMG = _magicalDMG;
 	ACD = _ACD;
 }
 
@@ -23,9 +24,14 @@ const float Character::getMaxHealthPoints() const
 	return maxHP;
 }
 
-const float Character::getDamage() const
+const float Character::getPhysicalDamage() const
 {
-	return DMG;
+	return physicalDMG;
+}
+
+const float Character::getMagicalDamage() const
+{
+	return magicalDMG;
 }
 
 const float Character::getAttackCoolDown() const
@@ -36,7 +42,7 @@ const float Character::getAttackCoolDown() const
 
 float Character::gotHit(Character* attacker)
 {
-	float potentialXP = attacker->getDamage();
+	float potentialXP = attacker->getPhysicalDamage() + attacker->getMagicalDamage();
 	if (HP - potentialXP > 0)
 	{
 		HP -= potentialXP;

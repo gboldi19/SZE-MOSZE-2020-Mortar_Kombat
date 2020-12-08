@@ -3,7 +3,8 @@
 Hero::Hero(
 		const std::string _name,
 		float _maxHP,
-		float _DMG,
+		float _physicalDMG,
+		float _magicalDMG,
 		float _ACD,
 		float _XPToLevelup,
 		float _maxHPBonus,
@@ -24,7 +25,8 @@ Hero Hero::parse(std::string fileName)
 	return Hero(
 		characterAttributes.get<std::string>("name"),
 		RONAF(characterAttributes.get<float>("base_health_points")),
-		RONAF(characterAttributes.get<float>("base_damage")),
+		RONAF(characterAttributes.get<float>("base_physical_damage")),
+		RONAF(characterAttributes.get<float>("base_magical_damage")),
 		RONAF(characterAttributes.get<float>("base_attack_cooldown")),
 		RONAF(characterAttributes.get<float>("experience_per_level")),
 		RONAF(characterAttributes.get<float>("health_point_bonus_per_level")),
@@ -38,7 +40,8 @@ void Hero::levelup(float levelupXP)
 	{
 		levelupXP -= XPToLevelup;
 		HP = maxHP += maxHPBonus;
-		DMG += DMGBonus;
+		physicalDMG += DMGBonus;
+		magicalDMG += DMGBonus;
 		ACD *= ACDBonus;
 	}
 }

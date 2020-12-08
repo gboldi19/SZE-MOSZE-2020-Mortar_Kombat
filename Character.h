@@ -18,8 +18,8 @@ class Character
 {
 protected:
 	const std::string name; ///< Name of the Character.
-	float maxHP, HP, DMG, ACD; ///< Maximum health points, health points, damage points and attack cooldown time of the Character, respectively.
-	Character(const std::string _name, float _maxHP, float _DMG, float _ACD); ///< Generic constructor of the class.
+	float maxHP, HP, physicalDMG, magicalDMG, ACD; ///< Maximum health points, health points, damage points and attack cooldown time of the Character, respectively.
+	Character(const std::string _name, float _maxHP, float _physicalDMG, float _magicalDMG, float _ACD); ///< Generic constructor of the class.
 	/**
 	* @brief Starts hitting procedure.
 	* @param The victim Character.
@@ -31,7 +31,8 @@ public:
 	const std::string getName() const; ///< Getter for name.
 	const float getHealthPoints() const; ///< Getter for health points.
 	const float getMaxHealthPoints() const; ///< Getter for maximum health points.
-	const float getDamage() const; ///< Getter for damage.
+	const float getPhysicalDamage() const; ///< Getter for physical damage.
+	const float getMagicalDamage() const; ///< Getter for magical damage.
 	const float getAttackCoolDown() const; ///< Getter for attack cooldown.
 	/**
 	* @brief Decreases HP by attacker's damage.

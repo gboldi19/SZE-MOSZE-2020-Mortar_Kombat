@@ -1,6 +1,7 @@
 {
   "name": "Mottaka",
   "health_points": 321,
-  "damage": 25,
+  "physical_damage": 25,
+  "magical_damage" : 0,
   "attack_cooldown": 1.2
 }
