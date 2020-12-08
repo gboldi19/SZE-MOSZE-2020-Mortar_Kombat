@@ -1,7 +1,7 @@
 #include "Monster.h"
 
 Monster::Monster(const std::string _name, float _HP, float _physicalDMG, float _magicalDMG, float _ACD)
-	: Character(_name, _HP, _physicalDMG, _ACD) {}
+	: Character(_name, _HP, _physicalDMG, _magicalDMG, _ACD) {}
 
 Monster Monster::parse(std::string fileName)
 {

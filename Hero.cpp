@@ -10,7 +10,7 @@ Hero::Hero(
 		float _maxHPBonus,
 		float _DMGBonus,
 		float _ACDBonus)
-	: Character(_name, _maxHP, _DMG, _ACD)
+	: Character(_name, _maxHP, _physicalDMG, _magicalDMG, _ACD)
 {
 	XP = 0;
 	maxHPBonus = _maxHPBonus;
