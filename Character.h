@@ -18,7 +18,13 @@ class Character
 {
 protected:
 	const std::string name; ///< Name of the Character.
-	float maxHP, HP, physicalDMG, magicalDMG, ACD; ///< Maximum health points, health points, damage points and attack cooldown time of the Character, respectively.
+	struct Damage
+	{
+		int physical;
+		int magical;
+	};
+	Damage DMG;
+	float maxHP, HP, ACD; ///< Maximum health points, health points, damage points and attack cooldown time of the Character, respectively.
 	Character(const std::string _name, float _maxHP, float _physicalDMG, float _magicalDMG, float _ACD); ///< Generic constructor of the class.
 	/**
 	* @brief Starts hitting procedure.

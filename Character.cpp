@@ -4,8 +4,8 @@ Character::Character(const std::string _name, float _maxHP, float _physicalDMG, 
 : name(_name)
 {
 	HP = maxHP = _maxHP;
-	physicalDMG = _physicalDMG;
-	magicalDMG = _magicalDMG;
+	DMG.physical = _physicalDMG;
+	DMG.magical = _magicalDMG;
 	ACD = _ACD;
 }
 
@@ -26,12 +26,12 @@ const float Character::getMaxHealthPoints() const
 
 const float Character::getPhysicalDamage() const
 {
-	return physicalDMG;
+	return DMG.physical;
 }
 
 const float Character::getMagicalDamage() const
 {
-	return magicalDMG;
+	return DMG.magical;
 }
 
 const float Character::getAttackCoolDown() const
