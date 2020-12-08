@@ -12,8 +12,8 @@
 struct characterUnit
 {
 	Character character;
-	int posx, posy;
-	characterUnit(Character _character, int _posx, int _posy) 
+	unsigned long posx, posy;
+	characterUnit(Character _character, unsigned long _posx, unsigned long _posy) 
 		: character(_character), posx(_posx), posy(_posy) {}
 };
 
@@ -26,8 +26,8 @@ public:
 	Game() : field(Map()) {};
 	Game(std::string mapfilename) : field(Map(mapfilename)) {}
 	void setMap(Map map);
-	void putHero(Hero hero, int x, int y);
-	void putMonster(Monster monster, int x, int y);
+	void putHero(Hero hero, unsigned long x, unsigned long y);
+	void putMonster(Monster monster, unsigned long x, unsigned long y);
 	class OccupiedException : public std::exception {};
 	class AlreadyHasHeroException : public std::exception {};
 	class AlreadyHasUnitsException : public std::exception{};

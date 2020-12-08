@@ -6,14 +6,14 @@ void Game::setMap(Map map)
 	field = map;
 }
 
-void Game::putHero(Hero hero, int x, int y)
+void Game::putHero(Hero hero, unsigned long x, unsigned long y)
 {
 	if (heroUnits.size() > 0) throw Game::AlreadyHasHeroException();
 	if (field.get(x, y) == Map::type::Wall) throw Game::OccupiedException();
 	heroUnits.push_back(characterUnit(hero, x, y));
 }
 
-void Game::putMonster(Monster monster, int x, int y)
+void Game::putMonster(Monster monster, unsigned long x, unsigned long y)
 {
 	if (field.get(x, y) == Map::type::Wall) throw Game::OccupiedException();
 	monsterUnits.push_back(characterUnit(monster, x, y));
@@ -29,7 +29,7 @@ void Game::displayField()
 	output += L'\u2557'; //top right corner
 	output += '\n';
 
-	unsigned int monsterNum, heroNum;
+	unsigned long monsterNum, heroNum;
 	for (unsigned long i = 0; i < field.getRowNum(); i++)
 	{
 		//left wall
