@@ -1,6 +1,3 @@
-#ifndef JSON_H
-#define JSON_H
-
 #include <deque>
 #include <iostream>
 #include <string>
@@ -38,5 +35,3 @@ private:
 	void moveHero(std::string input);
 	void fightOnPos();
 };
-
-#endif
