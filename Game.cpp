@@ -22,7 +22,7 @@ void Game::putMonster(Monster monster, int x, int y)
 void Game::displayField()
 {
 	std::wstring output = L"";
-	long maxRowSize = field.getMaxRowSize();
+	unsigned long maxRowSize = field.getMaxRowSize();
 	//top border
 	output += L'\u2554'; //top left corner
 	output += std::wstring(maxRowSize * 2 - 2, L'\u2550'); //horizontal line
@@ -30,11 +30,11 @@ void Game::displayField()
 	output += '\n';
 
 	unsigned int monsterNum, heroNum;
-	for (long i = 0; i < field.getRowNum(); i++)
+	for (unsigned long i = 0; i < field.getRowNum(); i++)
 	{
 		//left wall
 		output += L'\u2551'; //vertical corner
-		long j = 0;
+		unsigned long j = 0;
 		for (; j < field.getRowSize(i); j++)
 		{
 			//wall
