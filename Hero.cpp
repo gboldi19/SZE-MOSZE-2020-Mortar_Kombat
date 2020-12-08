@@ -22,11 +22,13 @@ Hero::Hero(
 Hero Hero::parse(std::string fileName)
 {
 	JSON characterAttributes = JSON::parseFromFile(fileName);
+	float physicalDamage = (characterAttributes.count("damage") == 0) ? 0 : RONAF(characterAttributes.get<float>("damage"));
+	float magicalDamage = (characterAttributes.count("magical-damage") == 0) ? 0 : RONAF(characterAttributes.get<float>("magical-damage"));
 	return Hero(
 		characterAttributes.get<std::string>("name"),
 		RONAF(characterAttributes.get<float>("base_health_points")),
-		RONAF(characterAttributes.get<float>("damage")),
-		RONAF(characterAttributes.get<float>("magical-damage")),
+		physicalDamage,
+		magicalDamage,
 		RONAF(characterAttributes.get<float>("base_attack_cooldown")),
 		RONAF(characterAttributes.get<float>("experience_per_level")),
 		RONAF(characterAttributes.get<float>("health_point_bonus_per_level")),
