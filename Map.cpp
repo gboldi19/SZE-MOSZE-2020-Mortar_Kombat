@@ -24,19 +24,19 @@ Map::Map(std::string filename)
 	}
 }
 
-long Map::getRowNum()
+unsigned long Map::getRowNum()
 {
 	return structure.size();
 }
 
-long Map::getRowSize(int rowNum)
+unsigned long Map::getRowSize(int rowNum)
 {
 	return structure[rowNum].size();
 }
 
-long Map::getMaxRowSize()
+unsigned long Map::getMaxRowSize()
 {
-	long max = 0;
+	unsigned long max = 0;
 	for (std::vector<type> row : structure)
 	{
 		if (max < row.size()) max = row.size();

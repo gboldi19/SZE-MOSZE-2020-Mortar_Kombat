@@ -14,9 +14,9 @@ private:
 public:
 	Map() {};
 	Map(std::string filename);
-	long getRowNum();
-	long getRowSize(int rowNum);
-	long getMaxRowSize();
+	unsigned long getRowNum();
+	unsigned long getRowSize(int rowNum);
+	unsigned long getMaxRowSize();
 	type get(int x, int y) const;
 	class WrongIndexException : public std::exception {};
 	bool mapExists() { return structure.size() > 0; }
