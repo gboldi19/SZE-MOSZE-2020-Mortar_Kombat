@@ -1,7 +1,7 @@
 #ifndef JSON_H
 #define JSON_H
 
-#include <vector>
+#include <deque>
 #include <iostream>
 #include <string>
 
@@ -21,7 +21,7 @@ class Game
 {
 private:
 	Map field;
-	std::vector<characterUnit> heroUnits, monsterUnits;
+	std::deque<characterUnit> heroUnits, monsterUnits;
 public:
 	Game() : field(Map::Map()) {};
 	Game(std::string mapfilename) : field(Map::Map(mapfilename)) {}

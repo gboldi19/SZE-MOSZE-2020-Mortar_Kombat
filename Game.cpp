@@ -21,24 +21,24 @@ void Game::putMonster(Monster monster, int x, int y)
 
 void Game::displayField()
 {
-	wchar_t* output = L"";
+	std::wstring output = L"";
 	long maxRowSize = field.getMaxRowSize();
 	//top border
-	wcscat(output, L"\u2554"); //╔
-	output += std::string(maxRowSize * 2 - 2, '═');
-	output += '╗';
+	output += L'\u2554'; //top left corner
+	output += std::wstring(maxRowSize * 2 - 2, L'\u2550'); //horizontal line
+	output += L'\u2557'; //top right corner
 	output += '\n';
 
 	unsigned int monsterNum, heroNum;
 	for (long i = 0; i < field.getRowNum(); i++)
 	{
 		//left wall
-		output += '║';
+		output += L'\u2551'; //vertical corner
 		long j = 0;
 		for (; j < field.getRowSize(i); j++)
 		{
 			//wall
-			if (field.get(i, j) == Map::Wall) output += "██";
+			if (field.get(i, j) == Map::Wall) output += (L'\u2588' + L'\u2588'); //wall
 			//free or unit
 			else
 			{
@@ -52,23 +52,23 @@ void Game::displayField()
 				{
 					if (monster.posx = j && monster.posy == i) monsterNum++;
 				}
-				if (heroNum > 0) output += "┣┫";
-				else if (monsterNum == 1) output += "M░";
-				else if (monsterNum > 1) output += "MM";
-				else output += "░░";
+				if (heroNum > 0) output += L'\u2523' + L'\u252B'; //H character
+				else if (monsterNum == 1) output += ('M' + L'\u2591'); //M + free
+				else if (monsterNum > 1) output += ('M' + 'M'); //M characters
+				else output += (L'\u2591' + L'\u2591'); //free
 			}
 		}
 		//rest of the row
-		for (; j < maxRowSize; j++) output += "░░";
+		for (; j < maxRowSize; j++) output += (L'\u2591' + L'\u2591'); //wall
 		//right border
-		output += '║';
+		output += L'\u2551'; //vertical line
 		output += '\n';
 	}
 
 	//bottom border
-	output += '╚';
-	output += std::string(maxRowSize * 2 - 2, '═');
-	output += '╝';
+	output += L'\u255A'; //bottom left corner
+	output += std::wstring(maxRowSize * 2 - 2, L'\u2550'); //horizontal line
+	output += L'\u255D'; //bottom right corner
 
 }
 
@@ -94,15 +94,13 @@ void Game::moveHero(std::string input)
 
 void Game::fightOnPos()
 {
-	int i = 0;
 	for (characterUnit monsterUnit : monsterUnits)
 	{
 		if (monsterUnit.posx == heroUnits[0].posx && monsterUnit.posy == heroUnits[0].posy)
 		{
 			heroUnits[0].character.fightTilDeath(monsterUnit.character);
-			if (!monsterUnit.character.isAlive()) monsterUnits.erase(monsterUnits.begin() + i);
+			if (!monsterUnit.character.isAlive()) monsterUnits.pop_front(); //may require iterator instead of pop_front() !!!!!!!!!!!!!!!!!!!!!!!!!
 		}
-		i++;
 	}
 }
 
