@@ -18,8 +18,8 @@
 class JSON
 {
 private:
-	std::map<std::string, std::variant<std::string, int, double>> map;
-	JSON(std::map<std::string, std::variant<std::string, int, double>> _map) : map(_map) {}
+	std::map<std::string, std::variant<std::string, int, double, float>> map;
+	JSON(std::map<std::string, std::variant<std::string, int, double, float>> _map) : map(_map) {}
 public:
     /**
 	* @brief String or file parse.
@@ -28,13 +28,13 @@ public:
 	* @return Map containing the keys and their values.
     * INSTRUCTIONS: Provide parseble string (default) or text file path (isFile must be set true)!
 	*/
-    static std::map<std::string, std::variant<std::string, int, double>> parse(std::string inputString = "", bool isFile = false);
+    static std::map<std::string, std::variant<std::string, int, double, float>> parse(std::string inputString = "", bool isFile = false);
     /**
 	* @brief Stream parse.
 	* @param Stream to parse.
 	* @return Map containing the keys and their values.
 	*/
-    static std::map<std::string, std::variant<std::string, int, double>> parse(std::istream &stream);
+    static std::map<std::string, std::variant<std::string, int, double, float>> parse(std::istream &stream);
     /**
 	* @brief File parse to own map.
 	* @param Path to file.
@@ -54,7 +54,7 @@ public:
 	* @return Value of the provided key.
 	*/
 	template <typename T>
-		T get(const std::string &key) { return std::any_cast<T>(map[key]); }
+		T get(const std::string &key) { return std::get<T>(map[key]); }
 
 	class ParseException : public std::exception {}; ///< Class member for exception handling.
 };
