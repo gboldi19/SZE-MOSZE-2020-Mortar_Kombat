@@ -23,8 +23,8 @@ private:
 	Map field;
 	std::deque<characterUnit> heroUnits, monsterUnits;
 public:
-	Game() : field(Map::Map()) {};
-	Game(std::string mapfilename) : field(Map::Map(mapfilename)) {}
+	Game() : field(Map()) {};
+	Game(std::string mapfilename) : field(Map(mapfilename)) {}
 	void setMap(Map map);
 	void putHero(Hero hero, int x, int y);
 	void putMonster(Monster monster, int x, int y);

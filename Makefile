@@ -14,7 +14,7 @@ OUTBIN := a.out
 build: $(OBJS)
 	$(CC) $(CFLAGS) -o $(OUTBIN) $(OBJS) $(FSYS_FLAG)
 
-main.o: main.cpp Character.h Hero.h JSON.h
+main.o: main.cpp Character.h Monster.h Hero.h JSON.h
 	$(CC) $(CFLAGS) -c main.cpp $(FSYS_FLAG)
 
 JSON.o: JSON.cpp JSON.h
