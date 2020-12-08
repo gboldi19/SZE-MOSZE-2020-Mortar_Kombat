@@ -1,12 +1,11 @@
 /**
  * @file main.cpp
- * ./main units/test_scenario1.json
 */
 
 #include <iostream>
 #include <map>
 #include <string>
-#include <experimental/filesystem>
+#include <filesystem>
 #include <sstream>
 #include <algorithm>
 #include <iterator>
@@ -39,7 +38,7 @@ void bad_exit(int exitcode){ ///< function to write error messages
 int main(int argc, char** argv){
 
     if (argc != 2) bad_exit(1);
-    if (!std::experimental::filesystem::exists(argv[1])) bad_exit(2);
+    if (!std::filesystem::exists(argv[1])) bad_exit(2);
 
     std::string hero_file;
     std::list<std::string> monster_files;
