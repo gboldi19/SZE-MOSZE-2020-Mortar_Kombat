@@ -45,12 +45,12 @@ void Game::displayField()
 				heroNum = 0;
 				for (characterUnit hero : heroUnits)
 				{
-					if (hero.posx = j && hero.posy == i) heroNum++;
+					if (hero.posx == j && hero.posy == i) heroNum++;
 				}
 				monsterNum = 0;
 				for (characterUnit monster : monsterUnits)
 				{
-					if (monster.posx = j && monster.posy == i) monsterNum++;
+					if (monster.posx == j && monster.posy == i) monsterNum++;
 				}
 				if (heroNum > 0) output += L'\u2523' + L'\u252B'; //H character
 				else if (monsterNum == 1) output += ('M' + L'\u2591'); //M + free
