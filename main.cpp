@@ -1,11 +1,12 @@
 /**
  * @file main.cpp
+ * ./main units/test_scenario1.json
 */
 
 #include <iostream>
 #include <map>
 #include <string>
-#include <filesystem>
+#include <experimental/filesystem>
 #include <sstream>
 #include <algorithm>
 #include <iterator>
@@ -36,23 +37,24 @@ void bad_exit(int exitcode){ ///< function to write error messages
  * Prints to screen.
 */
 int main(int argc, char** argv){
+
     if (argc != 2) bad_exit(1);
-    if (!std::filesystem::exists(argv[1])) bad_exit(2);
-	
-	std::string hero_file;
-	std::list<std::string> monster_files;
-	try {
-		JSON scenario = JSON::parseFromFile(argv[1]);
-		if (!(scenario.count("hero") && scenario.count("monsters"))) bad_exit(3);
-		else {
-			hero_file = scenario.get<std::string>("hero");
-			std::istringstream monsters(scenario.get<std::string>("monsters"));
-			std::copy(std::istream_iterator<std::string>(monsters),
-			    std::istream_iterator<std::string>(),
-			    std::back_inserter(monster_files));
-		}
-	}
-	catch (const JSON::ParseException & e) { bad_exit(4); }
+    if (!std::experimental::filesystem::exists(argv[1])) bad_exit(2);
+
+    std::string hero_file;
+    std::list<std::string> monster_files;
+    try {
+        JSON scenario = JSON::parseFromFile(argv[1]); 
+        if (!(scenario.count("hero")&&scenario.count("monsters"))) bad_exit(3);
+        else {
+            hero_file=scenario.get<std::string>("hero");
+            std::cout << "monster_files" << std::endl;
+            std::istringstream monsters(scenario.get<std::string>("monsters"));
+            std::copy(std::istream_iterator<std::string>(monsters),
+                std::istream_iterator<std::string>(),
+                std::back_inserter(monster_files));
+        }
+    } catch (const JSON::ParseException& e) {bad_exit(4);}
 
     try { 
         Hero hero{Hero::parse(hero_file)};
