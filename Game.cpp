@@ -113,7 +113,6 @@ void Game::run()
 		displayField();
 		std::cin >> input;
 		moveHero(input);
-		//fightOnPos();
+		fightOnPos();
 	} while (monsterUnits.size() > 0 && heroUnits.size() > 0);
-	std::cout << "the end" << std::endl; //testline !!!!!!!!!!!!!!!!!!!!!!!!!!!
 }

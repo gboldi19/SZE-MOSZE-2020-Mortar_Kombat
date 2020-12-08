@@ -1,4 +1,4 @@
-OBJS := main.o JSON.o Character.o Hero.o Monster.o
+OBJS := main.o JSON.o Character.o Hero.o Monster.o Game.o Map.o
 CFLAGS := -std=c++17 -Wall -Werror -g 
 CC := g++-10
 UNIT1 := units/test_scenario1.json
@@ -19,6 +19,12 @@ main.o: main.cpp Character.h Hero.h JSON.h
 
 JSON.o: JSON.cpp JSON.h
 	$(CC) $(CFLAGS) -c JSON.cpp $(FSYS_FLAG)
+
+Game.o: Game.cpp Game.h Map.h Hero.h Monster.h
+	$(CC) $(CFLAGS) -c Game.cpp $(FSYS_FLAG)
+
+Map.o: Map.cpp Map.h
+	$(CC) $(CFLAGS) -c Map.cpp $(FSYS_FLAG)
 
 Hero.o: Hero.cpp Hero.h Character.h JSON.h
 	$(CC) $(CFLAGS) -c Hero.cpp $(FSYS_FLAG)
