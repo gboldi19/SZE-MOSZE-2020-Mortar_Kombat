@@ -72,7 +72,7 @@ int main(int argc, char** argv){
         std::cout << hero.getName() << ": LVL" << hero.getLevel() << std::endl
                   << "   HP: "<<hero.getHealthPoints()<<"/"<<hero.getMaxHealthPoints()<<std::endl
                   << " PDMG: "<<hero.getPhysicalDamage()<<std::endl
-				  << " MDMG: "<<hero.getPhysicalDamage()<<std::endl
+				  << " MDMG: "<<hero.getMagicalDamage()<<std::endl
                   << "  ACD: "<<hero.getAttackCoolDown()<<std::endl
                   ;
     } catch (const JSON::ParseException& e) {bad_exit(4);}
