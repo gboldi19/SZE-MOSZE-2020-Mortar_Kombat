@@ -25,8 +25,8 @@ Hero Hero::parse(std::string fileName)
 	return Hero(
 		characterAttributes.get<std::string>("name"),
 		RONAF(characterAttributes.get<float>("base_health_points")),
-		RONAF(characterAttributes.get<float>("base_damage")),
-		RONAF(characterAttributes.get<float>("base_magical-damage")),
+		RONAF(characterAttributes.get<float>("damage")),
+		RONAF(characterAttributes.get<float>("magical-damage")),
 		RONAF(characterAttributes.get<float>("base_attack_cooldown")),
 		RONAF(characterAttributes.get<float>("experience_per_level")),
 		RONAF(characterAttributes.get<float>("health_point_bonus_per_level")),
