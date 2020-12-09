@@ -47,7 +47,7 @@ const float Character::getDefense() const
 
 float Character::gotHit(Character* attacker)
 {
-	float potentialXP = attacker->getPhysicalDamage() + attacker->getMagicalDamage();
+	float potentialXP = (attacker->getPhysicalDamage() - DEF > 0) ? attacker->getPhysicalDamage() - DEF + attacker->getMagicalDamage() : attacker->getMagicalDamage();
 	if (HP - potentialXP > 0)
 	{
 		HP -= potentialXP;
