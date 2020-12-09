@@ -10,7 +10,8 @@ Hero::Hero(
 		float _XPToLevelup,
 		float _maxHPBonus,
 		float _DMGBonus,
-		float _ACDBonus)
+		float _ACDBonus,
+		float _DEFBonus)
 	: Character(_name, _maxHP, _physicalDMG, _magicalDMG, _ACD, _DEF)
 {
 	XP = 0;
@@ -18,6 +19,7 @@ Hero::Hero(
 	DMGBonus = _DMGBonus;
 	ACDBonus = _ACDBonus;
 	XPToLevelup = _XPToLevelup;
+	DEFBonus = _DEFBonus;
 }
 
 Hero Hero::parse(std::string fileName)
@@ -25,18 +27,18 @@ Hero Hero::parse(std::string fileName)
 	JSON characterAttributes = JSON::parseFromFile(fileName);
 	float physicalDamage = (characterAttributes.count("damage") == 0) ? 0 : RONAF(characterAttributes.get<float>("damage"));
 	float magicalDamage = (characterAttributes.count("magical-damage") == 0) ? 0 : RONAF(characterAttributes.get<float>("magical-damage"));
-	float defense = (characterAttributes.count("defense") == 0) ? 0 : RONAF(characterAttributes.get<float>("defense"));
 	return Hero(
 		characterAttributes.get<std::string>("name"),
 		RONAF(characterAttributes.get<float>("base_health_points")),
 		physicalDamage,
 		magicalDamage,
 		RONAF(characterAttributes.get<float>("base_attack_cooldown")),
-		defense,
+		RONAF(characterAttributes.get<float>("defense")),
 		RONAF(characterAttributes.get<float>("experience_per_level")),
 		RONAF(characterAttributes.get<float>("health_point_bonus_per_level")),
 		RONAF(characterAttributes.get<float>("damage_bonus_per_level")),
-		RONAF(characterAttributes.get<float>("cooldown_multiplier_per_level")));
+		RONAF(characterAttributes.get<float>("cooldown_multiplier_per_level")),
+		RONAF(characterAttributes.get<float>("defense_bonus_per_level")));
 }
 
 void Hero::levelup(float levelupXP)

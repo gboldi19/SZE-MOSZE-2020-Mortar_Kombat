@@ -3,5 +3,6 @@
   "health_points": 274,
   "damage": 31,
   "magical-damage" : 0,
-  "attack_cooldown": 1.5
+  "attack_cooldown": 1.5,
+  "defense" :  1
 }

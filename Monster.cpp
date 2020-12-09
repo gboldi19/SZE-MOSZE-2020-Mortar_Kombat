@@ -8,12 +8,11 @@ Monster Monster::parse(std::string fileName)
 	JSON characterAttributes = JSON::parseFromFile(fileName);
 	float physicalDamage = (characterAttributes.count("damage") == 0) ? 0 : RONAF(characterAttributes.get<float>("damage"));
 	float magicalDamage = (characterAttributes.count("magical-damage") == 0) ? 0 : RONAF(characterAttributes.get<float>("magical-damage"));
-	float defense = (characterAttributes.count("defense") == 0) ? 0 : RONAF(characterAttributes.get<float>("defense"));
 	return Monster(
 		characterAttributes.get<std::string>("name"),
 		RONAF(characterAttributes.get<float>("health_points")),
 		physicalDamage,
 		magicalDamage,
 		RONAF(characterAttributes.get<float>("attack_cooldown")),
-		defense);
+		RONAF(characterAttributes.get<float>("defense")));
 }

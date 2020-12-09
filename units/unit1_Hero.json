@@ -4,6 +4,8 @@
   "damage": 20,
   "magical-damage" :  0,
   "base_attack_cooldown": 1.9,
+  "defense": 2,
+  "defense_bonus_per_level" : 2,
   "experience_per_level": 100,
   "health_point_bonus_per_level": 1.1,
   "damage_bonus_per_level": 1.1,
