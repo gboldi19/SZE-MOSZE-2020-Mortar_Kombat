@@ -42,8 +42,7 @@ void Hero::levelup(float levelupXP)
 	{
 		levelupXP -= XPToLevelup;
 		HP = maxHP += maxHPBonus;
-		DMG.physical += DMGBonus;
-		DMG.magical += DMGBonus;
+		DMG += DMGBonus;
 		ACD *= ACDBonus;
 	}
 }

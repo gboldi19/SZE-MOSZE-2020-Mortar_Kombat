@@ -14,15 +14,21 @@
 #include <any>
 #include <iostream>
 
+struct Damage
+{
+	int physical;
+	int magical;
+	Damage() : physical(0), magical(0) {};
+	Damage(int _physical, int _magical) : physical(_physical), magical(_magical) {}
+	friend Damage operator+(const Damage& DMG1, const Damage& DMG2) { return Damage(DMG1.physical + DMG2.physical, DMG1.magical + DMG2.magical); }
+	Damage operator+=(float additiveBonus) const { return Damage(physical + additiveBonus, magical + additiveBonus); }
+	Damage operator*=(float multiplicativeBonus) const { return Damage(physical * multiplicativeBonus, magical * multiplicativeBonus); }
+};
+
 class Character
 {
 protected:
 	const std::string name; ///< Name of the Character.
-	struct Damage
-	{
-		int physical;
-		int magical;
-	};
 	Damage DMG;
 	float maxHP, HP, ACD; ///< Maximum health points, health points, damage points and attack cooldown time of the Character, respectively.
 	Character(const std::string _name, float _maxHP, float _physicalDMG, float _magicalDMG, float _ACD); ///< Generic constructor of the class.
