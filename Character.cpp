@@ -1,12 +1,13 @@
 #include "Character.h"
 
-Character::Character(const std::string _name, float _maxHP, float _physicalDMG, float _magicalDMG, float _ACD)
+Character::Character(const std::string _name, float _maxHP, float _physicalDMG, float _magicalDMG, float _ACD, float _DEF)
 : name(_name)
 {
 	HP = maxHP = _maxHP;
 	DMG.physical = _physicalDMG;
 	DMG.magical = _magicalDMG;
 	ACD = _ACD;
+	DEF = _DEF;
 }
 
 const std::string Character::getName() const
@@ -39,6 +40,10 @@ const float Character::getAttackCoolDown() const
     return ACD;
 }
 
+const float Character::getDefense() const
+{
+	return DEF;
+}
 
 float Character::gotHit(Character* attacker)
 {
