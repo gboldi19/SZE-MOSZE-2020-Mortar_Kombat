@@ -14,7 +14,7 @@ int count(std::string string, char target)
 //INSTRUCTIONS: Specify mode = "inclusive" for an allowed character set. Exclusive is default.
 std::string::size_type findNext(std::string &s, char target, std::unordered_set<char> set, std::string mode = "")
 {
-    long pos = s.find(target);
+    unsigned long pos = s.find(target);
     if (pos == std::string::npos)
     {
         throw std::runtime_error("1: Expected token not found!");
