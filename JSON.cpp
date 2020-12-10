@@ -1,4 +1,5 @@
 #include "JSON.h"
+#include <iostream>
 
 std::unordered_set<char> spacingChars = { ' ', '\n', '\t', '\r', '\f', '\b' }; //whitespace + nonprintables
 std::unordered_set<char> pairEndingChars = { ',', '}' };
@@ -48,9 +49,19 @@ std::string::size_type findNext(std::string &s, char target, std::unordered_set<
 
 void checkString(std::string& s)
 {
-	if (backslashChars.find(s[0]) != backslashChars.end()) //first character is backslashchar --> error
+	if (backslashChars.find(s[0]) != backslashChars.end()) //first character is backslashchar
 	{
-		throw std::runtime_error("5A: Unrecognized value!");
+        if (s.length() > 1)
+        {
+            if (s.substr(0, 1) != "\\\\") //first two characters are not double '\' --> error
+            {
+                throw std::runtime_error("5A: Unrecognized value!");
+            }
+        }
+        else
+        {
+		    throw std::runtime_error("5B: Unrecognized value!"); //the only character is backslashchar --> error
+        }
 	}
     for (std::string::size_type pos = 1; pos < s.length(); pos++)
     {
@@ -58,7 +69,7 @@ void checkString(std::string& s)
         {
 			if (s[pos] == '\\' && pos < s.length() - 1 && s[pos + 1] != '\\') //...no double '\' with the following character either --> error
 			{
-            	throw std::runtime_error("5B: Unrecognized value!");
+            	throw std::runtime_error("5C: Unrecognized value!");
 			}
         }
     }
@@ -76,7 +87,6 @@ JSON::var string2variant(std::string& s)
 	else if (s[0] == '[') //starts with "[" --> list
 	{
 		s.erase(0, 1).erase(s.length() - 1); //remove square bracket signs
-		checkString(s);
 		bool inString = false;
 		std::string word = "";
 		JSON::list output;
@@ -86,8 +96,12 @@ JSON::var string2variant(std::string& s)
 		{
 			if (c == '"')
 			{
-				if (inString) output.push_back(word);
-				else
+				if (inString)
+                {
+                    checkString(word);
+                    output.push_back(word);
+                }
+                else
 				{
 					for (char c2 : word)
 					{
