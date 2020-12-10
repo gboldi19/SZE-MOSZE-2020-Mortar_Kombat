@@ -1,7 +1,7 @@
 #include "Hero.h"
 
 Hero::Hero(
-		const std::string _name,
+		const std::string& _name,
 		float _maxHP,
 		float _physicalDMG,
 		float _magicalDMG,

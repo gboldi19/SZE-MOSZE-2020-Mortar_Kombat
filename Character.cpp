@@ -24,7 +24,7 @@ Damage Damage::operator*=(const Damage& rhs)
 	return *this;
 }
 
-Character::Character(const std::string _name, float _maxHP, float _physicalDMG, float _magicalDMG, float _ACD, float _DEF)
+Character::Character(const std::string& _name, float _maxHP, float _physicalDMG, float _magicalDMG, float _ACD, float _DEF)
 : name(_name)
 {
 	HP = maxHP = _maxHP;

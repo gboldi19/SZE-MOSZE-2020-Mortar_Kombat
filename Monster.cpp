@@ -1,6 +1,6 @@
 #include "Monster.h"
 
-Monster::Monster(const std::string _name, float _HP, float _physicalDMG, float _magicalDMG, float _ACD, float _DEF)
+Monster::Monster(const std::string& _name, float _HP, float _physicalDMG, float _magicalDMG, float _ACD, float _DEF)
 	: Character(_name, _HP, _physicalDMG, _magicalDMG, _ACD, _DEF) {}
 
 Monster Monster::parse(std::string fileName)
