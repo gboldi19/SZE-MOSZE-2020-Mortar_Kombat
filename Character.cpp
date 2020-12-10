@@ -1,5 +1,29 @@
 #include "Character.h"
 
+Damage Damage::operator+=(int rhs)
+{
+	this->physical += rhs; this->magical += rhs;
+	return *this;
+}
+
+Damage Damage::operator+=(const Damage& rhs)
+{
+	this->physical += rhs.physical; this->magical += rhs.magical;
+	return *this;
+}
+
+Damage Damage::operator*=(int rhs)
+{
+	this->physical *= rhs; this->magical *= rhs;
+	return *this;
+}
+
+Damage Damage::operator*=(const Damage& rhs)
+{
+	this->physical *= rhs.physical; this->magical *= rhs.magical;
+	return *this;
+}
+
 Character::Character(const std::string _name, float _maxHP, float _physicalDMG, float _magicalDMG, float _ACD, float _DEF)
 : name(_name)
 {

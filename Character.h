@@ -20,9 +20,10 @@ struct Damage
 	int magical;
 	Damage() : physical(0), magical(0) {};
 	Damage(int _physical, int _magical) : physical(_physical), magical(_magical) {}
-	friend Damage operator+(const Damage& DMG1, const Damage& DMG2) { return Damage(DMG1.physical + DMG2.physical, DMG1.magical + DMG2.magical); }
-	Damage operator+=(float additiveBonus) const { return Damage(physical + additiveBonus, magical + additiveBonus); }
-	Damage operator*=(float multiplicativeBonus) const { return Damage(physical * multiplicativeBonus, magical * multiplicativeBonus); }
+	Damage operator+=(int);
+	Damage operator+=(const Damage&);
+	Damage operator*=(int);
+	Damage operator*=(const Damage&);
 };
 
 class Character
