@@ -1,8 +1,11 @@
 {
   "name": "Mottaka",
   "base_health_points": 321,
-  "base_damage": 25,
+  "damage": 25,
+  "magical-damage" :  0,
   "base_attack_cooldown": 1.2,
+  "defense": 2,
+  "defense_bonus_per_level" : 1,
   "experience_per_level": 100,
   "health_point_bonus_per_level": 1.1,
   "damage_bonus_per_level": 1.1,

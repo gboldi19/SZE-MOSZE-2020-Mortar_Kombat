@@ -12,8 +12,8 @@
 class Hero : public Character
 {
 private:
-	float XP, maxHPBonus, DMGBonus, ACDBonus, XPToLevelup;
-    Hero(const std::string _name, float _HP, float _DMG, float _ACD, float _XPToLevelup, float _maxHPBonus, float _DMGBonus, float _ACDBonus);
+	float XP, maxHPBonus, DMGBonus, ACDBonus, XPToLevelup, DEFBonus;
+    Hero(const std::string& _name, float _HP, float _pysicalDMG, float _magicalDMG, float _ACD, float _DEF, float _XPToLevelup, float _maxHPBonus, float _DMGBonus, float _ACDBonus, float _DEFBonus);
 	void levelup(float levelupXP);
 	void gainXP(float damagePoints);
 	void doHit(Character& victim);

@@ -18,7 +18,7 @@ class JSON
 {
 private:
 	std::map<std::string, std::any> map;
-	JSON(std::map<std::string, std::any> _map) : map(_map) {}
+	JSON(const std::map<std::string, std::any>& _map) : map(_map) {}
 public:
     /**
 	* @brief String or file parse.
