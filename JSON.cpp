@@ -1,5 +1,4 @@
 #include "JSON.h"
-#include <iostream>
 
 std::unordered_set<char> spacingChars = { ' ', '\n', '\t', '\r', '\f', '\b' }; //whitespace + nonprintables
 std::unordered_set<char> pairEndingChars = { ',', '}' };
