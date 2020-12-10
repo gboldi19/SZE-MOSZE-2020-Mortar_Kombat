@@ -32,7 +32,7 @@ protected:
 	const std::string name; ///< Name of the Character.
 	Damage DMG; ///< Different DMG values of different Character.
 	float maxHP, HP, ACD, DEF; ///< Maximum health points, health points, damage points and attack cooldown time of the Character, respectively.
-	Character(const std::string _name, float _maxHP, float _physicalDMG, float _magicalDMG, float _ACD, float _DEF); ///< Generic constructor of the class.
+	Character(const std::string& _name, float _maxHP, float _physicalDMG, float _magicalDMG, float _ACD, float _DEF); ///< Generic constructor of the class.
 	/**
 	* @brief Starts hitting procedure.
 	* @param The victim Character.

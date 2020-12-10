@@ -12,7 +12,7 @@
 class Monster : public Character
 {
 private:
-    Monster(const std::string _name, float _HP, float _physicalDMG, float _magicalDMG, float _ACD, float _DEF);
+    Monster(const std::string& _name, float _HP, float _physicalDMG, float _magicalDMG, float _ACD, float _DEF);
 public:
     /**
     * @brief Monster construction.
