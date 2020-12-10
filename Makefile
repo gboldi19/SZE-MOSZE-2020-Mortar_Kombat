@@ -53,7 +53,7 @@ clean:
 	rm -rf *.o *.out
 
 static_code_analysis:
-	echo "$$(cppcheck *.cpp --enable=warning --output-file=warning_log.txt)"; \
+	echo "$$(cppcheck *.cpp --output-file=warning_log.txt)"; \
 	if [ -s ./warning_log.txt ]; \
 	then \
 		echo "Errors and/or warnings found."; \
