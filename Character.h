@@ -30,7 +30,7 @@ class Character
 {
 protected:
 	const std::string name; ///< Name of the Character.
-	Damage DMG;
+	Damage DMG; ///< Different DMG values of different Character.
 	float maxHP, HP, ACD, DEF; ///< Maximum health points, health points, damage points and attack cooldown time of the Character, respectively.
 	Character(const std::string _name, float _maxHP, float _physicalDMG, float _magicalDMG, float _ACD, float _DEF); ///< Generic constructor of the class.
 	/**
@@ -54,7 +54,7 @@ public:
 	* @param The Character pointer of the attacker.
 	* @return The poteintal XP.
 	*/
-    float gotHit(Character* attacker);
+	float gotHit(Character* attacker);
 	/**
 	* @brief Checks vitals of Character.
 	* @return true if alive
