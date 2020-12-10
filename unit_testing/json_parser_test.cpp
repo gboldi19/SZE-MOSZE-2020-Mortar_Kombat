@@ -35,18 +35,18 @@ TEST(parse_test, missing_file)
 
 TEST(parse_test, any_types)
 {
-	std::map<std::string, std::any> data = JSON::parse(" {\"string\" : \"Stringtype\", \"bool\" : true, \"float\" : 1.6, \"null pointer\" : null} ");
-	ASSERT_EQ(std::any_cast<std::string>(data["string"]), "Stringtype");
-    	ASSERT_EQ(std::any_cast<bool>(data["bool"]), true);
-   	ASSERT_EQ(std::any_cast<float>(data["float"]), 1.6f);
-	ASSERT_EQ(std::any_cast<nullptr_t>(data["null pointer"]), nullptr);
+	std::map<std::string, JSON::var> data = JSON::parse(" {\"string\" : \"Stringtype\", \"bool\" : true, \"float\" : 1.6, \"null pointer\" : null} ");
+	ASSERT_EQ(std::get<std::string>(data["string"]), "Stringtype");
+    ASSERT_EQ(std::get<bool>(data["bool"]), true);
+   	ASSERT_EQ(std::get<float>(data["float"]), 1.6f);
+	ASSERT_EQ(std::get<nullptr_t>(data["null pointer"]), nullptr);
 }
 
 TEST(parse_test, rearranged_keys)
 {
-	std::map<std::string, std::any> data = JSON::parse(" {\"name\" : \"Kakarott\", \"hp\" : 380} ");
-	ASSERT_EQ(std::any_cast<float>(data["hp"]), 380.0f);
-	ASSERT_EQ(std::any_cast<std::string>(data["name"]), "Kakarott");
+	std::map<std::string, JSON::var> data = JSON::parse(" {\"name\" : \"Kakarott\", \"hp\" : 380} ");
+	ASSERT_EQ(std::get<float>(data["hp"]), 380.0f);
+	ASSERT_EQ(std::get<std::string>(data["name"]), "Kakarott");
 }
 
 //_______________________________JSON::parse wrong input tests_______________________________
