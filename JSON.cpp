@@ -1,7 +1,7 @@
 #include "JSON.h"
 
 //INSTRUCTIONS: Specify mode = "inclusive" for an allowed character set. Exclusive is default.
-std::string::size_type findNext(std::string &s, char target, std::unordered_set<char> set, std::string mode = "")
+std::string::size_type findNext(std::string &s, char target, std::unordered_set<char> set, const std::string& mode = "")
 {
     long pos = s.find(target);
     if (pos == -1)
@@ -50,10 +50,11 @@ void checkString(std::string& s)
     {
         if (backslashChars.find(s[pos]) != backslashChars.end() && s[pos - 1] != '\\') //backslashchar has no '\' before it and ...
         {
-			if (s[pos] == '\\' && pos < s.length() - 1 && s[pos + 1] != '\\') //...no double '\' with the following character either --> error
-			{
-            	throw std::runtime_error("5B: Unrecognized value!");
-			}
+			if (s[pos] == '\\')
+				if (pos < s.length() - 1 && s[pos + 1] != '\\') //...no double '\' with the following character either --> error
+				{
+            		throw std::runtime_error("5B: Unrecognized value!");
+				}
         }
         if (s[pos] == '{' || s[pos] == '}') //these mókusos brackets are not allowed --> error - (Names for various bracket symbols, [https://en.wikipedia.org/wiki/Bracket])
         {
@@ -120,7 +121,7 @@ std::map<std::string, std::any> parseString(std::string& s)
 
         s.erase(0, findNext(s, ':', spacingChars, "inclusive") + 1); //remove ':' operator
         pos = 0; //reset position
-        while(spacingChars.find(s[pos]) != spacingChars.end() && pos < s.length()) pos++; //find value begginging (or incorrect content end)
+        while(pos < s.length() && spacingChars.find(s[pos]) != spacingChars.end()) pos++; //find value begginging (or incorrect content end)
         if (pairEndingChars.find(s[pos]) != pairEndingChars.end()) //':' is followed directly by ',' or '}'
         {
             throw std::runtime_error("10: No value found!");
@@ -135,7 +136,7 @@ std::map<std::string, std::any> parseString(std::string& s)
 	{
 		pos = 0; //just reset position
 	}
-	while (pairEndingChars.find(s[pos]) == pairEndingChars.end() && pos < s.length()) pos++; //find value end if non-string (or incorrect content end)
+	while (pos < s.length() && pairEndingChars.find(s[pos]) == pairEndingChars.end()) pos++; //find value end if non-string (or incorrect content end)
         valueString = s.substr(0, pos); //pass value string
         s.erase(0, pos); //remove everything before value
 
