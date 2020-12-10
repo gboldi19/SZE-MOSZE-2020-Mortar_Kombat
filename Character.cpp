@@ -1,11 +1,37 @@
 #include "Character.h"
 
-Character::Character(const std::string _name, float _maxHP, float _DMG, float _ACD)
+Damage Damage::operator+=(int rhs)
+{
+	this->physical += rhs; this->magical += rhs;
+	return *this;
+}
+
+Damage Damage::operator+=(const Damage& rhs)
+{
+	this->physical += rhs.physical; this->magical += rhs.magical;
+	return *this;
+}
+
+Damage Damage::operator*=(int rhs)
+{
+	this->physical *= rhs; this->magical *= rhs;
+	return *this;
+}
+
+Damage Damage::operator*=(const Damage& rhs)
+{
+	this->physical *= rhs.physical; this->magical *= rhs.magical;
+	return *this;
+}
+
+Character::Character(const std::string& _name, float _maxHP, float _physicalDMG, float _magicalDMG, float _ACD, float _DEF)
 : name(_name)
 {
 	HP = maxHP = _maxHP;
-	DMG = _DMG;
+	DMG.physical = _physicalDMG;
+	DMG.magical = _magicalDMG;
 	ACD = _ACD;
+	DEF = _DEF;
 }
 
 const std::string Character::getName() const
@@ -23,9 +49,14 @@ const float Character::getMaxHealthPoints() const
 	return maxHP;
 }
 
-const float Character::getDamage() const
+const float Character::getPhysicalDamage() const
 {
-	return DMG;
+	return DMG.physical;
+}
+
+const float Character::getMagicalDamage() const
+{
+	return DMG.magical;
 }
 
 const float Character::getAttackCoolDown() const
@@ -33,10 +64,14 @@ const float Character::getAttackCoolDown() const
     return ACD;
 }
 
+const float Character::getDefense() const
+{
+	return DEF;
+}
 
 float Character::gotHit(Character* attacker)
 {
-	float potentialXP = attacker->getDamage();
+	float potentialXP = (attacker->getPhysicalDamage() - DEF > 0) ? attacker->getPhysicalDamage() - DEF + attacker->getMagicalDamage() : attacker->getMagicalDamage();
 	if (HP - potentialXP > 0)
 	{
 		HP -= potentialXP;

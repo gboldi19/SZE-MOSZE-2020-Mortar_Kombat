@@ -12,7 +12,7 @@ int count(std::string string, char target)
 }
 
 //INSTRUCTIONS: Specify mode = "inclusive" for an allowed character set. Exclusive is default.
-std::string::size_type findNext(std::string &s, char target, std::unordered_set<char> set, std::string mode = "")
+std::string::size_type findNext(std::string &s, char target, std::unordered_set<char> set, const std::string& mode = "")
 {
     unsigned long pos = s.find(target);
     if (pos == std::string::npos)
@@ -70,10 +70,15 @@ void checkString(std::string& s)
     {
         if (backslashChars.find(s[pos]) != backslashChars.end() && s[pos - 1] != '\\') //backslashchar has no '\' before it and ...
         {
-			if (s[pos] == '\\' && pos < s.length() - 1 && s[pos + 1] != '\\') //...no double '\' with the following character either --> error
-			{
-            	throw std::runtime_error("5C: Unrecognized value!");
-			}
+			    if (s[pos] == '\\')
+				    if (pos < s.length() - 1 && s[pos + 1] != '\\') //...no double '\' with the following character either --> error
+				    {
+            		throw std::runtime_error("5C: Unrecognized value!");
+				    }
+          else
+          {
+            throw std::runtime_error("5D: Unrecognized value!");
+          }
         }
         if (s[pos] == '{' || s[pos] == '}') //these mókusos brackets are not allowed --> error - (Names for various bracket symbols, [https://en.wikipedia.org/wiki/Bracket])
         {
@@ -180,7 +185,7 @@ std::map<std::string, JSON::var> parseString(std::string& s)
 
         s.erase(0, findNext(s, ':', spacingChars, "inclusive") + 1); //remove ':' operator
         pos = 0; //reset position
-        while(spacingChars.find(s[pos]) != spacingChars.end() && pos < s.length()) pos++; //find value begginging (or incorrect content end)
+        while(pos < s.length() && spacingChars.find(s[pos]) != spacingChars.end()) pos++; //find value begginging (or incorrect content end)
         if (pairEndingChars.find(s[pos]) != pairEndingChars.end()) //':' is followed directly by ',' or '}'
         {
             throw std::runtime_error("10: No value found!");

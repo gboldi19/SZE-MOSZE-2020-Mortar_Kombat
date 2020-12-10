@@ -1,36 +1,42 @@
 Kakarott(1) vs Mottaka
 The hero won.
 Kakarott: LVL4
-   HP: 333.3/383.3
-  DMG: 23.3
+   HP: 366.3/383.3
+ PDMG: 23
+ MDMG: 3
   ACD: 1.3851
 Kakarott(1) vs Tathar
 The hero won.
 Kakarott: LVL3
-   HP: 258.2/382.2
-  DMG: 22.2
+   HP: 307.2/382.2
+ PDMG: 22
+ MDMG: 2
   ACD: 1.539
 Mottaka(1) vs Kakarott
 The hero won.
 Mottaka: LVL4
-   HP: 304.3/324.3
-  DMG: 28.3
+   HP: 309.3/324.3
+ PDMG: 28
+ MDMG: 3
   ACD: 0.8748
 Mottaka(1) vs Tathar
 The hero won.
 Mottaka: LVL3
-   HP: 261.2/323.2
-  DMG: 27.2
+   HP: 296.2/323.2
+ PDMG: 27
+ MDMG: 2
   ACD: 0.972
 Tathar(1) vs Mottaka
 The hero won.
 Tathar: LVL4
-   HP: 252.3/277.3
-  DMG: 34.3
+   HP: 256.3/277.3
+ PDMG: 34
+ MDMG: 3
   ACD: 1.0935
 Tathar(1) vs Kakarott
 The hero won.
 Tathar: LVL4
-   HP: 257.3/277.3
-  DMG: 34.3
+   HP: 245.3/277.3
+ PDMG: 34
+ MDMG: 3
   ACD: 1.0935
