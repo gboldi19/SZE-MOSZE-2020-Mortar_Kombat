@@ -9,36 +9,31 @@ There must be a "hero" and a "monsters" key with paths to all the entities' .jso
 ```   
 {
     "hero" : "Dark_Wanderer.json",
-    "monsters" : ["Fallen.json", "Fallen.json", "Zombie.json", "Fallen.json", "Blood_Raven.json"]
+    "monsters" : " Fallen.json  Fallen.json  Zombie.json  Fallen.json  Blood_Raven.json "
 } 
 ```  
 ### Entities  
 All entities' .json files must contain specific keys, as in the following examples:
 #### Hero
 ```   
-{
-    "name" : "Prince Aidan of Khanduras",
-    "base_health_points" : 30,
-    "damage" : 3,
-    "magical-damage" : 0,
-    "defense": 1,
-    "defense_bonus_per_level" : 1,
-    "base_attack_cooldown" : 1.1,
-    "experience_per_level" : 20,
-    "health_point_bonus_per_level" : 5,
-    "damage_bonus_per_level" : 1,
-    "cooldown_multiplier_per_level": 0.9
-} 
+{  
+    "name" : "Prince Aidan of Khanduras",  
+    "base_health_points" : 30,  
+    "base_damage" : 3,  
+    "base_attack_cooldown" : 1.1,  
+    "experience_per_level" : 20,  
+    "health_point_bonus_per_level" : 5,  
+    "damage_bonus_per_level" : 1,  
+    "cooldown_multiplier_per_level": 0.9  
+}  
 ```  
 #### Monster
 ```   
 {  
-    "name" : "Zombie",
-    "health_points": 10,
-    "damage" : 1,
-    "magical-damage" : 0,
-    "attack_cooldown": 2.8,
-    "defense" :  0,
+    "name" : "Blood Raven",  
+    "health_points" : 113,  
+    "damage" : 8,  
+    "attack_cooldown" : 1.2,  
 }  
 ```  
   
