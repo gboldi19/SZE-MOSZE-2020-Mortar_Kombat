@@ -1,25 +1,22 @@
-/**
- * @class JSON
- * @brief Reads simple data maps in .json format.
- * @brief Stores and handles a map.
-*/
-
 #ifndef JSON_H
 #define JSON_H
 
 #include <map>
 #include <string>
-#include <any>
 #include <fstream>
 #include <streambuf>
 #include <unordered_set>
 #include <variant>
+#include <vector>
 
 class JSON
 {
+public:
+    typedef std::vector<std::variant<std::string, float, bool, std::nullptr_t>> list;
+    typedef std::variant<std::string, list, float, bool, std::nullptr_t> var;
 private:
-	std::map<std::string, std::variant<std::string, int, double, float>> map;
-	JSON(std::map<std::string, std::variant<std::string, int, double, float>> _map) : map(_map) {}
+	std::map<std::string, var> map;
+	JSON(std::map<std::string, var> _map) : map(_map) {}
 public:
     /**
 	* @brief String or file parse.
@@ -28,13 +25,13 @@ public:
 	* @return Map containing the keys and their values.
     * INSTRUCTIONS: Provide parseble string (default) or text file path (isFile must be set true)!
 	*/
-    static std::map<std::string, std::variant<std::string, int, double, float>> parse(std::string inputString = "", bool isFile = false);
+    static std::map<std::string, var> parse(std::string inputString = "", bool isFile = false);
     /**
 	* @brief Stream parse.
 	* @param Stream to parse.
 	* @return Map containing the keys and their values.
 	*/
-    static std::map<std::string, std::variant<std::string, int, double, float>> parse(std::istream &stream);
+    static std::map<std::string, var> parse(std::istream &stream);
     /**
 	* @brief File parse to own map.
 	* @param Path to file.
@@ -53,6 +50,7 @@ public:
 	* @param Key of the value to return.
 	* @return Value of the provided key.
 	*/
+
 	template <typename T>
 		T get(const std::string &key) { return std::get<T>(map[key]); }
 
