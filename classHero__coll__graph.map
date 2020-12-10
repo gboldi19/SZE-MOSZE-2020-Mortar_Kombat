@@ -1,5 +1,4 @@
 <map id="Hero" name="Hero">
-<area shape="rect" id="node1" title="This is a subclass representing the main character. Contains construction and level up management." alt="" coords="21,171,75,197"/>
-<area shape="rect" id="node2" href="$classCharacter.html" title="This is a base class representing our entity. Handels their attributes and interactions." alt="" coords="5,95,91,121"/>
-<area shape="rect" id="node3" href="$structDamage.html" title=" " alt="" coords="9,5,87,32"/>
+<area shape="rect" id="node1" title="This is a subclass representing the main character. Contains construction and level up management." alt="" coords="21,80,75,107"/>
+<area shape="rect" id="node2" href="$classCharacter.html" title="This is a base class representing our entity. Handels their attributes and interactions." alt="" coords="5,5,91,32"/>
 </map>
