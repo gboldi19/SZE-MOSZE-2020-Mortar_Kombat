@@ -1,5 +1,5 @@
 OBJS := main.o JSON.o Character.o Hero.o Monster.o
-CFLAGS := -std=c++17 -Wall -Werror -g 
+CFLAGS := -std=c++17 -g 
 CC := g++-10
 UNIT1 := units/test_scenario1.json
 UNIT2 := units/test_scenario2.json
