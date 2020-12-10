@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['dohit_4',['doHit',['../classCharacter.html#a2b8f33202d111dd7f2e9a99e2e6cb90c',1,'Character']]]
+  ['fighttildeath_7',['fightTilDeath',['../classCharacter.html#a15b0d051e3faf8895cf3d73d35d50da6',1,'Character']]]
 ];
