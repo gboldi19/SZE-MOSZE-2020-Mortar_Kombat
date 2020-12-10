@@ -1,9 +1,9 @@
 {
   "name": "Tathar",
   "base_health_points": 274,
-  "base_damage": 31,
+  "damage": 31,
   "magical-damage" : 0,
-  "attack_cooldown": 1.5,
+  "base_attack_cooldown": 1.5,
   "defense": 1,
   "defense_bonus_per_level" : 1,
   "experience_per_level": 100,
