@@ -49,6 +49,10 @@ std::string::size_type findNext(std::string &s, char target, std::unordered_set<
 
 void checkString(std::string& s)
 {
+    if (s.length() == 0) //only two '"' signs --> error
+    {
+        throw std::runtime_error("4: Empty string!");
+    }
 	if (backslashChars.find(s[0]) != backslashChars.end()) //first character is backslashchar
 	{
         if (s.length() > 1)
@@ -71,6 +75,10 @@ void checkString(std::string& s)
 			{
             	throw std::runtime_error("5C: Unrecognized value!");
 			}
+        }
+        if (s[pos] == '{' || s[pos] == '}') //these mókusos brackets are not allowed --> error - (Names for various bracket symbols, [https://en.wikipedia.org/wiki/Bracket])
+        {
+            throw std::runtime_error("6: Unrecognized value!");
         }
     }
 }
