@@ -2,17 +2,17 @@
 
 | Név | Github azonosito  | Javasolt relatív érdemjegy | Becsült óra | Indoklás  | 
 | --- | ---- | --- | ------------------ | --------- |
-| Geiger Boldizsár | @gboldi19 | 0 | 70 | Szépen csinálta a dolgát. |
-| Rakonczai Róbert | @Parmama | -2 | 10 | Sokszor Tóth Balázsnak kellett megcsinálnia helyette a dolgokat. |
-| Tóth Balázs | @balazs482 | +1 | 140 | Mindent megcsinált, és amikor Rakonczai Róbert helyett be kellett ugrani, elvállalta a feladadokat. |
+| Geiger Boldizsár | @gboldi19 | +1 | 70 | A rábízott feladatokat rendre, jó minőségben teljesítette. |
+| Rakonczai Róbert | @Parmama | 0 | 40 | A rábízott feladatok egy részét csak segítséggel tudta teljesíteni, de volt amit azzal sem. Ekkor Tóth Balázs segített / oldotta meg a problémát. |
+| Tóth Balázs | @balazs482 | +3 | 140 | Minden rábízott feladatot megcsinált, és amikor Rakonczai Róbert helyett be kellett ugrani, elvállalta a feladatokat. |
 
 
-# Videók (hiányos)
+# Videók
 
  - [Gameplay](/videos/gameplay.mp4)
  - [CodeBaseDefense](/videos/codebasedefense.mp4)
 
-# Befejezett feladatok (hiányosan kitöltve)
+# Befejezett feladatok
 
 | Feladat | Merge ideje a határidóhöz (nap) | Change request körök | Reviewer | 
 | ------- | ------------------------------- | -------------------- | -------- |
@@ -25,19 +25,18 @@
 | unittest | +2 | 1 | @SZE-MOSZE-2020-NullPointerException--Closed / @balazs482 |
 | makefile | 0 | 2 | @hegyhati |
 | refactor | 0 | 1 | @hegyhati |
-//...........
-| docker | ... | ... | @hegyhati |
-| jsonpimp | Merge: 11.12 | ... | @otherteam / @you, @down |
-| map | Merge: 11.13 | ... | @otherteam / @never, @gonna |
-| game | Merge: mm.dd | ... | @otherteam / @run, @arond |
-| defense | Merge: mm.dd | ... | @otherteam / @and, @desert |
-| damage | Merge: mm.dd | ... | @otherteam / @you  |
-| markedmap | Merge: mm.dd | ... | @otherteam / @otherguy1,otherguy2 |
+| docker | -2 | 2 | @hegyhati |
+| jsonpimp | Merge: 12.10 | 1 | @SZE-MOSZE-2020-AMD_Bike / @balazs482 |
+| map | Merge: nem készült el | - | - |
+| game | Merge: nem készült el | - | - |
+| defense | Merge: 12.10 | 1 | @SZE-MOSZE-2020-AMD_Bike / @gboldi19 |
+| damage | Merge: 12.10 | 1 | @SZE-MOSZE-2020-AMD_Bike / @gboldi19 |
+| markedmap | Merge: nem készült el | - | - |
 | preparedgame | nem készült el | - | -
-| light radius | Merge: mm.dd | ... | @otherteam / @otherguy1,otherguy2 |
-| rendering | Merge: mm.dd | ... | @otherteam / @otherguy1,otherguy2 |
+| light radius | nem készült el | - | - |
+| rendering | nem készült el | - | - |
 
-# Unit tesztek (hiányosan kitöltve)
+# Unit tesztek
 
 | Osztály | Publikus metódusok száma | Unit tesztelt metódusok száma | Unit tesztek száma |
 | --- | --- | --- | --- |
@@ -45,38 +44,23 @@
 | `Hero` | 5 | 0 | 0 | 
 | ... |
 
-# Kód dokumentáció (hiányosan kitöltve)
+# Kód dokumentáció
 
 | Teljesen dokumentált osztályok | Részben dokumentált osztályok | Nem dokumentált osztályok |
 | --- | --- | --- | 
-| `Unit` | `Game` | `JSON` | 
+| `Character` | ... | ... | 
 | `Hero` | ... | ... |  
-| ... |
+| `Monster` | ... | ... | 
+| `JSON` | ... | ... |  
 
 
-# Mindenféle számok (hiányosan kitöltve)
+# Mindenféle számok
 
- - Összes cpp kódsor :
- - Egyéb kódsor (make,doxyfile,shellscript, ...) :
+ - Összes cpp kódsor : 927
+ - Egyéb kódsor (make,doxyfile,shellscript, ...) : 189
  - cppcheck
-   - warning :
-   - style :
-   - performance :
-   - unusedFunction : 
-   - missingInclude : 
- 
-# Implicit megtanult dolgok (hiányosan kitöltve)
-Olyanok, amik nem a tárgy anyaga, de muszáj/hasznos volt elsajátítani:
- - alapvető shell/python scripting
- - `std::variant`
- - ...
-
-# Feedback (optional) (hiányosan kitöltve)
- 
-Melyik részt találtátok a leghasznosabbnak, miért. Használtátok-e az itt megszerzett dolgokat esetleg közben máskor. Volt-e olyan, amit hiányoltatok a tárgyból. Utólag visszagondolva is jó volt-e az online videósdi?
-
-Ha szívesebben írnátok meg anoním módon, OHV-nál várom.
-
-# Üzenet a jövőbe (optional) (hiányosan kitöltve)
-
-Így, hogy túlvagytok rajta, mi az, aminek örültetek volna, ha első héten elmondom, avagy: jövőre mit lenne jó, ha elmondanék majd?
+   - warning : 0
+   - style : 6 (néhány a megadott main-ben)
+   - performance : 1
+   - unusedFunction : 0
+   - missingInclude : 0

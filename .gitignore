@@ -6,7 +6,9 @@
 !*.yml
 !*.sh
 !*.csv
+!*.mp4
 
+!videos
 !maps
 !CMakeLists.txt
 !units
