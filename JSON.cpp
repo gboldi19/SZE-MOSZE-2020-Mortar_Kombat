@@ -1,4 +1,5 @@
 #include "JSON.h"
+#include <iostream>
 
 std::unordered_set<char> spacingChars = { ' ', '\n', '\t', '\r', '\f', '\b' }; //whitespace + nonprintables
 std::unordered_set<char> pairEndingChars = { ',', '}' };
@@ -70,15 +71,17 @@ void checkString(std::string& s)
     {
         if (backslashChars.find(s[pos]) != backslashChars.end() && s[pos - 1] != '\\') //backslashchar has no '\' before it and ...
         {
-			    if (s[pos] == '\\')
-				    if (pos < s.length() - 1 && s[pos + 1] != '\\') //...no double '\' with the following character either --> error
-				    {
-            		throw std::runtime_error("5C: Unrecognized value!");
-				    }
-          else
-          {
-            throw std::runtime_error("5D: Unrecognized value!");
-          }
+            if (s[pos] == '\\')
+            {
+                if (pos < s.length() - 1 && s[pos + 1] != '\\') //...no double '\' with the following character either --> error
+                {
+                    throw std::runtime_error("5C: Unrecognized value!");
+                }
+            }
+            else
+            {
+                throw std::runtime_error("5D: Unrecognized value!");
+            }
         }
         if (s[pos] == '{' || s[pos] == '}') //these mókusos brackets are not allowed --> error - (Names for various bracket symbols, [https://en.wikipedia.org/wiki/Bracket])
         {
@@ -260,6 +263,7 @@ std::map<std::string, JSON::var> JSON::parse(std::string inputString, bool isFil
         }
         else
         {
+            std::cout << "File name: " << inputString << std::endl;
             throw std::runtime_error("12: Unable to open file!");
         }
     }
