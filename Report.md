@@ -2,9 +2,9 @@
 
 | Név | Github azonosito  | Javasolt relatív érdemjegy | Becsült óra | Indoklás  | 
 | --- | ---- | --- | ------------------ | --------- |
-| Geiger Boldizsár | @gboldi19 | 0 | 70 | Szépen csinálta a dolgát. |
-| Rakonczai Róbert | @Parmama | -2 | 40 | Sokszor Tóth Balázsnak kellett megcsinálnia helyette a dolgokat. |
-| Tóth Balázs | @balazs482 | +1 | 140 | Mindent megcsinált, és amikor Rakonczai Róbert helyett be kellett ugrani, elvállalta a feladadokat. |
+| Geiger Boldizsár | @gboldi19 | +1 | 70 | A rábízott feladatokat rendre, jó minőségben teljesítette. |
+| Rakonczai Róbert | @Parmama | 0 | 40 | A rábízott feladatok egy részét csak segítséggel tudta teljesíteni, volt amit anélkül sem. Ekkor Tóth Balázs segített / oldotta meg a problémát. |
+| Tóth Balázs | @balazs482 | +3 | 140 | Mindent rábízott feladatot megcsinált, és amikor Rakonczai Róbert helyett be kellett ugrani, elvállalta a feladadokat. |
 
 
 # Videók
