@@ -3,7 +3,7 @@
 | Név | Github azonosito  | Javasolt relatív érdemjegy | Becsült óra | Indoklás  | 
 | --- | ---- | --- | ------------------ | --------- |
 | Geiger Boldizsár | @gboldi19 | +1 | 70 | A rábízott feladatokat rendre, jó minőségben teljesítette. |
-| Rakonczai Róbert | @Parmama | 0 | 40 | A rábízott feladatok egy részét csak segítséggel tudta teljesíteni, volt amit anélkül sem. Ekkor Tóth Balázs segített / oldotta meg a problémát. |
+| Rakonczai Róbert | @Parmama | 0 | 40 | A rábízott feladatok egy részét csak segítséggel tudta teljesíteni, de volt amit azzal sem. Ekkor Tóth Balázs segített / oldotta meg a problémát. |
 | Tóth Balázs | @balazs482 | +3 | 140 | Mindent rábízott feladatot megcsinált, és amikor Rakonczai Róbert helyett be kellett ugrani, elvállalta a feladadokat. |
 
 
