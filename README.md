@@ -55,3 +55,5 @@ If either any of the monster or the hero has no hit points left, the simulation 
 The hero's name, level, hit points, maximum hit points, damage points, attack cooldown are printed, and then the program exits.   
   
 Documentation: https://teaching-projects.github.io/SZE-MOSZE-2020-Mortar_Kombat/   
+
+ 
